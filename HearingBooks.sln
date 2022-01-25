@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HearingBooks.Api", "HearingBooks.Api\HearingBooks.Api.csproj", "{A2C0BA6E-B256-40E3-9CF9-3A1F5AB10ACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2C0BA6E-B256-40E3-9CF9-3A1F5AB10ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C0BA6E-B256-40E3-9CF9-3A1F5AB10ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C0BA6E-B256-40E3-9CF9-3A1F5AB10ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C0BA6E-B256-40E3-9CF9-3A1F5AB10ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
