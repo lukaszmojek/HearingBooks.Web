@@ -45,7 +45,7 @@ public class SpeechService : ISpeechService
         config.SpeechSynthesisVoiceName = "pl-PL-AgnieszkaNeural";
 
         // Create AudioConfig for to let the application know how to handle the synthesis
-        var localPath = $"./{fileName}.wav";
+        var localPath = $"./{fileName}";
         using var audioConfig = AudioConfig.FromWavFileOutput(localPath);
         // Actual synthetizer instance for TTS
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);

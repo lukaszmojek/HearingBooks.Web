@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+#  azureTextToSpeechNeural:
+#    image: mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech
+#    container_name: azureTextToSpeechNeural
+#    ports:
+#      - "10000:10000"
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite:/home/shaggy/docker/azurite
+
+volumes:
+  azurite:
