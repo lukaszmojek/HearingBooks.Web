@@ -5,16 +5,21 @@ namespace HearingBooks.Api;
 
 public class SpeechService : ISpeechService
 {
-    public bool CreateSynthesis()
+    private readonly IConfiguration _configuration;
+
+    public SpeechService(IConfiguration configuration)
     {
-        return true;
+        _configuration = configuration;
     }
 
     public async Task<bool> SynthesizeAudioAsync()
     {
         try
         {
-            var config = SpeechConfig.FromSubscription("1c23fad4a1d543658a20ba9f1c6629cc", "westeurope");
+            var config = SpeechConfig.FromSubscription(
+                _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
+                _configuration[ConfigurationKeys.TextToSpeechRegion]
+            );
             // Note: if only language is set, the default voice of that language is chosen.
             config.SpeechSynthesisLanguage = "pl-PL"; // For example, "de-DE"
             // The voice setting will overwrite the language setting.
@@ -29,7 +34,7 @@ public class SpeechService : ISpeechService
             await synthesizer.SpeakTextAsync(
                 "No i tu mamy przykładowy zsyntetyzowany tekst w języku polskim. Jak się masz kochanie? Jak się masz?"
             );
-            
+
             return true;
         }
         catch (Exception e)
