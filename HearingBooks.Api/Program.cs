@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
 
 var app = builder.Build();
