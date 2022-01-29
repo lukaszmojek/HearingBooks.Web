@@ -1,0 +1,91 @@
+{
+  "main": {
+    "id": "4dc0343d1c8bc299",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe7fdee57cf81296",
+        "type": "leaf",
+        "state": {
+          "type": "graph",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "31b19f44763d73c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bbb023d23581cee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a53f0ffd1a837168",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "323b921101bc45a4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f26e172d29ff1277",
+    "type": "split",
+    "children": [
+      {
+        "id": "90049b0009a21a6a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7019f5652f7f2ff6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "fe7fdee57cf81296",
+  "lastOpenFiles": [
+    "Synthesis.md",
+    "PlainTextSynthesis.md",
+    "NarrativeTextSyntesis.md"
+  ]
+}
