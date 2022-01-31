@@ -36,7 +36,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#pricing",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -45,8 +45,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -66,8 +65,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": false,
-                "extraContext": false,
+                "collapseAll": true,
+                "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
@@ -84,8 +83,13 @@
   },
   "active": "fe7fdee57cf81296",
   "lastOpenFiles": [
+    "Pricing.md",
     "Synthesis.md",
-    "PlainTextSynthesis.md",
-    "NarrativeTextSyntesis.md"
+    "HearingBooks.md",
+    "Synthesis/EpubSyntesis.md",
+    "Synthesis/NarrativeSyntesis.md",
+    "Synthesis/PlainTextSynthesis.md",
+    "Pricing/CooperationWIthAuthors.md",
+    "Pricing/PayAsYouGo.md"
   ]
 }
