@@ -8,17 +8,18 @@
 
     <ItemGroup>
         <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+        <PackageReference Include="Marten" Version="4.3.1" />
         <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
+      <Compile Remove="ApiConfiguration.cs" />
+      <Compile Remove="IApiConfiguration.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="ApiConfiguration.cs" />
-      <Compile Remove="IApiConfiguration.cs" />
+      <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
     </ItemGroup>
 
 </Project>

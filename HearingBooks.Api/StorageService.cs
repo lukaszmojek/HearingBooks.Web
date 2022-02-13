@@ -75,8 +75,7 @@ public class StorageService : IStorageService
 
     public async Task<Response<BlobContentInfo>> UploadBlob(
         BlobContainerClient blobContainerClient, string blobFileName, string localPath
-    )
-    {
+    ) {
         var blobClient = blobContainerClient.GetBlobClient(blobFileName);
         return await blobClient.UploadAsync($"./{blobFileName}");
     }
