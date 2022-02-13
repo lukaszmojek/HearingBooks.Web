@@ -17,5 +17,17 @@ services:
     volumes:
       - azurite:/home/shaggy/docker/azurite
 
+  postgres:
+    image: ionx/postgres-plv8:12.2
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: Password12!
+      POSTGRES_USER: postgres
+
 volumes:
   azurite:
+
+  postgres:
+    driver: local
