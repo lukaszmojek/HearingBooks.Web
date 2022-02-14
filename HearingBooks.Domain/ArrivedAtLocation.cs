@@ -1,3 +1,6 @@
+using Baseline;
+using HearingBooks.Domain.Aggregates;
+
 namespace HearingBooks.Domain.Events;
 
 public class ArrivedAtLocation
@@ -12,7 +15,7 @@ public class ArrivedAtLocation
     }
 }
 
-public class MembersJoined
+public class MembersJoined : Event
 {
     public MembersJoined()
     {
@@ -57,7 +60,7 @@ public class MembersJoined
     }
 }
 
-public class QuestStarted
+public class QuestStarted : Event
 {
     public string Name { get; set; }
     public Guid Id { get; set; }
@@ -97,7 +100,7 @@ public class QuestEnded
     }
 }
 
-public class MembersDeparted
+public class MembersDeparted : Event
 {
     public Guid Id { get; set; }
 
@@ -115,7 +118,7 @@ public class MembersDeparted
     }
 }
 
-public class MembersEscaped
+public class MembersEscaped : Event
 {
     public Guid Id { get; set; }
 
@@ -128,5 +131,29 @@ public class MembersEscaped
     public override string ToString()
     {
         return $"Members {String.Join(", ", Members)} escaped from {Location}";
+    }
+}
+
+public class QuestParty : 
+    IEventConsumer<MembersJoined>,
+    IEventConsumer<MembersDeparted>,
+    IEventConsumer<QuestStarted>
+{
+    public List<string> Members { get; set; } = new();
+    public IList<string> Slayed { get; } = new List<string>();
+    public string Key { get; set; }
+    public string Name { get; set; }
+
+    // In this particular case, this is also the stream id for the quest events
+    public Guid Id { get; set; }
+
+    // These methods take in events and update the QuestParty
+    public void Apply(MembersJoined joined) => Members.Fill(joined.Members);
+    public void Apply(MembersDeparted departed) => Members.RemoveAll(x => departed.Members.Contains(x));
+    public void Apply(QuestStarted started) => Name = started.Name;
+
+    public override string ToString()
+    {
+        return $"Quest party '{Name}' is {Members.Join(", ")}";
     }
 }

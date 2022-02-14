@@ -1,10 +1,9 @@
 using HearingBooks.Api;
-using Microsoft.AspNetCore.Mvc;
-using Baseline;
 using HearingBooks.Api.Endpoints.Syntheses;
 using HearingBooks.Domain.Events;
 using Marten;
 using Marten.Events;
+using Microsoft.AspNetCore.Mvc;
 using Weasel.Postgresql;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,55 +48,34 @@ app.UseAuthorization();
 
 app.MapSynthesesEndpoints();
 
-app.MapGet("/party/events", async (IDocumentStore store) =>
-{
-    using var session = store.OpenSession();
-        var started = new QuestStarted { Name = "Destroy the One Ring" };
-        var joined1 = new MembersJoined(1, "Hobbiton", "Frodo", "Sam");
+// app.MapGet("/party/events", async (IDocumentStore store) =>
+// {
+//     using var session = store.OpenSession();
+//         var started = new QuestStarted { Name = "Destroy the One Ring" };
+//         var joined1 = new MembersJoined(1, "Hobbiton", "Frodo", "Sam");
+//
+//         // Start a brand new stream and commit the new events as
+//         // part of a transaction
+//         session.Events.StartStream(typeof(QuestParty), Guid.NewGuid(), started, joined1);
+//         await session.SaveChangesAsync();
+//     
+//     return $"Succeded: kek";
+// });
 
-        // Start a brand new stream and commit the new events as
-        // part of a transaction
-        session.Events.StartStream(typeof(QuestParty), Guid.NewGuid(), started, joined1);
-        await session.SaveChangesAsync();
-    
-    return $"Succeded: kek";
-});
-
-app.MapGet("/party/{questId}/state", async (IDocumentStore store, [FromQuery] Guid questId) =>
-{
-    using var session = store.OpenSession();
-    // questId is the id of the stream
-    var party = session.Events.AggregateStream<QuestParty>(questId);
-    Console.WriteLine(party);
-
-    // var party_at_version_3 = await session.Events
-    //     .AggregateStreamAsync<QuestParty>(questId, 3);
-    //
-    // var party_yesterday = await session.Events
-    //     .AggregateStreamAsync<QuestParty>(questId, timestamp: DateTime.UtcNow.AddDays(-1));
-    
-    return $"Succeded: kek";
-});
+// app.MapGet("/party/{questId}/state", async (IDocumentStore store, [FromQuery] Guid questId) =>
+// {
+//     using var session = store.OpenSession();
+//     // questId is the id of the stream
+//     var party = session.Events.AggregateStream<QuestParty>(questId);
+//     Console.WriteLine(party);
+//
+//     // var party_at_version_3 = await session.Events
+//     //     .AggregateStreamAsync<QuestParty>(questId, 3);
+//     //
+//     // var party_yesterday = await session.Events
+//     //     .AggregateStreamAsync<QuestParty>(questId, timestamp: DateTime.UtcNow.AddDays(-1));
+//     
+//     return $"Succeded: kek";
+// });
 
 app.Run();
-
-public class QuestParty
-{
-    public List<string> Members { get; set; } = new();
-    public IList<string> Slayed { get; } = new List<string>();
-    public string Key { get; set; }
-    public string Name { get; set; }
-
-    // In this particular case, this is also the stream id for the quest events
-    public Guid Id { get; set; }
-
-    // These methods take in events and update the QuestParty
-    public void Apply(MembersJoined joined) => Members.Fill(joined.Members);
-    public void Apply(MembersDeparted departed) => Members.RemoveAll(x => departed.Members.Contains(x));
-    public void Apply(QuestStarted started) => Name = started.Name;
-
-    public override string ToString()
-    {
-        return $"Quest party '{Name}' is {Members.Join(", ")}";
-    }
-}

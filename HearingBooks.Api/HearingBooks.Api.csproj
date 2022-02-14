@@ -22,4 +22,9 @@
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Syntheses\GetAllSyntheses" />
+      <Folder Include="Syntheses\RequestTextSynthesis" />
+    </ItemGroup>
+
 </Project>

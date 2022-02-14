@@ -4,6 +4,12 @@ namespace HearingBooks.Api.Endpoints.Syntheses;
 
 public static class SynthesesEndpointExtensions
 {
+    private class TextSyntehsisRequest
+    {
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
+    
     public static void MapSynthesesEndpoints(this WebApplication app)
     {
         app.MapGet(
@@ -16,8 +22,8 @@ public static class SynthesesEndpointExtensions
         );
         
         app.MapPost(
-            "/syntheses", 
-            async ([FromServices] ISpeechService speech) =>
+            "/syntheses/text", 
+            async ([FromServices] ISpeechService speech, [FromBody] TextSyntehsisRequest request) =>
             {
                 var result = await speech.SynthesizeAudioAsync();
     
