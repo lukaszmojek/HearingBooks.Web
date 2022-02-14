@@ -9,6 +9,6 @@ When author agrees to cooperate with HearingBooks, he agrees, that we will be ta
 ### Scenarios:
 
 #### Buying audiobook by the user
-The user buys audiobook, which price is dependant on the cost of the creation of the audiobook, so basically, on how long it actually is. From this price author of the book would receive 70% cut, while HearingBooks would receive 30% 
+The user buys audiobook, which price is dependant on the cost of the creation of the audiobook, so basically, on how long it actually is. From this price author of the book would receive 60% cut, while HearingBooks would receive 40% 
 
-ex. user buys audiobook for the price of 10 USD, out of which author is getting 7 USD and HearingBooks is getting 3 USD
+ex. user buys audiobook for the price of 10 USD, out of which author is getting 6 USD and HearingBooks is getting 4 USD

@@ -7,12 +7,8 @@
         "id": "fe7fdee57cf81296",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "TextExtraction/CleanPdfTextExtraction.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
@@ -69,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "TextExtraction/CleanPdfTextExtraction.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -88,15 +83,15 @@
   },
   "active": "fe7fdee57cf81296",
   "lastOpenFiles": [
+    "User.md",
+    "Pricing/PayAsYouGo.md",
+    "Pricing/CooperationWIthAuthors.md",
+    "HearingBooks.md",
     "TextExtraction/CleanPdfTextExtraction.md",
     "TextExtraction/PhotoTextExtraction.md",
     "TextExtraction/OCREngine.md",
-    "Pricing/PayAsYouGo.md",
-    "Pricing/CooperationWIthAuthors.md",
     "Synthesis/PhotoSyntesis.md",
     "Synthesis/NarrativeSyntesis.md",
-    "HearingBooks.md",
-    "Synthesis/EpubSyntesis.md",
-    "Pricing.md"
+    "Synthesis/EpubSyntesis.md"
   ]
 }
