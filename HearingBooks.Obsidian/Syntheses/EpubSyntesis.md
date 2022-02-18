@@ -1,4 +1,5 @@
 #synthesis
+#payAsYouGo 
 #earning 
 
 Go back to [[Synthesis]]

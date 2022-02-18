@@ -7,8 +7,12 @@
         "id": "fe7fdee57cf81296",
         "type": "leaf",
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Security/ClamAV.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Security/ClamAV.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -83,15 +88,15 @@
   },
   "active": "fe7fdee57cf81296",
   "lastOpenFiles": [
-    "User.md",
-    "Pricing/PayAsYouGo.md",
-    "Pricing/CooperationWIthAuthors.md",
+    "Security/ClamAV.md",
+    "Syntheses/Synthesis.md",
+    "Syntheses/PlainTextSynthesis.md",
+    "Syntheses/PhotoSyntesis.md",
+    "Syntheses/NarrativeSyntesis.md",
+    "Syntheses/EpubSyntesis.md",
+    "Users.md",
     "HearingBooks.md",
-    "TextExtraction/CleanPdfTextExtraction.md",
     "TextExtraction/PhotoTextExtraction.md",
-    "TextExtraction/OCREngine.md",
-    "Synthesis/PhotoSyntesis.md",
-    "Synthesis/NarrativeSyntesis.md",
-    "Synthesis/EpubSyntesis.md"
+    "TextExtraction/OCREngine.md"
   ]
 }
