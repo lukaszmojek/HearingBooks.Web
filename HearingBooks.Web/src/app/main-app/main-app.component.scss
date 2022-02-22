@@ -1,0 +1,29 @@
+:host {
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toolbar {
+    height: 5vh;
+    justify-content: space-between;
+  }
+
+  .container {
+    display: flexbox;
+    height: 95vh;
+  }
+
+  .logged-user {
+    align-self: flex-end;
+  }
+
+  .visibility-hidden {
+    visibility: hidden;
+  }
+
+  .menu-button {
+    margin-right: 16px;
+  }
+}
