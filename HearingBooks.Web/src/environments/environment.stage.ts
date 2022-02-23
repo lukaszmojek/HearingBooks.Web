@@ -1,6 +1,6 @@
 import { IEnvironment } from "./i-environment";
 
 export const environment: IEnvironment = {
-  production: true,
-  apiUrl: ''
+  production: false,
+  apiUrl: 'stage'
 };

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HearingBooks.Web": {
+    "HearingBooks-Web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -58,6 +58,22 @@
               ],
               "outputHashing": "all"
             },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -73,10 +89,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "HearingBooks.Web:build:production"
+              "browserTarget": "HearingBooks-Web:build:production"
+            },
+            "staging": {
+              "browserTarget": "HearingBooks-Web:build:staging"
+            },
+            "test": {
+              "browserTarget": "HearingBooks-Web:build:test"
             },
             "development": {
-              "browserTarget": "HearingBooks.Web:build:development"
+              "browserTarget": "HearingBooks-Web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HearingBooks.Web:build"
+            "browserTarget": "HearingBooks-Web:build"
           }
         },
         "test": {
@@ -109,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "HearingBooks.Web"
+  "defaultProject": "HearingBooks-Web"
 }
