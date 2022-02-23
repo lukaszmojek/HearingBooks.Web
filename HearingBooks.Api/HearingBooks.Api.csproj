@@ -10,7 +10,9 @@
         <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
         <PackageReference Include="Marten" Version="4.3.1" />
         <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.16.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
+      <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

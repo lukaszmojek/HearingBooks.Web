@@ -1,35 +1,67 @@
+using System.Reflection;
 using HearingBooks.Api;
-using HearingBooks.Api.Endpoints.Syntheses;
-using HearingBooks.Domain.Events;
+using HearingBooks.Api.Auth;
+using HearingBooks.Api.Configuration;
+using HearingBooks.Api.Syntheses;
 using Marten;
 using Marten.Events;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 using Weasel.Postgresql;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+builder.Services.AddSingleton<IApiConfiguration, ApiConfiguration>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo {Title = "HearingBooks.Api", Version = "v1"});
+                
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
+            In = ParameterLocation.Header, 
+            Description = "Please insert JWT token with Bearer into field",
+            Name = "Authorization",
+            Type = SecuritySchemeType.ApiKey 
+        });
+                
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+            { 
+                new OpenApiSecurityScheme 
+                { 
+                    Reference = new OpenApiReference 
+                    { 
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer" 
+                    } 
+                },
+                new string[] { } 
+            } 
+        });
+
+        // Set the comments path for the Swagger JSON and UI.
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments(xmlPath);
+    }
+);
+
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
 
 builder.Services.AddMarten(options =>
     {
-        // Establish the connection string to your Marten database
         options.Connection(builder.Configuration[ConfigurationKeys.MartenConnectionString]);
         options.Events.StreamIdentity = StreamIdentity.AsGuid;
         // If we're running in development mode, let Marten just take care
         // of all necessary schema building and patching behind the scenes
-#if DEBUG
-        // if (Environment.IsDevelopment())
+        if (builder.Environment.IsDevelopment())
         {
             options.AutoCreateSchemaObjects = AutoCreate.All;
         }
-#endif
     }
 );
 
@@ -38,13 +70,24 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json",
+        $"{builder.Environment.ApplicationName} v1"));
 }
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => 
+    x.AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials()
+);
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapSynthesesEndpoints();
 

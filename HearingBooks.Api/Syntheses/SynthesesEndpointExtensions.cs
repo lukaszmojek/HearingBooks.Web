@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace HearingBooks.Api.Endpoints.Syntheses;
+namespace HearingBooks.Api.Syntheses;
 
 public static class SynthesesEndpointExtensions
 {
@@ -18,8 +18,7 @@ public static class SynthesesEndpointExtensions
             {
                 var syntheses = new List<SynthesisDto>();
                 return Task.FromResult(syntheses);
-            }
-        );
+            });
         
         app.MapPost(
             "/syntheses/text", 
