@@ -1,9 +1,9 @@
 @mixin flex(
-  $direction: column, 
-  $basis: auto, 
-  $shrink: 1fr, 
-  $grow: 1fr, 
-  $justify-content: center, 
+  $direction: column,
+  $basis: auto,
+  $shrink: 1fr,
+  $grow: 1fr,
+  $justify-content: center,
   $align-items: center
 ) {
   display: flex;

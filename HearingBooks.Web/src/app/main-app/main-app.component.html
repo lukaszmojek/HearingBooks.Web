@@ -1,23 +1,23 @@
 <mat-toolbar color="primary" class="toolbar">
   <div class="flex">
-    <button [ngClass]="{'visibility-hidden': !isLoggedIn}"
-      (click)="drawer.toggle()" 
-      mat-icon-button 
-      class="menu-button"
-    >
+    <button
+      [ngClass]="{ 'visibility-hidden': !isLoggedIn }"
+      (click)="drawer.toggle()"
+      mat-icon-button
+      class="menu-button">
       <mat-icon>menu</mat-icon>
     </button>
 
-    <span>
-      Hearing Books
-    </span>
+    <span> Hearing Books </span>
   </div>
 
   <!-- <pof-logged-user [ngClass]="{'visibility-hidden': !isLoggedIn}">
   </pof-logged-user> -->
 </mat-toolbar>
 
-<mat-drawer-container class="container max-width max-height" [hasBackdrop]="true">
+<mat-drawer-container
+  class="container max-width max-height"
+  [hasBackdrop]="true">
   <mat-drawer #drawer mode="over">
     <hb-side-menu></hb-side-menu>
   </mat-drawer>
