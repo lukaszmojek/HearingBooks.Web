@@ -1,44 +1,30 @@
 using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using HearingBooks.Api.Configuration;
 
-namespace HearingBooks.Api;
-
-public interface IStorageService
-{
-    Task<bool> ContainerExists(string containerName);
-    
-    Task<BlobContainerClient> GetBlobContainerClient(string containerName);
-
-    Task<BlobContainerClient> CreateContainer(string containerName);
-
-    Task<Response<BlobContentInfo>> UploadBlob(
-        BlobContainerClient blobContainerClient, string blobFileName, string localPath
-    );
-}
+namespace HearingBooks.Api.Storage;
 
 public class StorageService : IStorageService
 {
-    private readonly IConfiguration _configuration;
     private readonly BlobServiceClient _blobServiceClient;
 
-    public StorageService(IConfiguration configuration)
+    public StorageService(IApiConfiguration configuration)
     {
-        _configuration = configuration;
-        _blobServiceClient =
-            new BlobServiceClient(_configuration[ConfigurationKeys.AzureStorageConnectionString]);
+        var azureStorageConnectionString = configuration[ConfigurationKeys.AzureStorageConnectionString];
+        _blobServiceClient = new BlobServiceClient(azureStorageConnectionString);
     }
 
     public async Task<bool> ContainerExists(string containerName)
     {
-        var bloblContainersEnumerator = _blobServiceClient
+        var blobContainersEnumerator = _blobServiceClient
             .GetBlobContainersAsync()
             .AsPages()
             .GetAsyncEnumerator();
-
-        while (await bloblContainersEnumerator.MoveNextAsync())
+        
+        while (await blobContainersEnumerator.MoveNextAsync())
         {
-            var containerExists = bloblContainersEnumerator
+            var containerExists = blobContainersEnumerator
                 .Current
                 .Values
                 .Any(x => x.Name.Equals(containerName));
@@ -47,7 +33,6 @@ public class StorageService : IStorageService
             {
                 return true;
             }
-
         } 
 
         return false;
