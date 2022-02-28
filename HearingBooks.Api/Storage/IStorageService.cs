@@ -6,13 +6,19 @@ namespace HearingBooks.Api.Storage;
 
 public interface IStorageService
 {
-    Task<bool> ContainerExists(string containerName);
+    Task<bool> ContainerExistsAsync(string containerName);
     
-    Task<BlobContainerClient> GetBlobContainerClient(string containerName);
+    BlobContainerClient GetBlobContainerClient(string containerName);
+    
+    Task<BlobContainerClient> CreateContainerAsync(string containerName);
+    
+    Task DeleteContainerAsync(string containerName);
 
-    Task<BlobContainerClient> CreateContainer(string containerName);
+    Task<Response<BlobContentInfo>> UploadBlobAsync(
+        BlobContainerClient blobContainerClient, string blobFileName, string blobLocalPath
+    );
 
-    Task<Response<BlobContentInfo>> UploadBlob(
-        BlobContainerClient blobContainerClient, string blobFileName, string localPath
+    Task<Response<bool>> BlobExistsAsync(
+        BlobContainerClient blobContainerClient, string blobFileName, CancellationToken cancellationToken
     );
 }

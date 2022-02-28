@@ -15,7 +15,7 @@ public class StorageService : IStorageService
         _blobServiceClient = new BlobServiceClient(azureStorageConnectionString);
     }
 
-    public async Task<bool> ContainerExists(string containerName)
+    public async Task<bool> ContainerExistsAsync(string containerName)
     {
         var blobContainersEnumerator = _blobServiceClient
             .GetBlobContainersAsync()
@@ -38,12 +38,12 @@ public class StorageService : IStorageService
         return false;
     }
 
-    public async Task<BlobContainerClient> GetBlobContainerClient(string containerName)
+    public BlobContainerClient GetBlobContainerClient(string containerName)
     {
         return _blobServiceClient.GetBlobContainerClient(containerName);
     }
 
-    public async Task<BlobContainerClient> CreateContainer(string containerName)
+    public async Task<BlobContainerClient> CreateContainerAsync(string containerName)
     {
         // Create a BlobServiceClient object which will be used to create a container client
         // BlobServiceClient blobServiceClient =
@@ -53,15 +53,28 @@ public class StorageService : IStorageService
         // containerName = "quickstartblobs" + Guid.NewGuid().ToString();
 
         // Create the container and return a container client object
-        BlobContainerClient containerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
+        var containerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
 
         return containerClient;
     }
 
-    public async Task<Response<BlobContentInfo>> UploadBlob(
-        BlobContainerClient blobContainerClient, string blobFileName, string localPath
+    public async Task DeleteContainerAsync(string containerName)
+    {
+        await _blobServiceClient.DeleteBlobContainerAsync(containerName);
+    }
+
+    public async Task<Response<BlobContentInfo>> UploadBlobAsync(
+        BlobContainerClient blobContainerClient, string blobFileName, string blobLocalPath
     ) {
         var blobClient = blobContainerClient.GetBlobClient(blobFileName);
-        return await blobClient.UploadAsync($"./{blobFileName}");
+        return await blobClient.UploadAsync(blobLocalPath);
+    }
+    
+    public async Task<Response<bool>> BlobExistsAsync(
+        BlobContainerClient blobContainerClient, string blobFileName, CancellationToken cancellationToken
+    ) {
+        var blobClient = blobContainerClient.GetBlobClient(blobFileName);
+        
+        return await blobClient.ExistsAsync(cancellationToken);
     }
 }
