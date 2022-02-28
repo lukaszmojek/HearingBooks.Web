@@ -25,8 +25,4 @@
       <ProjectReference Include="..\HearingBooks.Tests.Core\HearingBooks.Tests.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="data" />
-    </ItemGroup>
-
 </Project>

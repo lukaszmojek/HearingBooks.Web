@@ -10,7 +10,7 @@ public class EpubOperatorTests : TestBase
     [Fact]
     public void Title_Should_TitleOfTheBook()
     {
-        var path = GetPathForTheFile("opowiesci-niesamowite.epub");
+        var path = GetPathForTestFile("opowiesci-niesamowite.epub");
 
         var epubOperator = new EpubOperator(path);
 
@@ -22,7 +22,7 @@ public class EpubOperatorTests : TestBase
     [Fact]
     public void Author_Should_AuthorOfTheBook()
     {
-        var path = GetPathForTheFile("opowiesci-niesamowite.epub");
+        var path = GetPathForTestFile("opowiesci-niesamowite.epub");
 
         var epubOperator = new EpubOperator(path);
 
@@ -34,7 +34,7 @@ public class EpubOperatorTests : TestBase
     [Fact]
     public void AuthorList_Should_AuthorsOfTheBook()
     {
-        var path = GetPathForTheFile("opowiesci-niesamowite.epub");
+        var path = GetPathForTestFile("opowiesci-niesamowite.epub");
 
         var epubOperator = new EpubOperator(path);
 
@@ -47,7 +47,7 @@ public class EpubOperatorTests : TestBase
     [Fact]
     public void Navigation_Should_ReturnListOfNavigationItemsFromTheBook()
     {
-        var path = GetPathForTheFile("opowiesci-niesamowite.epub");
+        var path = GetPathForTestFile("opowiesci-niesamowite.epub");
 
         var navigationItemNamesFormTheBook = new List<string>
         {
@@ -87,7 +87,7 @@ public class EpubOperatorTests : TestBase
     [Fact]
     public void ReadingOrder_Should_ReturnListOfAllReadableSections()
     {
-        var path = GetPathForTheFile("opowiesci-niesamowite.epub");
+        var path = GetPathForTestFile("opowiesci-niesamowite.epub");
 
         var epubOperator = new EpubOperator(path);
 
