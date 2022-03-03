@@ -21,16 +21,21 @@ public partial class JwtMiddleware
 
     public async Task Invoke(HttpContext context, IUserRepository userRepository)
     {
+        // var token = context.Request
+        //     .Headers["Authorization"]
+        //     .FirstOrDefault()?
+        //     .Split(" ")
+        //     .Last();
+        
         var token = context.Request
-            .Headers["Authorization"]
-            .FirstOrDefault()?
+            .Headers
+            .FirstOrDefault(x => x.Key == "Authorization")
+            .Value
+            .ToString()
             .Split(" ")
             .Last();
 
-        if (token != null)
-        {
-            await AttachUserToContext(context, userRepository, token);
-        }
+        await AttachUserToContext(context, userRepository, token);
 
         await _next(context);
     }
