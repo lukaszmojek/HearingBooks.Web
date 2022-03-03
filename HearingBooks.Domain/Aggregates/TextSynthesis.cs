@@ -1,6 +1,6 @@
 namespace HearingBooks.Domain.Aggregates;
 
-public interface IEventConsumer<T> where T : Event
+public interface IEventConsumer<in T> where T : Event
 {
     public void Apply(T @event);
 }
@@ -8,11 +8,13 @@ public interface IEventConsumer<T> where T : Event
 public abstract class Event
 {
     public Guid Id { get; set; }
+    public Guid CorrelationId { get; set; }
     public abstract string ToString();
 }
 
-public class TextSyntesisRequested : Event
+public class TextSyntesisSubmitted : Event
 {
+    public Guid RequestId { get; set; }
     public Guid RequestingUserId { get; set; }
     public string Title { get; set; }
     public string BlobStoragePath { get; set; }
@@ -22,20 +24,23 @@ public class TextSyntesisRequested : Event
         and content on located on blob storage under this path {BlobStoragePath}";
 }
 
-public class TextSynthesis : IEventConsumer<TextSyntesisRequested>
+public class TextSynthesis : IEventConsumer<TextSyntesisSubmitted>
 {
     private readonly TextSynthesisData _textSynthesisData = new TextSynthesisData();
     public TextSynthesisStatus Status { get; set; }
 
+    public Guid Id { get; set; }
     public Guid RequestingUserId { get; set; }
 
     public bool Can { get; set; }
     
-    public void Apply(TextSyntesisRequested @event)
+    public void Apply(TextSyntesisSubmitted @event)
     {
+        Id = @event.Id;
+        RequestingUserId = @event.RequestingUserId;
+        Status = TextSynthesisStatus.Submitted;
         _textSynthesisData.Title = @event.Title;
         _textSynthesisData.BlobStoragePath = @event.BlobStoragePath;
-        RequestingUserId = @event.RequestingUserId;
     }
 }
 

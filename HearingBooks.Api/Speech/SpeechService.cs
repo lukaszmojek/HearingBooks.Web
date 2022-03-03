@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Routing.Constraints;
+using HearingBooks.Api.Storage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-namespace HearingBooks.Api;
+namespace HearingBooks.Api.Speech;
 
 public class SpeechService : ISpeechService
 {
@@ -60,12 +60,12 @@ public class SpeechService : ISpeechService
     private async Task UploadSynthesis(string fileName, string localPath)
     {
         var containerName = "test-001";
-        var containerExists = await _storage.ContainerExists(containerName);
+        var containerExists = await _storage.ContainerExistsAsync(containerName);
         
-        var blobContainerClient = await (containerExists
+        var blobContainerClient =  containerExists
             ? _storage.GetBlobContainerClient(containerName)
-            : _storage.CreateContainer(containerName));
+            : await _storage.CreateContainerAsync(containerName);
         
-        await _storage.UploadBlob(blobContainerClient, fileName, localPath);
+        await _storage.UploadBlobAsync(blobContainerClient, fileName, localPath);
     }
 }

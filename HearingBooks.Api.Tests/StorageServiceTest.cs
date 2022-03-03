@@ -104,7 +104,7 @@ public class StorageServiceTest {
             var containerExistsBeforeCallingCreateContainer = await StorageService.ContainerExistsAsync(_containerName);
             var _ = await StorageService.CreateContainerAsync(_containerName);
             var containerExistsAfterCallingCreateContainer = await StorageService.ContainerExistsAsync(_containerName);
-    
+            
             Assert.False(containerExistsBeforeCallingCreateContainer);
             Assert.True(containerExistsAfterCallingCreateContainer);
         }

@@ -1,4 +1,4 @@
-namespace HearingBooks.Api;
+namespace HearingBooks.Api.Speech;
 
 public interface ISpeechService
 {

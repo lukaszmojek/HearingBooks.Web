@@ -2,6 +2,8 @@ using System.Reflection;
 using HearingBooks.Api;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
+using HearingBooks.Api.Speech;
+using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses;
 using Marten;
 using Marten.Events;
