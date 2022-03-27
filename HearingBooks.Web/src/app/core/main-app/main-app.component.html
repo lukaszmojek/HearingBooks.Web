@@ -11,8 +11,11 @@
     <span> Hearing Books </span>
   </div>
 
-  <!-- <pof-logged-user [ngClass]="{'visibility-hidden': !isLoggedIn}">
-  </pof-logged-user> -->
+  <pof-logged-user [ngClass]="{'visibility-hidden': !isLoggedIn}">
+  </pof-logged-user>
+
+  <ng-content>
+  </ng-content>
 </mat-toolbar>
 
 <mat-drawer-container

@@ -1,0 +1,21 @@
+@use "../../../styles/bootstrap.scss";
+
+:host {
+  @include bootstrap.flex-set;
+
+  .menu-container {
+    width: 200px;
+    @include bootstrap.flex-set;
+  }
+
+  .menu-item {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .active {
+    background-color: #ffc400;
+  }
+}
