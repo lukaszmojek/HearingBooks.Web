@@ -1,3 +1,5 @@
+@use "../../../styles/bootstrap.scss";
+
 :host {
   .flex {
     display: flex;
@@ -24,6 +26,6 @@
   }
 
   .menu-button {
-    margin-right: 16px;
+    margin-right: bootstrap.$dimensions-margin-lg;
   }
 }
