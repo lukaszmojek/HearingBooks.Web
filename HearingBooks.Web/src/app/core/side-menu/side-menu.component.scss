@@ -1,21 +1,23 @@
 @use "../../../styles/bootstrap.scss";
 
+$menu-container-size: 200px;
+
 :host {
   @include bootstrap.flex-set;
 
   .menu-container {
-    width: 200px;
+    width: $menu-container-size;
     @include bootstrap.flex-set;
   }
 
   .menu-item {
     display: block;
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 10px;
+    width: calc(100% - 2 * bootstrap.$dimensions-md-lg);
+    padding: bootstrap.$dimensions-md-lg;
+    margin-top: bootstrap.$dimensions-md-lg;
   }
 
   .active {
-    background-color: #ffc400;
+    background-color: bootstrap.$colors-active-item-accent;
   }
 }
