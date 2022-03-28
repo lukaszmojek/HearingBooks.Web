@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { MenuItem } from './menu-item.interface'
 
 @Component({
   selector: 'hb-side-menu',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core'
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent {
+  public menuItems: MenuItem[] = [
+    {
+      name: 'Dashboard',
+      routerLink: 'dashboard',
+      shouldBeAvailable: () => true
+    }
+  ]
+
   constructor() {}
 }
