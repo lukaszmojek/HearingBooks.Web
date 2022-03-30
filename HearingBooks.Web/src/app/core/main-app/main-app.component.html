@@ -1,22 +1,4 @@
-<mat-toolbar color="primary" class="toolbar">
-  <div class="flex">
-    <button
-      [ngClass]="{ 'visibility-hidden': !isLoggedIn }"
-      (click)="drawer.toggle()"
-      mat-icon-button
-      class="menu-button">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <span> Hearing Books </span>
-  </div>
-
-  <hb-logged-user [ngClass]="{'visibility-hidden': !isLoggedIn}">
-  </hb-logged-user>
-
-  <ng-content>
-  </ng-content>
-</mat-toolbar>
+<hb-toolbar drawer="drawer"></hb-toolbar>
 
 <mat-drawer-container
   class="container max-width max-height"

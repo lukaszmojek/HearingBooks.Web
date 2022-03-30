@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router'
 import { MaterialModule } from '../material.module'
 import { LoggedUserComponent } from './logged-user/logged-user.component'
 import { MainAppComponent } from './main-app/main-app.component'
-import { SideMenuComponent } from './side-menu/side-menu.component'
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { ToolbarComponent } from './toolbar/toolbar.component'
 
 const components = [
   MainAppComponent,
@@ -13,7 +14,7 @@ const components = [
 ]
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, ToolbarComponent],
   imports: [RouterModule, MaterialModule, CommonModule],
   exports: [...components],
 })
