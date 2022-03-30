@@ -3,28 +3,30 @@ export interface Auth {
 import { Injectable } from '@angular/core'
 import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler, HttpErrorResponse, HttpStatusCode, HttpResponse } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
-import { AuthorizationService } from './authorization.service'
 import { catchError } from 'rxjs/operators'
 import { Store } from '@ngrx/store'
-import { IAuthState } from './auth.reducer'
 import { AuthActions } from './auth.actions'
+import { selectToken } from './auth.selectors'
+import { IAuthState } from './auth.reducer'
 
 @Injectable()
 export class BearerHeaderInterceptor implements HttpInterceptor {
+  private token: string = ''
+
   constructor(
-    private authorizationService: AuthorizationService, 
-    private store$: Store<{auth: IAuthState}>,
-    // private snackBar: SnackbarService
-  ) {}
+    private store$: Store<IAuthState>,
+  ) {
+    this.store$.select(selectToken).subscribe(token => {
+      this.token = token
+    })
+  }
 
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authorizationService.rawToken
-
-    if (!token) {
+    if (!this.token) {
       return next.handle(httpRequest)
     }
 
-    const bearerToken = `Bearer ${token}`
+    const bearerToken = `Bearer ${this.token}`
 
     return next.handle(
       httpRequest.clone({ 
@@ -49,7 +51,7 @@ export class BearerHeaderInterceptor implements HttpInterceptor {
         }
 
         console.log(errorMsg)
-        return throwError(errorMsg)
+        return throwError(() => new Error(errorMsg))
       })
     )
   }
