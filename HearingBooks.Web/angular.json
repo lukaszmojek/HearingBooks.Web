@@ -33,7 +33,8 @@
               "src/styles/bootstrap.scss",
               "src/styles/_colors.scss",
               "src/styles/_flex.scss",
-              "src/styles/_dimensions.scss"
+              "src/styles/_dimensions.scss",
+              "src/styles/_acrylic.scss"
             ],
             "scripts": []
           },
@@ -125,7 +126,8 @@
               "src/styles/bootstrap.scss",
               "src/styles/_colors.scss",
               "src/styles/_flex.scss",
-              "src/styles/_dimensions.scss"
+              "src/styles/_dimensions.scss",
+              "src/styles/_acrylic.scss"
             ],
             "scripts": []
           }
