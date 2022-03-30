@@ -54,15 +54,9 @@ fdescribe('AuthorizationService', () => {
     })
   })
 
-  describe('role', () => {
-    it('should return Administrator role', () => {
-      expect(service.type()).toEqual(UserType.HearingBooks)
-    })
-  })
-
-  describe('isAdministrator', () => {
+  describe('isHearingBooks', () => {
     it('should return true', () => {
-      expect(service.isAdministrator()).toBeTrue()
+      expect(service.isHearingBooks()).toBeTrue()
     })
   })
 })

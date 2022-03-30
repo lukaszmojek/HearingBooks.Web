@@ -33,20 +33,28 @@ export class AuthorizationService {
     })
   }
 
-  public type(): UserType {
-    if (!this._decodedToken) {
-      return -1
-    }
-
-    return this._decodedToken.type;
+  public isPayAsYouGo(): boolean {
+    return this.isUserType(UserType.PayAsYouGo)
   }
 
-  public isAdministrator(): boolean {
+  public isSubscriber(): boolean {
+    return this.isUserType(UserType.Subscriber)
+  }
+
+  public isWriter(): boolean {
+    return this.isUserType(UserType.Writer)
+  }
+
+  public isHearingBooks(): boolean {
+    return this.isUserType(UserType.HearingBooks)
+  }
+
+  private isUserType(userType: UserType): boolean {
     if (!this._decodedToken) {
       return false
     }
 
-    return this._decodedToken.type == UserType.HearingBooks;
+    return this._decodedToken.type == userType;
   }
 
   public currentUserId(): number {
