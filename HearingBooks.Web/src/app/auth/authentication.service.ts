@@ -12,7 +12,7 @@ import { IApiResponse, ITokenResponse } from './models';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private readonly localStorageTokenKey = 'pof_token_key'
+  private readonly localStorageTokenKey = 'hb_token_key'
 
   private get tokenEntryExistsInLocalStorage(): boolean {
     return !!this.tokenFromLocalStorage

@@ -1,5 +1,5 @@
-import { authFeatureKey, IAuthState } from "../auth/auth.reducer";
+import * as auth from "src/app/auth/auth.reducer";
 
 export interface IApplicationState {
-  [authFeatureKey]: IAuthState
+  [auth.featureName]: auth.IAuthState
 }

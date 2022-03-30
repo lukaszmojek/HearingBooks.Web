@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { IApplicationState } from "../state";
+import { IApplicationState } from "../core/state";
 import { IAuthState } from "./auth.reducer";
 
 export const selectAuthFeature = (state: IApplicationState) => state.auth

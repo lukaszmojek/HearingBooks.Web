@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     'path': 'dashboard',
     'component': SideMenuComponent
-  }
+  },
 ]
 
 @NgModule({

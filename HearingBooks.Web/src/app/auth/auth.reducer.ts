@@ -1,21 +1,20 @@
-import { createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 import { AuthActions } from './auth.actions';
 
-export const authFeatureKey = 'auth'
+export const featureName = 'auth'
 
-export const initialState: IAuthState = {
+const initialState: IAuthState = {
   token: '',
   isLoggedIn: false,
   isActionInProgress: false,
 }
-
 export interface IAuthState {
   token: string
   isLoggedIn: boolean,
   isActionInProgress: boolean
 }
 
-const _authReducer = createReducer(
+const reducer = createReducer(
   initialState,
   on(AuthActions.logIn, (state) => ({
     ...state,
@@ -47,6 +46,7 @@ const _authReducer = createReducer(
   })),
 )
 
-export function authReducer(state: IAuthState = initialState, action: any) {
-  return _authReducer(state, action);
-}
+export const authFeature = createFeature({
+  name: featureName,
+  reducer: reducer
+})
