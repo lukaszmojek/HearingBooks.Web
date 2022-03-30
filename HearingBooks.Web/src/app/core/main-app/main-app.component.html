@@ -1,3 +1,4 @@
+<!-- TODO: How to move toolbar to separate component? -->
 <mat-toolbar color="primary" class="toolbar">
   <div class="flex">
     <button
@@ -20,7 +21,7 @@
 
 <mat-drawer-container
   class="container max-width max-height"
-  [hasBackdrop]="true">
+  [hasBackdrop]="false">
   <mat-drawer #drawer mode="over">
     <hb-side-menu></hb-side-menu>
   </mat-drawer>

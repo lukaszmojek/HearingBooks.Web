@@ -4,7 +4,6 @@ $menu-container-size: 200px;
 
 :host {
   @include bootstrap.flex-set;
-  background-color: rgba($color: bootstrap.$colors-white, $alpha: bootstrap.$colors-glass-opacity);
 
   .menu-container {
     width: $menu-container-size;
