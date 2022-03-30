@@ -6,5 +6,7 @@ import { Component } from '@angular/core'
   styleUrls: ['./main-app.component.scss'],
 })
 export class MainAppComponent {
+  public isLoggedIn: boolean = true
+
   constructor() {}
 }
