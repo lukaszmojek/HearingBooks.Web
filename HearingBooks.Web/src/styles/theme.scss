@@ -40,3 +40,5 @@ $my-theme-reverse: mat.define-dark-theme((
 
 @include mat.form-field-theme($my-theme-reverse);
 @include mat.input-theme($my-theme-reverse);
+@include mat.select-theme($my-theme-reverse);
+@include mat.option-theme($my-theme-reverse);

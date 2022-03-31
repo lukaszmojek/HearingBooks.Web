@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
+import { TranslateService } from '@ngx-translate/core'
 import { IPreferencesState } from 'src/app/preferences/preferences.reducer'
-import { selectIsAcrylicEnabled, selectMainCardType } from 'src/app/preferences/preferences.selectors'
+import { selectIsAcrylicEnabled, selectLanguage } from 'src/app/preferences/preferences.selectors'
 import StoreConnectedComponent from '../store-connected.component'
 import { ToolbarService } from '../toolbar/toolbar.service'
 
@@ -15,10 +16,15 @@ export class MainAppComponent extends StoreConnectedComponent<IPreferencesState>
   @ViewChild('drawer')
   public drawer!: MatDrawer
   public isAcrylicEnabled!: boolean
+  public language!: string
   
-  constructor(private toolbar: ToolbarService, store$: Store<IPreferencesState>) {
+  constructor(private toolbar: ToolbarService, private translate: TranslateService, store$: Store<IPreferencesState>) {
     super(store$)
     this.store$.select(selectIsAcrylicEnabled).subscribe(isAcrylicEnabled => this.isAcrylicEnabled = isAcrylicEnabled)
+    this.store$.select(selectLanguage).subscribe(language => {
+      this.language = language
+      this.translate.use(this.language)
+    })
   }
   
   ngAfterViewInit(): void {

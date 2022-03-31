@@ -1,11 +1,8 @@
 {
-  "Common": {
-    "Disabled": "Disabled",
-    "Enabled": "Enabled"
-  },
   "Profile": {
     "Preferences": {
       "Acrylic": "Acrylic UI",
+      "Language": "Language",
       "Title": "Preferences"
     },
     "Title": "Your profile"

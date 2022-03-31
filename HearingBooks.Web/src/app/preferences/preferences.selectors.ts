@@ -22,3 +22,8 @@ export const selectInnerCardType = createSelector(
     ? CardType.Transparent
     : CardType.Normal
 )
+
+export const selectLanguage = createSelector(
+  selectAuthFeature,
+  state => state.language
+)

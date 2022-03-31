@@ -36,7 +36,6 @@ export class CardComponent {
   @Input() border: boolean = false
 
   public get isAcryclic(): boolean {
-    console.log(this.type)
     return this.type === CardType.Acrylic
   }
 

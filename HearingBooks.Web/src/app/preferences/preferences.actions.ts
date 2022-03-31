@@ -5,6 +5,12 @@ const isAcrylicEnabledToggled = createAction(
   props<{ isAcrylicEnabled: boolean; }>()
 );
 
+const languageChanged = createAction(
+  '[Preferences] Language changed',
+  props<{ language: string; }>()
+);
+
 export const PreferencesActions = {
   isAcrylicEnabledToggled,
+  languageChanged
 }

@@ -1,22 +1,4 @@
 <div [formGroup]="preferencesFormGroup">
-  <!-- <mat-form-field appearance="outline">
-    <mat-label>
-      {{ "Profile.Preferences.Acrylic" | translate }}
-    </mat-label>
-    <input matInput [formControl]="acrylicFormControl">
-  </mat-form-field>
-
-  <br>
-
-  <mat-checkbox [checked]="acrylicFormControl.value"
-    color="accent"
-    (change)="setAcrylic($event.checked)"
-  >
-    {{ "Profile.Preferences.Acrylic" | translate }}
-  </mat-checkbox> -->
-
-  <br>
-
   <hb-card [type]="innerCardType" [border]="innerCardBorder" class="width-50">
     <div class="flex">
       <div class="width-40 text-center">
@@ -32,18 +14,30 @@
       </div>
     </div>
 
-    <!-- <div class="flex">
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    
+    <div class="flex">
       <div class="width-40 text-center">
-        <hb-card [type]="transparentCardType">
-          {{ "Common.Disabled" | translate }}
-        </hb-card>
+        {{ "Profile.Preferences.Language" | translate }}
       </div>
 
-      <div class="width-40 text-center">
-        <hb-card [type]="acrylicCardType">
-          {{ "Common.Enabled" | translate }}
-        </hb-card>
+      <div class="flex width-40 text-center">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            {{ "Profile.Preferences.Language" | translate }}
+          </mat-label>
+
+          <mat-select (selectionChange)="setLanguage($event.value)"
+            [value]="selectedLanguage"
+          >
+            <mat-option *ngFor="let language of availableLanguages" [value]="language.symbol">
+              {{ language.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-    </div> -->
+    </div>
   </hb-card>
 </div>
