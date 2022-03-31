@@ -5,7 +5,7 @@ import { MatDrawer } from '@angular/material/sidenav';
   providedIn: 'root'
 })
 export class ToolbarService {
-  private drawer!: MatDrawer;
+  private drawer: MatDrawer;
   private isDrawerInitialized = false
 
   constructor() { }

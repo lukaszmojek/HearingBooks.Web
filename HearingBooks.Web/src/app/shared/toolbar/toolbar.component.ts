@@ -13,8 +13,8 @@ import { ToolbarService } from './toolbar.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent extends StoreConnectedComponent<IApplicationState> { 
-  public isLoggedIn!: boolean
-  public isSideMenuOpened!: boolean
+  public isLoggedIn: boolean
+  public isSideMenuOpened: boolean
 
   constructor(store$: Store<IApplicationState>, private toolbar: ToolbarService) {
     super(store$)

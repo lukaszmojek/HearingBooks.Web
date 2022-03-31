@@ -14,12 +14,12 @@ import StoreConnectedComponent from 'src/app/shared/store-connected.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreferencesComponent extends StoreConnectedComponent<IPreferencesState> {
-  @Input() preferencesFormGroup!: FormGroup
+  @Input() preferencesFormGroup: FormGroup
 
   public innerCardBorder = true
-  public innerCardType!: CardType
+  public innerCardType: CardType
   public availableLanguages = availableLanguages
-  public selectedLanguage!: string
+  public selectedLanguage: string
 
   public get acrylicFormControl(): FormControl {
     return this.preferencesFormGroup.get('acrylic') as FormControl

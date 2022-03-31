@@ -14,9 +14,9 @@ import StoreConnectedComponent from '../../store-connected.component';
 export class ProfileComponent extends StoreConnectedComponent<IApplicationState> {
   public titleTranslationKey: string = 'Profile.Title'
 
-  public mainCardType!: CardType
-  public innerCardType!: CardType
-  public acrylic!: boolean
+  public mainCardType: CardType
+  public innerCardType: CardType
+  public acrylic: boolean
 
   private formGroupNames = {
     details: 'details',
@@ -27,7 +27,7 @@ export class ProfileComponent extends StoreConnectedComponent<IApplicationState>
     acrylic: 'acrylic'
   }
 
-  private profileFormGroup!: FormGroup
+  private profileFormGroup: FormGroup
 
   public get preferencesFormGroup(): FormGroup {
     return this.getFormPart(this.formGroupNames.preferences) as FormGroup

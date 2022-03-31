@@ -14,9 +14,9 @@ import { ToolbarService } from '../toolbar/toolbar.service'
 })
 export class MainAppComponent extends StoreConnectedComponent<IPreferencesState> implements AfterViewInit {
   @ViewChild('drawer')
-  public drawer!: MatDrawer
-  public isAcrylicEnabled!: boolean
-  public language!: string
+  public drawer: MatDrawer
+  public isAcrylicEnabled: boolean
+  public language: string
   
   constructor(private toolbar: ToolbarService, private translate: TranslateService, store$: Store<IPreferencesState>) {
     super(store$)
