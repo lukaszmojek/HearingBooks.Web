@@ -12,5 +12,6 @@
 
   .mat-drawer-content {
     background-image: url('../../../assets/background-10.png');
+    @include bootstrap.flex-set
   }
 }

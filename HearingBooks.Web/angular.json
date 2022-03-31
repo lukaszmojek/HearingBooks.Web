@@ -34,7 +34,8 @@
               "src/styles/_colors.scss",
               "src/styles/_flex.scss",
               "src/styles/_dimensions.scss",
-              "src/styles/_acrylic.scss"
+              "src/styles/_acrylic.scss",
+              "src/styles/_spacing.scss"
             ],
             "scripts": []
           },
@@ -127,7 +128,8 @@
               "src/styles/_colors.scss",
               "src/styles/_flex.scss",
               "src/styles/_dimensions.scss",
-              "src/styles/_acrylic.scss"
+              "src/styles/_acrylic.scss",
+              "src/styles/_spacing.scss"
             ],
             "scripts": []
           }

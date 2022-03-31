@@ -1,6 +1,6 @@
 @use "../../../styles/bootstrap.scss";
 
-$menu-container-size: 200px;
+$menu-container-size: bootstrap.$dimensions-side-nav-menu-width;
 
 :host {
   @include bootstrap.flex-set;
@@ -12,9 +12,9 @@ $menu-container-size: 200px;
 
   .menu-item {
     display: block;
-    width: calc(100% - bootstrap.$dimensions-padding-s - bootstrap.$dimensions-margin-l);
-    padding: bootstrap.$dimensions-padding-s;
-    margin-top: bootstrap.$dimensions-margin-l;
+    width: calc(100% - bootstrap.$spacing-padding-s - bootstrap.$spacing-margin-l);
+    padding: bootstrap.$spacing-padding-s;
+    margin-top: bootstrap.$spacing-margin-l;
   }
 
   .active {
