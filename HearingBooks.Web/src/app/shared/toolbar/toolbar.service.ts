@@ -11,7 +11,7 @@ export class ToolbarService {
   constructor() { }
 
   public setDrawer(drawer: MatDrawer): void {
-    if (!!drawer) {
+    if (!!drawer && !this.isDrawerInitialized) {
       this.drawer = drawer
       this.isDrawerInitialized = true
     }

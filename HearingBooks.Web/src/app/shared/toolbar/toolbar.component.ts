@@ -13,13 +13,13 @@ import { ToolbarService } from './toolbar.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent extends StoreConnectedComponent<IApplicationState> { 
-  public isLoggedIn: boolean = true
-  public isSideMenuOpened: boolean = false
+  public isLoggedIn!: boolean
+  public isSideMenuOpened!: boolean
 
   constructor(store$: Store<IApplicationState>, private toolbar: ToolbarService) {
     super(store$)
-    this.safeSelectAndSave$(selectIsLoggedIn, this.isLoggedIn)
-    this.safeSelectAndSave$(selectIsSideMenuOpened, this.isSideMenuOpened)
+    this.safeSelect$(selectIsLoggedIn).subscribe(x => this.isLoggedIn = x)
+    this.safeSelect$(selectIsSideMenuOpened).subscribe(x => this.isSideMenuOpened = x)
   }
 
   public toggleSideMenu(): void {
