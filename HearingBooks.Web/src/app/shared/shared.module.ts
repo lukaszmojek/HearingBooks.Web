@@ -9,6 +9,7 @@ import { UIModule } from '../ui/ui.module';
 import { LoggedUserComponent } from './logged-user/logged-user.component';
 import { MainAppComponent } from './main-app/main-app.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const components = [
   MainAppComponent,
@@ -29,6 +30,7 @@ const modules = [
 @NgModule({
   declarations: [
     ...components,
+    ToolbarComponent,
   ],
   imports: [
     ...modules,

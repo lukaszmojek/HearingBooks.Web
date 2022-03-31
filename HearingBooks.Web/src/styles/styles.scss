@@ -10,6 +10,8 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+
+// TODO: Consider somehow cleaning up those classes
 .acrylic {
   @include bootstrap.acrylic-set();
 }
@@ -24,4 +26,8 @@ body {
   &-column {
     @include bootstrap.flex-set(column);
   }
+}
+
+.visibility-hidden {
+  visibility: hidden;
 }

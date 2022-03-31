@@ -1,0 +1,16 @@
+@use "../../../styles/bootstrap.scss";
+
+:host {
+  .toolbar {
+    height: 5vh;
+    justify-content: space-between;
+  }
+  
+  .menu-button {
+    margin-right: bootstrap.$dimensions-margin-xl;
+  }
+
+  .logged-user {
+    align-self: flex-end;
+  }
+}

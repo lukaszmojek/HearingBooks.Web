@@ -1,23 +1,4 @@
-<!-- TODO: How to move toolbar to separate component? -->
-<mat-toolbar color="primary" class="toolbar">
-  <div class="flex">
-    <button
-      [ngClass]="{ 'visibility-hidden': !isLoggedIn }"
-      (click)="toggleSideMenu()"
-      mat-icon-button
-      class="menu-button">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <span> Hearing Books </span>
-  </div>
-
-  <hb-logged-user [ngClass]="{'visibility-hidden': !isLoggedIn}">
-  </hb-logged-user>
-
-  <ng-content>
-  </ng-content>
-</mat-toolbar>
+<hb-toolbar></hb-toolbar>
 
 <mat-drawer-container
   class="container max-width max-height"

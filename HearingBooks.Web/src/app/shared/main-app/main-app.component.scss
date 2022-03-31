@@ -1,33 +1,16 @@
 @use "../../../styles/bootstrap.scss";
 
 :host {
+  .container {
+    display: flexbox;
+    height: 95vh;
+  }
+
   .mat-drawer {
     @include bootstrap.acrylic-set;
   }
 
   .mat-drawer-content {
     background-image: url('../../../assets/background-10.png');
-  }
-
-  .toolbar {
-    height: 5vh;
-    justify-content: space-between;
-  }
-
-  .container {
-    display: flexbox;
-    height: 95vh;
-  }
-
-  .logged-user {
-    align-self: flex-end;
-  }
-
-  .visibility-hidden {
-    visibility: hidden;
-  }
-
-  .menu-button {
-    margin-right: bootstrap.$dimensions-margin-xl;
   }
 }
