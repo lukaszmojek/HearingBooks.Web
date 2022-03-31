@@ -1,9 +1,9 @@
 <span class="logged-user">
-  {{ "Toolbar.Hello" | translate }} {{ loggedUserName$ | async }}!
+  {{ "Toolbar.LoggedUser.Hello" | translate }} {{ loggedUserName$ | async }}!
 </span>
 
 <button mat-flat-button color="accent"
   (click)="logOut()"
 >
-  Wyloguj
+  {{ "Toolbar.LoggedUser.Logout" | translate }}
 </button>

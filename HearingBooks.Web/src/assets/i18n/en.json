@@ -1,5 +1,8 @@
 {
   "Toolbar": {
-    "Hello": "Fuck off"
+    "LoggedUser": {
+      "Hello": "Hello",
+      "Logout": "Logout"
+    }
   }
 }

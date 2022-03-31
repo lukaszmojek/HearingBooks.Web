@@ -50,7 +50,7 @@ export const selectUserId = createSelector(
   (isLoggedIn: boolean, decodedToken: DecodedToken) =>
     isLoggedIn 
       ? decodedToken.id
-      : false
+      : null
 )
 
 export const selectUserName = createSelector(
@@ -59,7 +59,7 @@ export const selectUserName = createSelector(
   (isLoggedIn: boolean, decodedToken: DecodedToken) =>
     isLoggedIn 
       ? decodedToken.name
-      : false
+      : null
 )
 
 function isUserType(decodedToken: DecodedToken, userType: UserType): boolean {
