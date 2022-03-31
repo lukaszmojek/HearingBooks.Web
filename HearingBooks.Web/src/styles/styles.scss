@@ -9,3 +9,19 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+.acrylic {
+  @include bootstrap.acrylic-set();
+}
+
+.flex {
+  @include bootstrap.flex-set(row);
+
+  &-row {
+    @include bootstrap.flex-set(row);
+  }
+
+  &-column {
+    @include bootstrap.flex-set(column);
+  }
+}
