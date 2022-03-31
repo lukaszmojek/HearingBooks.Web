@@ -4,18 +4,18 @@ import { PreferencesActions } from './preferences.actions';
 export const featureName = 'preferences'
 
 const initialState: IPreferencesState = {
-  acrylicEnabled: true
+  isAcrylicEnabled: true
 }
 
 export interface IPreferencesState {
-  acrylicEnabled: boolean
+  isAcrylicEnabled: boolean
 }
 
 const reducer = createReducer(
   initialState,
-  on(PreferencesActions.updatePreferences, (state) => ({
+  on(PreferencesActions.isAcrylicEnabledToggled, (state, { isAcrylicEnabled: isAcrylicEnabled }) => ({
     ...state,
-    isActionInProgress: true
+    isAcrylicEnabled: isAcrylicEnabled
   })),
 )
 

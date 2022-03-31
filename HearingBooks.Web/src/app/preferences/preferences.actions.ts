@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 
-const updatePreferences = createAction(
-  '[Preferences] Preference update requested',
-  props<{ userId: string; }>()
+const isAcrylicEnabledToggled = createAction(
+  '[Preferences] Acrylic toggled',
+  props<{ isAcrylicEnabled: boolean; }>()
 );
 
 export const PreferencesActions = {
-  updatePreferences,
+  isAcrylicEnabledToggled,
 }

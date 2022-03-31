@@ -1,4 +1,19 @@
 {
+  "Common": {
+    "Disabled": "Włączone",
+    "Enabled": "Wyłączone"
+  },
+  "Profile": {
+    "Preferences": {
+      "Acrylic": "Akrylowe UI",
+      "Title": "Preferencje"
+    },
+    "Title": "Twój profil"
+  },
+  "SideMenu": {
+    "Dashboard": "Pulpit",
+    "Profile": "Profil"
+  },
   "Toolbar": {
     "LoggedUser": {
       "Hello": "Witaj",

@@ -10,7 +10,11 @@ import { LoggedUserComponent } from './logged-user/logged-user.component';
 import { MainAppComponent } from './main-app/main-app.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { PreferencesComponent } from './users/profile/preferences/preferences.component';
+import { ProfileDetailsComponent } from './users/profile/profile-details/profile-details.component';
 import { CardComponent } from './card/card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   MainAppComponent,
@@ -26,12 +30,17 @@ const modules = [
   AuthModule,
   UIModule,
   PreferencesModule,
+  FormsModule,
+  ReactiveFormsModule
 ]
 
 @NgModule({
   declarations: [
     ...components,
     ToolbarComponent,
+    ProfileComponent,
+    PreferencesComponent,
+    ProfileDetailsComponent,
     CardComponent,
   ],
   imports: [

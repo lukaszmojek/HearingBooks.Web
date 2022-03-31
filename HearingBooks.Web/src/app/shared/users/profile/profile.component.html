@@ -1,0 +1,15 @@
+<hb-card [titleTranslationKey]="titleTranslationKey" [type]="mainCardType">
+  <div class="flex-column">
+    <!-- <hb-profile-details></hb-profile-details> -->
+    
+    <hb-card [type]="innerCardType"
+      [titleTranslationKey]="'Profile.Preferences.Title'"
+      [border]="true"
+      [divider]="true"
+    >
+      <hb-preferences [preferencesFormGroup]="preferencesFormGroup">
+      </hb-preferences>
+    </hb-card>
+
+  </div>
+</hb-card>

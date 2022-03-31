@@ -16,6 +16,14 @@ $my-theme: mat.define-dark-theme((
   )
 ));
 
+$my-theme-reverse: mat.define-dark-theme((
+  color: (
+    primary: $my-accent,
+    accent: $my-primary,
+    warn: $my-warn,
+  )
+));
+
 // Emit theme-dependent styles for common features used across multiple components.
 // @include mat.core-theme($my-theme);
 
@@ -26,4 +34,9 @@ $my-theme: mat.define-dark-theme((
 
 // Include the theme mixins for other components you use here.
 
+//TODO: Consider changing that to listing of all components instead of applying automatically, it will give better customizability
 @include mat.all-component-themes($my-theme);
+
+
+@include mat.form-field-theme($my-theme-reverse);
+@include mat.input-theme($my-theme-reverse);

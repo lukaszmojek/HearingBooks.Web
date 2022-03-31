@@ -1,0 +1,49 @@
+<div [formGroup]="preferencesFormGroup">
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>
+      {{ "Profile.Preferences.Acrylic" | translate }}
+    </mat-label>
+    <input matInput [formControl]="acrylicFormControl">
+  </mat-form-field>
+
+  <br>
+
+  <mat-checkbox [checked]="acrylicFormControl.value"
+    color="accent"
+    (change)="setAcrylic($event.checked)"
+  >
+    {{ "Profile.Preferences.Acrylic" | translate }}
+  </mat-checkbox> -->
+
+  <br>
+
+  <hb-card [type]="innerCardType" [border]="innerCardBorder" class="width-50">
+    <div class="flex">
+      <div class="width-40 text-center">
+        {{ "Profile.Preferences.Acrylic" | translate }}
+      </div>
+
+      <div class="width-40 text-center">
+        <mat-slide-toggle
+          [formControl]="acrylicFormControl"
+          (change)="setAcrylic($event.checked)"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <!-- <div class="flex">
+      <div class="width-40 text-center">
+        <hb-card [type]="transparentCardType">
+          {{ "Common.Disabled" | translate }}
+        </hb-card>
+      </div>
+
+      <div class="width-40 text-center">
+        <hb-card [type]="acrylicCardType">
+          {{ "Common.Enabled" | translate }}
+        </hb-card>
+      </div>
+    </div> -->
+  </hb-card>
+</div>

@@ -3,7 +3,7 @@
 <mat-drawer-container
   class="container max-width max-height"
   [hasBackdrop]="false">
-  <mat-drawer #drawer mode="over">
+  <mat-drawer #drawer mode="over" [ngClass]="{'acrylic': isAcrylicEnabled}">
     <hb-side-menu></hb-side-menu>
   </mat-drawer>
 

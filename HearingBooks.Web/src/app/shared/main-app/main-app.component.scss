@@ -5,11 +5,7 @@
     display: flexbox;
     height: 95vh;
   }
-
-  .mat-drawer {
-    @include bootstrap.acrylic-set;
-  }
-
+  
   .mat-drawer-content {
     background-image: url('../../../assets/background-10.png');
     @include bootstrap.flex-set
