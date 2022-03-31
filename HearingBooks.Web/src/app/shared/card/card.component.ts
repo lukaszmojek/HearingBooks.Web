@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
   selector: 'hb-card',
   template: `
-    <mat-card [ngClass]="{acrylic: acrylic}">
+    <mat-card [ngClass]="{'acrylic': isAcryclic, 'transparent': isTransparent, 'border': border}">
       <mat-card-title *ngIf="!!titleTranslationKey">
         {{ titleTranslationKey | translate }}
       </mat-card-title>
@@ -31,8 +31,24 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() titleTranslationKey: string = ''
-  @Input() acrylic: boolean = false
+  @Input() type: CardType = CardType.Normal
   @Input() divider: boolean = false
+  @Input() border: boolean = false
+
+  public get isAcryclic(): boolean {
+    console.log(this.type)
+    return this.type === CardType.Acrylic
+  }
+
+  public get isTransparent(): boolean {
+    return this.type === CardType.Transparent
+  }
 
   constructor() { }
+}
+
+export enum CardType {
+  Normal,
+  Acrylic,
+  Transparent
 }
