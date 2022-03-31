@@ -8,7 +8,7 @@ import StoreConnectedComponent from '../store-connected.component';
 @Component({
   selector: 'hb-logged-user',
   templateUrl: './logged-user.component.html',
-  styleUrls: ['./logged-user.component.sass']
+  styleUrls: ['./logged-user.component.scss']
 })
 export class LoggedUserComponent extends StoreConnectedComponent<IApplicationState> {
   public loggedUserName$ = this.store$.select(selectUserName)
