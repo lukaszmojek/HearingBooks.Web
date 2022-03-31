@@ -10,6 +10,7 @@ import { LoggedUserComponent } from './logged-user/logged-user.component';
 import { MainAppComponent } from './main-app/main-app.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { CardComponent } from './card/card.component';
 
 const components = [
   MainAppComponent,
@@ -31,6 +32,7 @@ const modules = [
   declarations: [
     ...components,
     ToolbarComponent,
+    CardComponent,
   ],
   imports: [
     ...modules,
