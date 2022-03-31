@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ApiEndpoints } from '../core/api-endpoints';
+import { ApiEndpoints } from '../shared/api-endpoints';
 import { AuthActions } from './auth.actions';
 import { IAuthState } from './auth.reducer';
 import { IApiResponse, ITokenResponse } from './models';

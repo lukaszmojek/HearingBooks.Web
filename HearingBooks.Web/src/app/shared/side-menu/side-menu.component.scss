@@ -12,8 +12,8 @@ $menu-container-size: 200px;
 
   .menu-item {
     display: block;
-    width: calc(100% - bootstrap.$dimensions-padding-l - bootstrap.$dimensions-margin-l);
-    padding: bootstrap.$dimensions-padding-l;
+    width: calc(100% - bootstrap.$dimensions-padding-s - bootstrap.$dimensions-margin-l);
+    padding: bootstrap.$dimensions-padding-s;
     margin-top: bootstrap.$dimensions-margin-l;
   }
 

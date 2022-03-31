@@ -18,4 +18,13 @@ export default class StoreConnectedComponent<T> extends UnsubscribeComponent {
       takeUntil(this.unsubscribe$)
     )
   }
+
+  safeSelectAndSave$(selector: any, propertyToStoreValue: any) {
+    this.store$.pipe(
+      select(selector), 
+      takeUntil(this.unsubscribe$)
+    ).subscribe(value => {
+      propertyToStoreValue = value
+    })
+  }
 }

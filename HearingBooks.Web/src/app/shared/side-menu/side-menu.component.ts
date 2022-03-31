@@ -1,4 +1,8 @@
 import { Component } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
+import { IApplicationState } from '../state'
+import StoreConnectedComponent from '../store-connected.component'
 import { MenuItem } from './menu-item.interface'
 
 @Component({
@@ -6,7 +10,9 @@ import { MenuItem } from './menu-item.interface'
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
 })
-export class SideMenuComponent {
+export class SideMenuComponent extends StoreConnectedComponent<IApplicationState> {
+  public isSideMenuOpened: boolean = false
+
   public menuItems: MenuItem[] = [
     {
       name: 'Dashboard',
@@ -15,5 +21,8 @@ export class SideMenuComponent {
     }
   ]
 
-  constructor() {}
+  constructor(store$: Store<IApplicationState>) {
+    super(store$)
+    this.safeSelect$(selectIsSideMenuOpened).subscribe(value => console.log(value))
+  }
 }

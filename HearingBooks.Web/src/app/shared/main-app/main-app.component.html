@@ -3,7 +3,7 @@
   <div class="flex">
     <button
       [ngClass]="{ 'visibility-hidden': !isLoggedIn }"
-      (click)="drawer.toggle()"
+      (click)="toggleSideMenu()"
       mat-icon-button
       class="menu-button">
       <mat-icon>menu</mat-icon>

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { UserType } from "../core/users/models";
+import { UserType } from "../shared/users/models";
 import { featureName, IAuthState } from "./auth.reducer";
 import { DecodedToken } from "./decoded-token";
 
@@ -15,7 +15,6 @@ export const selectToken = createSelector(
   (state: IAuthState) => state.token
 )
 
-// ? Is selectIsLoggedIn needed in those selectors?
 export const selectDecodedToken = createSelector(
   selectAuthFeature,
   selectIsLoggedIn,
@@ -26,39 +25,23 @@ export const selectDecodedToken = createSelector(
 )
 
 export const selectIsPayAsYouGo = createSelector(
-  selectIsLoggedIn,
   selectDecodedToken,
-  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
-    isLoggedIn 
-      ? isUserType(decodedToken, UserType.PayAsYouGo)
-      : false
+  (decodedToken: DecodedToken) => isUserType(decodedToken, UserType.PayAsYouGo)
 )
 
 export const selectIsSubscriber = createSelector(
-  selectIsLoggedIn,
   selectDecodedToken,
-  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
-    isLoggedIn 
-      ? isUserType(decodedToken, UserType.Subscriber)
-      : false
+  (decodedToken: DecodedToken) => isUserType(decodedToken, UserType.Subscriber)
 )
 
 export const selectIsWriter = createSelector(
-  selectIsLoggedIn,
   selectDecodedToken,
-  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
-    isLoggedIn 
-      ? isUserType(decodedToken, UserType.Writer)
-      : false
+  (decodedToken: DecodedToken) => isUserType(decodedToken, UserType.Writer)
 )
 
 export const selectIsHearingBooks = createSelector(
-  selectIsLoggedIn,
   selectDecodedToken,
-  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
-    isLoggedIn 
-      ? isUserType(decodedToken, UserType.HearingBooks)
-      : false
+  (decodedToken: DecodedToken) => isUserType(decodedToken, UserType.HearingBooks)
 )
 
 export const selectUserId = createSelector(

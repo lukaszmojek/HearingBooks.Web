@@ -8,15 +8,18 @@ import { Store } from '@ngrx/store'
 import { AuthActions } from './auth.actions'
 import { selectToken } from './auth.selectors'
 import { IAuthState } from './auth.reducer'
+import StoreConnectedComponent from '../shared/store-connected.component'
 
 @Injectable()
-export class BearerHeaderInterceptor implements HttpInterceptor {
+export class BearerHeaderInterceptor extends StoreConnectedComponent<IAuthState>
+implements HttpInterceptor {
   private token: string = ''
 
   constructor(
-    private store$: Store<IAuthState>,
+    store$: Store<IAuthState>,
   ) {
-    this.store$.select(selectToken).subscribe(token => {
+    super(store$)
+    this.safeSelect$(selectToken).subscribe(token => {
       this.token = token
     })
   }
