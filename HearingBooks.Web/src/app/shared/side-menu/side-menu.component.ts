@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { TranslateService } from '@ngx-translate/core'
 import { IAuthState } from 'src/app/auth/auth.reducer'
 import StoreConnectedComponent from '../store-connected.component'
 import { MenuItem } from './menu-item.interface'
@@ -8,15 +9,22 @@ import { MenuItem } from './menu-item.interface'
   selector: 'hb-side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
+
   public menuItems: MenuItem[] = [
-    {
-      name: 'Dashboard',
-      routerLink: 'dashboard',
-      shouldBeAvailable: () => true
-    }
-  ]
+  {
+    translationKey: 'SideMenu.Profile',
+    routerLink: 'profile',
+    shouldBeAvailable: () => true,
+  },
+  {
+    translationKey: 'SideMenu.Dashboard',
+    routerLink: 'dashboard',
+    shouldBeAvailable: () => true
+  }
+]
 
   constructor(store$: Store<IAuthState>) {
     super(store$)

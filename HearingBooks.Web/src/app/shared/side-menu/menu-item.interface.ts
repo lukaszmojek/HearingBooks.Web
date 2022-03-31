@@ -1,5 +1,5 @@
 export interface MenuItem {
-  name: string
+  translationKey: string
   routerLink: string
   shouldBeAvailable: () => boolean
 }
