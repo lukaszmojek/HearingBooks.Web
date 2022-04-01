@@ -12,6 +12,7 @@ import { IApplicationState } from '../../state';
 })
 export class ProfileComponent extends AcrylicAwareComponent {
   public titleTranslationKey: string = 'Profile.Title'
+  public elevation = true
 
   private formGroupNames = {
     details: 'details',

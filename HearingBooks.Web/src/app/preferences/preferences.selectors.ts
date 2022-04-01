@@ -13,14 +13,14 @@ export const selectMainCardType = createSelector(
   selectAuthFeature,
   state => state.isAcrylicEnabled
     ? CardType.Acrylic
-    : CardType.Normal
+    : CardType.Material
 )
 
 export const selectInnerCardType = createSelector(
   selectAuthFeature,
   state => state.isAcrylicEnabled
     ? CardType.Transparent
-    : CardType.Normal
+    : CardType.Material
 )
 
 export const selectLanguage = createSelector(

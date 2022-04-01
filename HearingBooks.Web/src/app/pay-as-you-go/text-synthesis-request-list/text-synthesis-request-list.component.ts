@@ -12,6 +12,7 @@ import { ITextSynthesisRequest } from '../text-synthesis-request/models';
 export class TextSynthesisRequestListComponent extends AcrylicAwareComponent {
   public titleTranslationKey = "TextSyntheses.Title"
   public divider = true
+  public elevation = true
   
   public requests: ITextSynthesisRequest[] = [
     {
