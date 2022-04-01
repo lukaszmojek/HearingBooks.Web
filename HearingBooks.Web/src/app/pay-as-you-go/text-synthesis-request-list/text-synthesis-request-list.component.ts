@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import AcrylicAwareComponent from 'src/app/shared/acrylic-aware.component';
+import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component';
 import { IApplicationState } from 'src/app/shared/state';
 import { ITextSynthesisRequest } from '../text-synthesis-request/models';
 
