@@ -1,4 +1,14 @@
 {
+  "PayAsYouGo": {
+    "RequestTextSynthesis": {
+      "Title": "Request Text Syntheses"
+    },
+    "TextSyntheses": {
+      "CharacterCount": "Character count",
+      "Price": "Price",
+      "Title": "Text Syntheses"
+    }
+  },
   "Profile": {
     "Preferences": {
       "Acrylic": "Acrylic UI",
@@ -10,12 +20,8 @@
   "SideMenu": {
     "Dashboard": "Dashboard",
     "Profile": "Profile",
+    "RequestTextSynthesis": "Request Text Synthesis",
     "TextSyntheses": "Text Syntheses"
-  },
-  "TextSyntheses": {
-    "CharacterCount": "Character count",
-    "Price": "Price",
-    "Title": "Text Syntheses"
   },
   "Toolbar": {
     "LoggedUser": {

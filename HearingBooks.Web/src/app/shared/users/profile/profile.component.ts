@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/f
 import { Store } from '@ngrx/store';
 import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors';
 import AcrylicAwareComponent from '../../acrylic/acrylic-aware.component';
+import { IMainComponent } from '../../main-component.interface';
 import { IApplicationState } from '../../state';
 
 @Component({
@@ -10,9 +11,11 @@ import { IApplicationState } from '../../state';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent extends AcrylicAwareComponent {
-  public titleTranslationKey: string = 'Profile.Title'
-  public elevation = true
+export class ProfileComponent extends AcrylicAwareComponent implements IMainComponent { 
+  titleTranslationKey: string = 'Profile.Title'
+  elevation = true
+  divider: boolean = true
+  border: boolean = false
 
   private formGroupNames = {
     details: 'details',
@@ -25,7 +28,16 @@ export class ProfileComponent extends AcrylicAwareComponent {
 
   private profileFormGroup: FormGroup
 
-  public get preferencesFormGroup(): FormGroup {
+  constructor(store$: Store<IApplicationState>, private formBuilder: FormBuilder) {
+    super(store$)
+    this.createProfileFormGroup()
+    this.safeSelect$(selectIsAcrylicEnabled).subscribe(_ => {
+      this.acrylicFormControl.setValue(this.isAcrylicEnabled)
+      this.profileFormGroup.updateValueAndValidity()
+    })
+  }
+
+  get preferencesFormGroup(): FormGroup {
     return this.getFormPart(this.formGroupNames.preferences) as FormGroup
   }
 
@@ -35,15 +47,6 @@ export class ProfileComponent extends AcrylicAwareComponent {
 
   private getFormPart(key: string): AbstractControl {
     return this.profileFormGroup.get(key)!
-  }
-
-  constructor(store$: Store<IApplicationState>, private formBuilder: FormBuilder) {
-    super(store$)
-    this.createProfileFormGroup()
-    this.safeSelect$(selectIsAcrylicEnabled).subscribe(_ => {
-      this.acrylicFormControl.setValue(this.isAcrylicEnabled)
-      this.profileFormGroup.updateValueAndValidity()
-    })
   }
 
   private createProfileFormGroup(): void {
