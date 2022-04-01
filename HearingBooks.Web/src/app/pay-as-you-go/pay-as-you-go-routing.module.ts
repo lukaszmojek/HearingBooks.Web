@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { TextSynthesisRequestListComponent } from './text-synthesis-request-list/text-synthesis-request-list.component'
+import { TextSynthesisListComponent } from './text-synthesis-list/text-synthesis-list.component'
 
 const routes: Routes = [
   {
     'path': 'text-syntheses',
-    'component': TextSynthesisRequestListComponent
-  },
+    'component': TextSynthesisListComponent
+  }
 ]
 
 @NgModule({

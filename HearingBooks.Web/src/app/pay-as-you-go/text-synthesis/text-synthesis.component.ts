@@ -6,12 +6,12 @@ import { IApplicationState } from 'src/app/shared/state';
 import { ITextSynthesisRequest } from './models';
 
 @Component({
-  selector: 'hb-text-synthesis-request',
-  templateUrl: './text-synthesis-request.component.html',
-  styleUrls: ['./text-synthesis-request.component.scss'],
+  selector: 'hb-text-synthesis',
+  templateUrl: './text-synthesis.component.html',
+  styleUrls: ['./text-synthesis.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextSynthesisRequestComponent extends AcrylicAwareComponent {
+export class TextSynthesisComponent extends AcrylicAwareComponent {
   @Input() request: ITextSynthesisRequest
   
   public get isAcryclic(): boolean {

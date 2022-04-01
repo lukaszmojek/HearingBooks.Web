@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component';
 import { IApplicationState } from 'src/app/shared/state';
-import { ITextSynthesisRequest } from '../text-synthesis-request/models';
+import { ITextSynthesisRequest } from '../text-synthesis/models';
 
 @Component({
-  selector: 'hb-request-list',
-  templateUrl: './text-synthesis-request-list.component.html',
-  styleUrls: ['./text-synthesis-request-list.component.scss']
+  selector: 'hb-text-synthesis-list',
+  templateUrl: './text-synthesis-list.component.html',
+  styleUrls: ['./text-synthesis-list.component.scss']
 })
-export class TextSynthesisRequestListComponent extends AcrylicAwareComponent {
+export class TextSynthesisListComponent extends AcrylicAwareComponent {
   public titleTranslationKey = "TextSyntheses.Title"
   public divider = true
   public elevation = true

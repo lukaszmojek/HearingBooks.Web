@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextSynthesisRequestComponent } from './text-synthesis-request.component';
+import { TextSynthesisComponent } from './text-synthesis.component';
 
 describe('TextSynthesisRequestComponent', () => {
-  let component: TextSynthesisRequestComponent;
-  let fixture: ComponentFixture<TextSynthesisRequestComponent>;
+  let component: TextSynthesisComponent;
+  let fixture: ComponentFixture<TextSynthesisComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextSynthesisRequestComponent ]
+      declarations: [ TextSynthesisComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextSynthesisRequestComponent);
+    fixture = TestBed.createComponent(TextSynthesisComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
