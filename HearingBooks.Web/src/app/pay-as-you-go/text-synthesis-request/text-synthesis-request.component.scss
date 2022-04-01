@@ -1,0 +1,11 @@
+@use "../../../styles/bootstrap.scss";
+
+:host {
+  .mat-expansion-panel {
+    margin-bottom: bootstrap.$spacing-margin-l;
+  }
+
+  .content {
+    margin-top: bootstrap.$spacing-margin-l;
+  }
+}
