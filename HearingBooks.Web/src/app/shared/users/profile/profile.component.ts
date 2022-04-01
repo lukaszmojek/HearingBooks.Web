@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors';
-import AcrylicAwareComponent from '../../acrylic-aware.component';
+import AcrylicAwareComponent from '../../acrylic/acrylic-aware.component';
 import { IApplicationState } from '../../state';
 
 @Component({

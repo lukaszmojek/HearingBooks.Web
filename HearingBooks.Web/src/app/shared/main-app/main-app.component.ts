@@ -3,7 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
 import { selectLanguage } from 'src/app/preferences/preferences.selectors'
-import AcrylicAwareComponent from '../acrylic-aware.component'
+import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { IApplicationState } from '../state'
 import { ToolbarService } from '../toolbar/toolbar.service'
 

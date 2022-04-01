@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AcrylicService } from '../acrylic/acrylic.service';
 
 @Component({
   selector: 'hb-card',
@@ -49,18 +50,18 @@ export class CardComponent {
   }
 
   public get isAcryclic(): boolean {
-    return this.type === CardType.Acrylic
+    return this.acrylic.isAcrylic(this.type)
   }
 
   public get isTransparent(): boolean {
-    return this.type === CardType.Transparent
+    return this.acrylic.isTransparent(this.type)
   }
 
   public get isMaterial(): boolean {
-    return this.type === CardType.Material
+    return this.acrylic.isMaterial(this.type)
   }
 
-  constructor() { }
+  constructor(private acrylic: AcrylicService) { }
 }
 
 export enum CardType {
