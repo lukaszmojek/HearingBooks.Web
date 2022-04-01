@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectInnerCardType, selectIsAcrylicEnabled, selectMainCardType } from 'src/app/preferences/preferences.selectors';
-import { CardType } from '../../card/card.component';
+import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors';
+import AcrylicAwareComponent from '../../acrylic-aware.component';
 import { IApplicationState } from '../../state';
-import StoreConnectedComponent from '../../store-connected.component';
 
 @Component({
   selector: 'hb-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent extends StoreConnectedComponent<IApplicationState> {
+export class ProfileComponent extends AcrylicAwareComponent {
   public titleTranslationKey: string = 'Profile.Title'
-
-  public mainCardType: CardType
-  public innerCardType: CardType
-  public acrylic: boolean
 
   private formGroupNames = {
     details: 'details',
@@ -44,11 +39,8 @@ export class ProfileComponent extends StoreConnectedComponent<IApplicationState>
   constructor(store$: Store<IApplicationState>, private formBuilder: FormBuilder) {
     super(store$)
     this.createProfileFormGroup()
-    this.store$.select(selectMainCardType).subscribe(mainCardType => this.mainCardType = mainCardType)
-    this.store$.select(selectInnerCardType).subscribe(innerCardType => this.innerCardType = innerCardType)
-    this.store$.select(selectIsAcrylicEnabled).subscribe(acrylicEnabled => {
-      this.acrylic = acrylicEnabled
-      this.acrylicFormControl.setValue(this.acrylic)
+    this.safeSelect$(selectIsAcrylicEnabled).subscribe(_ => {
+      this.acrylicFormControl.setValue(this.isAcrylicEnabled)
       this.profileFormGroup.updateValueAndValidity()
     })
   }
@@ -59,7 +51,7 @@ export class ProfileComponent extends StoreConnectedComponent<IApplicationState>
 
       }),
       [this.formGroupNames.preferences]: this.formBuilder.group({
-        [this.preferencesNames.acrylic]: this.formBuilder.control(this.acrylic)
+        [this.preferencesNames.acrylic]: this.formBuilder.control(this.isAcrylicEnabled)
       })
     })
   }

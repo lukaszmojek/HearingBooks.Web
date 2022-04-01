@@ -13,6 +13,7 @@ import { MenuItem } from './menu-item.interface'
 })
 export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
 
+  // TODO: Make selected menu item filled in, while unselected will stay as outlined
   public menuItems: MenuItem[] = [
   {
     translationKey: 'SideMenu.Profile',
@@ -22,6 +23,11 @@ export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
   {
     translationKey: 'SideMenu.Dashboard',
     routerLink: 'dashboard',
+    shouldBeAvailable: () => true
+  },
+  {
+    translationKey: 'SideMenu.TextSyntheses',
+    routerLink: 'text-syntheses',
     shouldBeAvailable: () => true
   }
 ]

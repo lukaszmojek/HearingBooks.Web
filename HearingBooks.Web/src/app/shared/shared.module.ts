@@ -19,7 +19,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const components = [
   MainAppComponent,
   SideMenuComponent,
-  LoggedUserComponent
+  LoggedUserComponent,
+  ToolbarComponent,
+  ProfileComponent,
+  PreferencesComponent,
+  ProfileDetailsComponent,
+  CardComponent,
 ]
 
 const modules = [
@@ -37,11 +42,6 @@ const modules = [
 @NgModule({
   declarations: [
     ...components,
-    ToolbarComponent,
-    ProfileComponent,
-    PreferencesComponent,
-    ProfileDetailsComponent,
-    CardComponent,
   ],
   imports: [
     ...modules,

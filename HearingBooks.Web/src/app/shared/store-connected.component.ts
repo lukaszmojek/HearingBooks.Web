@@ -6,7 +6,7 @@ import UnsubscribeComponent from "./unsubscribe.component"
 @Component({
   template: ''
 })
-export default class StoreConnectedComponent<T> extends UnsubscribeComponent {
+export default abstract class StoreConnectedComponent<T> extends UnsubscribeComponent {
   constructor(protected store$: Store<T>) {
     super()
   }
