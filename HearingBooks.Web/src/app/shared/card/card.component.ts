@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
       <mat-divider *ngIf="!!titleTranslationKey && divider"></mat-divider>
 
-      <mat-card-content>
+      <mat-card-content [ngClass]="{'margin-top-xxl': !!titleTranslationKey}">
         <ng-content></ng-content>
       </mat-card-content>
     </mat-card>
@@ -23,7 +23,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       height: 100%;
 
       .mat-card-title {
-        @include bootstrap.flex-set
+        @include bootstrap.flex-set;
+      }
+
+      .margin-top-xxl {
+        margin-top: bootstrap.$spacing-margin-xxl;
       }
     }
   `],

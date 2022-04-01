@@ -1,1 +1,6 @@
 $side-nav-menu-width: 200px;
+
+@mixin host() {
+  height: 90%;
+  width: calc(95% - 2 * $side-nav-menu-width);
+}

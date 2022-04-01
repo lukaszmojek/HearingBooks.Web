@@ -1,6 +1,5 @@
 @use "../../../../styles/bootstrap.scss";
 
 :host {
-  height: 90%;
-  width: calc(95% - 2 * bootstrap.$dimensions-side-nav-menu-width);
+  @include bootstrap.dimensions-host
 }
