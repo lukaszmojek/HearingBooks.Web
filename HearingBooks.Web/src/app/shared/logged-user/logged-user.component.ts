@@ -11,7 +11,7 @@ import StoreConnectedComponent from '../store-connected.component';
   styleUrls: ['./logged-user.component.scss']
 })
 export class LoggedUserComponent extends StoreConnectedComponent<IApplicationState> {
-  public loggedUserName$ = this.store$.select(selectUserName)
+  public loggedUserName$ = this.safeSelect$(selectUserName)
 
   public get shouldDisplayCredits(): boolean {
     return false

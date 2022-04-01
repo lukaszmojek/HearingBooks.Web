@@ -27,8 +27,8 @@ export class PreferencesComponent extends StoreConnectedComponent<IPreferencesSt
 
   constructor(store$: Store<IPreferencesState>) {
     super(store$)
-    this.store$.select(selectInnerCardType).subscribe(x => this.innerCardType = x)
-    this.store$.select(selectLanguage).subscribe(x => this.selectedLanguage = x)
+    this.safeSelect$(selectInnerCardType).subscribe(x => this.innerCardType = x)
+    this.safeSelect$(selectLanguage).subscribe(x => this.selectedLanguage = x)
   }
 
   public setAcrylic(value: boolean): void {
