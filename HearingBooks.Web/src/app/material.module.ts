@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSelectModule } from '@angular/material/select'
+import { MatExpansionModule } from '@angular/material/expansion'
 
 const materialModules = [
   MatButtonModule,
@@ -25,7 +26,8 @@ const materialModules = [
   MatInputModule,
   MatCheckboxModule,
   MatSlideToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule
 ]
 
 @NgModule({

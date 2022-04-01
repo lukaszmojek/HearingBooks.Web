@@ -9,7 +9,13 @@
   },
   "SideMenu": {
     "Dashboard": "Dashboard",
-    "Profile": "Profile"
+    "Profile": "Profile",
+    "TextSyntheses": "Text Syntheses"
+  },
+  "TextSyntheses": {
+    "CharacterCount": "Character count",
+    "Price": "Price",
+    "Title": "Text Syntheses"
   },
   "Toolbar": {
     "LoggedUser": {

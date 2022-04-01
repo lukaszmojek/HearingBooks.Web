@@ -12,6 +12,10 @@ const routes: Routes = [
     'path': 'profile',
     'component': ProfileComponent
   },
+  {
+    'path': '',
+    loadChildren: () => import('./pay-as-you-go/pay-as-you-go.module').then(m => m.PayAsYouGoModule)
+  }
 ]
 
 @NgModule({

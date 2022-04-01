@@ -9,7 +9,13 @@
   },
   "SideMenu": {
     "Dashboard": "Pulpit",
-    "Profile": "Profil"
+    "Profile": "Profil",
+    "TextSyntheses": "Syntezy Tekstowe"
+  },
+  "TextSyntheses": {
+    "CharacterCount": "Ilość znaków",
+    "Price": "Cena",
+    "Title": "Syntezy Tekstowe"
   },
   "Toolbar": {
     "LoggedUser": {

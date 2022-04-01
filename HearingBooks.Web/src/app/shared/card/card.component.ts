@@ -22,6 +22,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       width: 100%;
       height: 100%;
 
+      .mat-card {
+        height: 94%;
+      }
+
       .mat-card-title {
         @include bootstrap.flex-set;
       }

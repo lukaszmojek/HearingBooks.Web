@@ -1,0 +1,13 @@
+<mat-expansion-panel hideToggle class="flex">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ request.title }}
+    </mat-panel-title>
+
+    <mat-panel-description>
+      {{ request | textSynthesis$ | async }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  
+  {{ request.content }}
+</mat-expansion-panel>

@@ -1,0 +1,13 @@
+<hb-card [titleTranslationKey]="titleTranslationKey"
+  [type]="mainCardType"
+  [divider]="divider"
+>
+  <div class="flex-column">
+    <mat-accordion multi>
+      <hb-text-synthesis-request *ngFor="let request of requests"
+        [request]="request"
+      >
+      </hb-text-synthesis-request>
+    </mat-accordion>
+  </div>
+</hb-card>
