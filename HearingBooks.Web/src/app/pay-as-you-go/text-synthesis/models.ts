@@ -1,5 +1,5 @@
 export interface ITextSynthesisRequest {
-  title: string,
+  title: string
   content: string
   characterCount: number
   price: string

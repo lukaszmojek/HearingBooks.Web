@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AuthActions } from 'src/app/auth/auth.actions';
-import { selectUserName } from 'src/app/auth/auth.selectors';
-import { IApplicationState } from '../state';
-import StoreConnectedComponent from '../store-connected.component';
+import { Component } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { AuthActions } from 'src/app/auth/auth.actions'
+import { selectUserName } from 'src/app/auth/auth.selectors'
+import { IApplicationState } from '../state'
+import StoreConnectedComponent from '../store-connected.component'
 
 @Component({
   selector: 'hb-logged-user',
   templateUrl: './logged-user.component.html',
-  styleUrls: ['./logged-user.component.scss']
+  styleUrls: ['./logged-user.component.scss'],
 })
 export class LoggedUserComponent extends StoreConnectedComponent<IApplicationState> {
   public loggedUserName$ = this.safeSelect$(selectUserName)

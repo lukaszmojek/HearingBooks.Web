@@ -27,7 +27,7 @@ const materialModules = [
   MatCheckboxModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatExpansionModule
+  MatExpansionModule,
 ]
 
 @NgModule({

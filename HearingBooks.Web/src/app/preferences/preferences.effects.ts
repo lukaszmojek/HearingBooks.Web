@@ -20,6 +20,6 @@
 
 //   constructor(
 //     private actions$: Actions,
-//     private translate: TranslateService 
+//     private translate: TranslateService
 //   ) {}
 // }

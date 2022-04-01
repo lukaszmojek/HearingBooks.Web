@@ -1,9 +1,9 @@
-@use "../../../styles/bootstrap.scss";
+@use '../../../styles/bootstrap.scss';
 
 :host {
   @include bootstrap.dimensions-host;
 
   .mat-accordion {
     width: 100%;
-  } 
+  }
 }

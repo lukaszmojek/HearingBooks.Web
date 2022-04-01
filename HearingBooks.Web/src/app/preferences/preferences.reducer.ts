@@ -1,11 +1,11 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
-import { PreferencesActions } from './preferences.actions';
+import { createFeature, createReducer, on } from '@ngrx/store'
+import { PreferencesActions } from './preferences.actions'
 
 export const featureName = 'preferences'
 
 const initialState: IPreferencesState = {
   isAcrylicEnabled: true,
-  language: 'en'
+  language: 'en',
 }
 
 export interface IPreferencesState {
@@ -15,17 +15,20 @@ export interface IPreferencesState {
 
 const reducer = createReducer(
   initialState,
-  on(PreferencesActions.isAcrylicEnabledToggled, (state, { isAcrylicEnabled }) => ({
-    ...state,
-    isAcrylicEnabled: isAcrylicEnabled
-  })),
+  on(
+    PreferencesActions.isAcrylicEnabledToggled,
+    (state, { isAcrylicEnabled }) => ({
+      ...state,
+      isAcrylicEnabled: isAcrylicEnabled,
+    })
+  ),
   on(PreferencesActions.languageChanged, (state, { language }) => ({
     ...state,
-    language: language
-  })),
+    language: language,
+  }))
 )
 
 export const preferencesFeature = createFeature({
   name: featureName,
-  reducer: reducer
+  reducer: reducer,
 })

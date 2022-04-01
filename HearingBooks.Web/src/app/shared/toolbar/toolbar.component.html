@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="toolbar">
   <div class="flex">
-    <button *ngIf="isLoggedIn"
+    <button
+      *ngIf="isLoggedIn"
       (click)="toggleSideMenu()"
       mat-icon-button
       class="menu-button">
@@ -10,9 +11,7 @@
     <span> Hearing Books </span>
   </div>
 
-  <hb-logged-user *ngIf="isLoggedIn">
-  </hb-logged-user>
+  <hb-logged-user *ngIf="isLoggedIn"> </hb-logged-user>
 
-  <ng-content>
-  </ng-content>
+  <ng-content> </ng-content>
 </mat-toolbar>

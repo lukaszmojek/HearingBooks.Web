@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { Injectable } from '@angular/core'
+import { MatDrawer } from '@angular/material/sidenav'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToolbarService {
-  private drawer: MatDrawer;
+  private drawer: MatDrawer
   private isDrawerInitialized = false
 
-  constructor() { }
+  constructor() {}
 
   public setDrawer(drawer: MatDrawer): void {
     if (!!drawer && !this.isDrawerInitialized) {
       this.drawer = drawer
       this.isDrawerInitialized = true
     }
-  } 
+  }
 
   public toggleDrawer(): boolean {
     if (!this.isDrawerInitialized) {

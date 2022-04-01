@@ -1,11 +1,11 @@
-@use "../../../styles/bootstrap.scss";
+@use '../../../styles/bootstrap.scss';
 
 :host {
   .toolbar {
     height: 5vh;
     justify-content: space-between;
   }
-  
+
   .menu-button {
     margin-right: bootstrap.$spacing-margin-xl;
   }

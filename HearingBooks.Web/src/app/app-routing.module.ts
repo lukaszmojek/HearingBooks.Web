@@ -5,17 +5,20 @@ import { ProfileComponent } from './shared/users/profile/profile.component'
 
 const routes: Routes = [
   {
-    'path': 'dashboard',
-    'component': SideMenuComponent
+    path: 'dashboard',
+    component: SideMenuComponent,
   },
   {
-    'path': 'profile',
-    'component': ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
-    'path': '',
-    loadChildren: () => import('./pay-as-you-go/pay-as-you-go.module').then(m => m.PayAsYouGoModule)
-  }
+    path: '',
+    loadChildren: () =>
+      import('./pay-as-you-go/pay-as-you-go.module').then(
+        m => m.PayAsYouGoModule
+      ),
+  },
 ]
 
 @NgModule({

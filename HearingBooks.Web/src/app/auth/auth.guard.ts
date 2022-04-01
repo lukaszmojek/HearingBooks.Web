@@ -4,15 +4,19 @@ import { Observable } from 'rxjs'
 import { AuthorizationService } from './authorization.service'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanLoad {
-  constructor(private auth: AuthorizationService, private router: Router) { }
+  constructor(private auth: AuthorizationService, private router: Router) {}
 
   canLoad(
     route: Route,
     segments: UrlSegment[]
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     if (this.auth.isAuthorized) {
       return true
     }

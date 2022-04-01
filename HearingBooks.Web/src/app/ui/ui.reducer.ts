@@ -1,10 +1,10 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
-import { UIActions } from './ui.actions';
+import { createFeature, createReducer, on } from '@ngrx/store'
+import { UIActions } from './ui.actions'
 
 export const featureName = 'ui'
 
 const initialState: IUIState = {
-  isSideMenuOpened: false
+  isSideMenuOpened: false,
 }
 
 export interface IUIState {
@@ -15,11 +15,11 @@ const reducer = createReducer(
   initialState,
   on(UIActions.toggleSideMenu, (state, { isSideMenuOpened }) => ({
     ...state,
-    isSideMenuOpened: isSideMenuOpened
-  })),
+    isSideMenuOpened: isSideMenuOpened,
+  }))
 )
 
 export const uiFeature = createFeature({
   name: featureName,
-  reducer: reducer
+  reducer: reducer,
 })

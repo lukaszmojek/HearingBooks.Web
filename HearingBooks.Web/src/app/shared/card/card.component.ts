@@ -1,42 +1,50 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { AcrylicService } from '../acrylic/acrylic.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { AcrylicService } from '../acrylic/acrylic.service'
 
 @Component({
   selector: 'hb-card',
   template: `
-    <mat-card [ngClass]="{'acrylic': isAcryclic, 'transparent': isTransparent, 'border': border, 'mat-elevation-z10': shouldHaveElevation}">
+    <mat-card
+      [ngClass]="{
+        acrylic: isAcryclic,
+        transparent: isTransparent,
+        border: border,
+        'mat-elevation-z10': shouldHaveElevation
+      }">
       <mat-card-title *ngIf="!!titleTranslationKey">
         {{ titleTranslationKey | translate }}
       </mat-card-title>
 
       <mat-divider *ngIf="!!titleTranslationKey && divider"></mat-divider>
 
-      <mat-card-content [ngClass]="{'margin-top-xxl': !!titleTranslationKey}">
+      <mat-card-content [ngClass]="{ 'margin-top-xxl': !!titleTranslationKey }">
         <ng-content></ng-content>
       </mat-card-content>
     </mat-card>
   `,
-  styles: [`
-    @use "../../../styles/bootstrap.scss";
+  styles: [
+    `
+      @use '../../../styles/bootstrap.scss';
 
-    :host {
-      width: 100%;
-      height: 100%;
+      :host {
+        width: 100%;
+        height: 100%;
 
-      .mat-card {
-        height: 94%;
+        .mat-card {
+          height: 94%;
+        }
+
+        .mat-card-title {
+          @include bootstrap.flex-set;
+        }
+
+        .margin-top-xxl {
+          margin-top: bootstrap.$spacing-margin-xxl;
+        }
       }
-
-      .mat-card-title {
-        @include bootstrap.flex-set;
-      }
-
-      .margin-top-xxl {
-        margin-top: bootstrap.$spacing-margin-xxl;
-      }
-    }
-  `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
   @Input() titleTranslationKey: string = ''
@@ -61,11 +69,11 @@ export class CardComponent {
     return this.acrylic.isMaterial(this.type)
   }
 
-  constructor(private acrylic: AcrylicService) { }
+  constructor(private acrylic: AcrylicService) {}
 }
 
 export enum CardType {
   Material,
   Acrylic,
-  Transparent
+  Transparent,
 }

@@ -1,16 +1,16 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store'
 
 const isAcrylicEnabledToggled = createAction(
   '[Preferences] Acrylic toggled',
-  props<{ isAcrylicEnabled: boolean; }>()
-);
+  props<{ isAcrylicEnabled: boolean }>()
+)
 
 const languageChanged = createAction(
   '[Preferences] Language changed',
-  props<{ language: string; }>()
-);
+  props<{ language: string }>()
+)
 
 export const PreferencesActions = {
   isAcrylicEnabledToggled,
-  languageChanged
+  languageChanged,
 }

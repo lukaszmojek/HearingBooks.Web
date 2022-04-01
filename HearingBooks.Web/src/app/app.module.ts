@@ -14,7 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { EffectsModule } from '@ngrx/effects'
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json')
 }
 
 @NgModule({
@@ -29,9 +29,9 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-    }
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
     }),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),

@@ -1,13 +1,13 @@
-@use "../../../styles/bootstrap.scss";
+@use '../../../styles/bootstrap.scss';
 
 :host {
   .container {
     display: flexbox;
     height: 95vh;
   }
-  
+
   .mat-drawer-content {
     background-image: url('../../../assets/background-10.png');
-    @include bootstrap.flex-set
+    @include bootstrap.flex-set;
   }
 }

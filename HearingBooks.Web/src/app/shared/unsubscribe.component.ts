@@ -1,8 +1,8 @@
-import { Component, OnDestroy } from "@angular/core";
-import { Subject } from "rxjs";
+import { Component, OnDestroy } from '@angular/core'
+import { Subject } from 'rxjs'
 
 @Component({
-  template: ''
+  template: '',
 })
 export default class UnsubscribeComponent implements OnDestroy {
   protected unsubscribe$: Subject<void> = new Subject()

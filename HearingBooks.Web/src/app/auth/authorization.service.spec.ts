@@ -9,17 +9,16 @@ fdescribe('AuthorizationService', () => {
   let service: AuthorizationService
   let store: MockStore
 
-  const exampleToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoixYF1a2FzeiIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQyMjY5MzUyLCJleHAiOjE2NDIyNzI5NTIsImlhdCI6MTY0MjI2OTM1Mn0.dtzaApSQnWQMZKUFhTxf5O9IWtGVKSoIatiyVQvwBaE"
+  const exampleToken =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoixYF1a2FzeiIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQyMjY5MzUyLCJleHAiOjE2NDIyNzI5NTIsImlhdCI6MTY0MjI2OTM1Mn0.dtzaApSQnWQMZKUFhTxf5O9IWtGVKSoIatiyVQvwBaE'
 
-  const initialState: IApplicationState = { 
-    auth: {token: exampleToken} as IAuthState
+  const initialState: IApplicationState = {
+    auth: { token: exampleToken } as IAuthState,
   }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideMockStore({ initialState })
-      ]
+      providers: [provideMockStore({ initialState })],
     })
 
     service = TestBed.inject(AuthorizationService)

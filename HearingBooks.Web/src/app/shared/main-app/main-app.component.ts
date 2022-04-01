@@ -12,19 +12,26 @@ import { ToolbarService } from '../toolbar/toolbar.service'
   templateUrl: './main-app.component.html',
   styleUrls: ['./main-app.component.scss'],
 })
-export class MainAppComponent extends AcrylicAwareComponent implements AfterViewInit {
+export class MainAppComponent
+  extends AcrylicAwareComponent
+  implements AfterViewInit
+{
   @ViewChild('drawer')
   public drawer: MatDrawer
   public language: string
-  
-  constructor(private toolbar: ToolbarService, private translate: TranslateService, store$: Store<IApplicationState>) {
+
+  constructor(
+    private toolbar: ToolbarService,
+    private translate: TranslateService,
+    store$: Store<IApplicationState>
+  ) {
     super(store$)
     this.safeSelect$(selectLanguage).subscribe(language => {
       this.language = language
       this.translate.use(this.language)
     })
   }
-  
+
   ngAfterViewInit(): void {
     this.toolbar.setDrawer(this.drawer)
   }

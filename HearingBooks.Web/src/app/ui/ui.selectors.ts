@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { featureName, IUIState } from "./ui.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store'
+import { featureName, IUIState } from './ui.reducer'
 
 export const selectAuthFeature = createFeatureSelector<IUIState>(featureName)
 

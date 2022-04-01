@@ -1,4 +1,4 @@
-@use "../../../styles/bootstrap.scss";
+@use '../../../styles/bootstrap.scss';
 
 $menu-container-size: bootstrap.$dimensions-side-nav-menu-width;
 
@@ -12,7 +12,9 @@ $menu-container-size: bootstrap.$dimensions-side-nav-menu-width;
 
   .menu-item {
     display: block;
-    width: calc(100% - bootstrap.$spacing-padding-s - bootstrap.$spacing-margin-l);
+    width: calc(
+      100% - bootstrap.$spacing-padding-s - bootstrap.$spacing-margin-l
+    );
     padding: bootstrap.$spacing-padding-s;
     margin-top: bootstrap.$spacing-margin-l;
   }

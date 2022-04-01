@@ -2,37 +2,38 @@
   <hb-card [type]="innerCardType" [border]="innerCardBorder" class="width-50">
     <div class="flex">
       <div class="width-40 text-center">
-        {{ "Profile.Preferences.Acrylic" | translate }}
+        {{ 'Profile.Preferences.Acrylic' | translate }}
       </div>
 
       <div class="width-40 text-center">
         <mat-slide-toggle
           [formControl]="acrylicFormControl"
-          (change)="setAcrylic($event.checked)"
-        >
+          (change)="setAcrylic($event.checked)">
         </mat-slide-toggle>
       </div>
     </div>
 
-    <br>
+    <br />
     <mat-divider></mat-divider>
-    <br>
-    
+    <br />
+
     <div class="flex language">
       <div class="width-40 text-center">
-        {{ "Profile.Preferences.Language" | translate }}
+        {{ 'Profile.Preferences.Language' | translate }}
       </div>
 
       <div class="flex width-40 text-center">
         <mat-form-field appearance="outline">
           <mat-label>
-            {{ "Profile.Preferences.Language" | translate }}
+            {{ 'Profile.Preferences.Language' | translate }}
           </mat-label>
 
-          <mat-select (selectionChange)="setLanguage($event.value)"
-            [value]="selectedLanguage"
-          >
-            <mat-option *ngFor="let language of availableLanguages" [value]="language.symbol">
+          <mat-select
+            (selectionChange)="setLanguage($event.value)"
+            [value]="selectedLanguage">
+            <mat-option
+              *ngFor="let language of availableLanguages"
+              [value]="language.symbol">
               {{ language.name }}
             </mat-option>
           </mat-select>
