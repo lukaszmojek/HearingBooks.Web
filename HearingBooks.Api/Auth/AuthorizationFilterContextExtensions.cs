@@ -1,4 +1,5 @@
 using HearingBooks.Domain;
+using HearingBooks.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HearingBooks.Api.Auth;

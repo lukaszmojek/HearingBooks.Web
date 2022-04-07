@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HearingBooks.Api.Responses\HearingBooks.Api.Responses.csproj" />
       <ProjectReference Include="..\HearingBooks.Domain\HearingBooks.Domain.csproj" />
       <ProjectReference Include="..\HearingBooks.Infrastructure\HearingBooks.Infrastructure.csproj" />
     </ItemGroup>

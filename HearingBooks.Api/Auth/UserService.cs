@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using HearingBooks.Api.Configuration;
 using HearingBooks.Domain;
+using HearingBooks.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HearingBooks.Api.Auth;

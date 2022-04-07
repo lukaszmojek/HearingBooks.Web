@@ -1,4 +1,6 @@
 using HearingBooks.Domain;
+using HearingBooks.Domain.ValueObjects;
+using HearingBooks.Domain.ValueObjects.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

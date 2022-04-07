@@ -1,18 +1,16 @@
 using HearingBooks.Api.Storage;
-using HearingBooks.Domain.Aggregates;
+using HearingBooks.Domain.Entities;
 using Marten;
 
 namespace HearingBooks.Api.Syntheses;
 
 public class TextSynthesisService
 {
-    private readonly IDocumentStore _store;
     private readonly IStorageService _storageService;
     private readonly IFileService _fileService;
 
-    public TextSynthesisService(IDocumentStore store, IStorageService storageService, IFileService fileService)
+    public TextSynthesisService(IStorageService storageService, IFileService fileService)
     {
-        _store = store;
         _storageService = storageService;
         _fileService = fileService;
     }
@@ -42,22 +40,5 @@ public class TextSynthesisService
             //TODO: Log exception
             throw;
         }
-
-        using var session = _store.OpenSession();
-        var textSynthesisRequested = new TextSyntesisSubmitted
-        {
-            Id = Guid.NewGuid(),
-            RequestId = requestId,
-            Title = request.Title,
-            BlobStoragePath = "",
-            RequestingUserId = request.RequestingUserId,
-        };
-        
-        session.Events.StartStream(typeof(TextSynthesis), requestId, textSynthesisRequested);
-        await session.SaveChangesAsync();
-        
-        
-
-        //TODO: Delete file
     }
 }

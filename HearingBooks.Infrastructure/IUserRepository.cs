@@ -1,8 +1,10 @@
 ﻿using HearingBooks.Domain;
+using HearingBooks.Domain.Entities;
 
 namespace Infrastructure.Repositories;
 
 public interface IUserRepository
 {
-    public Task<User> GetUserById(Guid userId);
+    Task<User> GetUserById(Guid userId);
+    User GetUserByCredentials(string email, string password);
 }

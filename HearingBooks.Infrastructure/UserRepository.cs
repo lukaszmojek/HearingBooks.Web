@@ -1,4 +1,7 @@
 ﻿using HearingBooks.Domain;
+using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects;
+using HearingBooks.Domain.ValueObjects.User;
 
 namespace Infrastructure.Repositories;
 
@@ -8,7 +11,7 @@ public class UserRepository : IUserRepository
     {
         new ()
         {
-            Id = Guid.Parse("aaaaaaaaaaaaaaaaaa"),
+            Id = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
             FirstName = "Łukasz",
             LastName = "Mojek",
             Email = "lukasz@hb.com",
@@ -24,7 +27,7 @@ public class UserRepository : IUserRepository
 
         if (user == null)
         {
-            throw new Exception("User does not exists");
+            throw new Exception("User does not exist!");
         }
 
         return user;
@@ -33,5 +36,12 @@ public class UserRepository : IUserRepository
     public Task<User> GetUserById(int userId)
     {
         throw new NotImplementedException();
+    }
+    
+    public User GetUserByCredentials(string email, string password)
+    {
+        var user = _users.SingleOrDefault(x => x.Email == email && x.Password == password);
+
+        return user;
     }
 }

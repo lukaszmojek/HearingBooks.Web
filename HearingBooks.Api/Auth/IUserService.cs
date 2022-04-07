@@ -1,4 +1,5 @@
 ﻿using HearingBooks.Domain;
+using HearingBooks.Domain.Entities;
 
 namespace HearingBooks.Api.Auth;
 
