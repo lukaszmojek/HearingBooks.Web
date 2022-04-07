@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { TranslateService } from '@ngx-translate/core'
 import { IAuthState } from 'src/app/auth/auth.reducer'
 import StoreConnectedComponent from '../store-connected.component'
 import { MenuItem } from './menu-item.interface'

@@ -8,6 +8,7 @@ import {
 import { Store } from '@ngrx/store'
 import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors'
 import AcrylicAwareComponent from '../../acrylic/acrylic-aware.component'
+import { AcrylicService } from '../../acrylic/acrylic.service'
 import { IMainComponent } from '../../main-component.interface'
 import { IApplicationState } from '../../state'
 
@@ -17,9 +18,8 @@ import { IApplicationState } from '../../state'
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent
-  extends AcrylicAwareComponent
-  implements IMainComponent
-{
+  extends AcrylicAwareComponent<IApplicationState>
+  implements IMainComponent {
   titleTranslationKey: string = 'Profile.Title'
   elevation = true
   divider: boolean = true
@@ -38,9 +38,10 @@ export class ProfileComponent
 
   constructor(
     store$: Store<IApplicationState>,
-    private formBuilder: FormBuilder
+    acrylic: AcrylicService,
+    private formBuilder: FormBuilder,
   ) {
-    super(store$)
+    super(store$, acrylic)
     this.createProfileFormGroup()
     this.safeSelect$(selectIsAcrylicEnabled).subscribe(_ => {
       this.acrylicFormControl.setValue(this.isAcrylicEnabled)

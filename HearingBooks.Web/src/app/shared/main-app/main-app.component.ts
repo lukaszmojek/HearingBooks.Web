@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
 import { selectLanguage } from 'src/app/preferences/preferences.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
+import { AcrylicService } from '../acrylic/acrylic.service'
 import { IApplicationState } from '../state'
 import { ToolbarService } from '../toolbar/toolbar.service'
 
@@ -13,9 +14,8 @@ import { ToolbarService } from '../toolbar/toolbar.service'
   styleUrls: ['./main-app.component.scss'],
 })
 export class MainAppComponent
-  extends AcrylicAwareComponent
-  implements AfterViewInit
-{
+  extends AcrylicAwareComponent<IApplicationState>
+  implements AfterViewInit {
   @ViewChild('drawer')
   public drawer: MatDrawer
   public language: string
@@ -23,9 +23,10 @@ export class MainAppComponent
   constructor(
     private toolbar: ToolbarService,
     private translate: TranslateService,
-    store$: Store<IApplicationState>
+    store$: Store<IApplicationState>,
+    acrylic: AcrylicService,
   ) {
-    super(store$)
+    super(store$, acrylic)
     this.safeSelect$(selectLanguage).subscribe(language => {
       this.language = language
       this.translate.use(this.language)

@@ -13,8 +13,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component'
 import { ProfileComponent } from './users/profile/profile.component'
 import { PreferencesComponent } from './users/profile/preferences/preferences.component'
 import { ProfileDetailsComponent } from './users/profile/profile-details/profile-details.component'
-import { CardComponent } from './card/card.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { CardComponent } from './card/card.component'
 
 const components = [
   MainAppComponent,
@@ -24,7 +24,7 @@ const components = [
   ProfileComponent,
   PreferencesComponent,
   ProfileDetailsComponent,
-  CardComponent,
+  CardComponent
 ]
 
 const modules = [
@@ -37,6 +37,7 @@ const modules = [
   PreferencesModule,
   FormsModule,
   ReactiveFormsModule,
+  ReactiveFormsModule,
 ]
 
 @NgModule({
@@ -44,4 +45,4 @@ const modules = [
   imports: [...modules],
   exports: [...components, ...modules],
 })
-export class SharedModule {}
+export class SharedModule { }

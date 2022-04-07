@@ -8,7 +8,7 @@ import UnsubscribeComponent from './unsubscribe.component'
 })
 export default abstract class StoreConnectedComponent<
   T
-> extends UnsubscribeComponent {
+  > extends UnsubscribeComponent {
   constructor(protected store$: Store<T>) {
     super()
   }

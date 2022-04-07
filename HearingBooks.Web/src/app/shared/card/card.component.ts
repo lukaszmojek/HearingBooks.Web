@@ -69,7 +69,7 @@ export class CardComponent {
     return this.acrylic.isMaterial(this.type)
   }
 
-  constructor(private acrylic: AcrylicService) {}
+  constructor(private acrylic: AcrylicService) { }
 }
 
 export enum CardType {
