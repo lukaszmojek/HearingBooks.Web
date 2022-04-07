@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
-import { CardType } from '../shared/card/card.component'
+import { CardType } from '../shared/card/card-type'
 import { featureName, IPreferencesState } from './preferences.reducer'
 
 export const selectAuthFeature =

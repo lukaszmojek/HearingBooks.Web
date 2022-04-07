@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
-import { selectLanguage } from 'src/app/preferences/preferences.selectors'
+import { selectInnerCardType, selectIsAcrylicEnabled, selectLanguage, selectMainCardType } from 'src/app/preferences/preferences.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
 import { IApplicationState } from '../state'
@@ -31,6 +31,8 @@ export class MainAppComponent
       this.language = language
       this.translate.use(this.language)
     })
+
+    this.acrylic.initialize(selectMainCardType, selectInnerCardType, selectIsAcrylicEnabled)
   }
 
   ngAfterViewInit(): void {

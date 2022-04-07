@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
-import { CardType } from '../card/card.component'
+import { selectInnerCardType, selectIsAcrylicEnabled, selectMainCardType } from 'src/app/preferences/preferences.selectors'
+import { CardType } from "../card/card-type"
 import { AcrylicEnabledSelectorType } from "./acrylic-enabled-selector.type"
-import { CardTypeSelectorType } from "./card-type-selector.type"
+import { InnerCardTypeSelectorType, MainCardTypeSelectorType } from './card-type-selector.type'
 
 // TODO: Consider moving that to store
 @Injectable({
@@ -10,15 +11,15 @@ import { CardTypeSelectorType } from "./card-type-selector.type"
 export class AcrylicService {
   private _isInitialized: boolean = false
 
-  private _mainCardTypeSelector: CardTypeSelectorType
-  private _innerCardTypeSelector: CardTypeSelectorType
-  private _isAcrylicEnabledSelector: AcrylicEnabledSelectorType
+  private _mainCardTypeSelector: MainCardTypeSelectorType = selectMainCardType
+  private _innerCardTypeSelector: InnerCardTypeSelectorType = selectInnerCardType
+  private _isAcrylicEnabledSelector: AcrylicEnabledSelectorType = selectIsAcrylicEnabled
 
-  public get mainCardTypeSelector(): CardTypeSelectorType {
+  public get mainCardTypeSelector(): MainCardTypeSelectorType {
     return this._mainCardTypeSelector
   }
 
-  public get innerCardTypeSelector(): CardTypeSelectorType {
+  public get innerCardTypeSelector(): InnerCardTypeSelectorType {
     return this._innerCardTypeSelector
   }
 
@@ -29,8 +30,8 @@ export class AcrylicService {
   constructor() { }
 
   public initialize(
-    mainCardTypeSelector: CardTypeSelectorType,
-    innerCardTypeSelector: CardTypeSelectorType,
+    mainCardTypeSelector: any,
+    innerCardTypeSelector: any,
     isAcrylicEnabledSelector: AcrylicEnabledSelectorType
   ) {
     if (this._isInitialized) {

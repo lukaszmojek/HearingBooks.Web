@@ -7,7 +7,7 @@ import {
   selectInnerCardType,
   selectLanguage,
 } from 'src/app/preferences/preferences.selectors'
-import { CardType } from 'src/app/shared/card/card.component'
+import { CardType } from 'src/app/shared/card/card-type'
 import StoreConnectedComponent from 'src/app/shared/store-connected.component'
 
 @Component({

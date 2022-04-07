@@ -1,5 +1,6 @@
 import { DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
-import { CardType } from '../card/card.component';
+import { CardType } from "../card/card-type";
 
 
-export type CardTypeSelectorType = MemoizedSelector<object, CardType, DefaultProjectorFn<CardType>>;
+export type MainCardTypeSelectorType = MemoizedSelector<object, CardType.Material | CardType.Acrylic, DefaultProjectorFn<CardType>>;
+export type InnerCardTypeSelectorType = MemoizedSelector<object, CardType.Material | CardType.Transparent, DefaultProjectorFn<CardType>>;
