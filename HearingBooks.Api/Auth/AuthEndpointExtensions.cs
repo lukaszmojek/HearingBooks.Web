@@ -1,10 +1,10 @@
 using Api.Factories;
 using Contracts.Responses;
-using HearingBooks.Api.Auth;
+using HearingBooks.Api.Syntheses;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HearingBooks.Api.Syntheses;
+namespace HearingBooks.Api.Auth;
 
 public static class AuthEndpointExtensions
 {
