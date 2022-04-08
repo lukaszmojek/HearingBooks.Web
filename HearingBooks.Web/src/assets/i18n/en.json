@@ -23,7 +23,27 @@
   },
   "PayAsYouGo": {
     "RequestTextSynthesis": {
-      "Title": "Request Text Syntheses"
+      "Actions": {
+        "Request": "Request"
+      },
+      "Fields": {
+        "Language": {
+          "Label": "Language"
+        },
+        "TextToSynthesize": {
+          "Label": "Text to synthesize",
+          "Errors": {
+            "TooLong": "Text to synthesize is too long!"
+          }
+        },
+        "Title": {
+          "Label": "Title"
+        },
+        "Voice": {
+          "Label": "Voice"
+        }
+      },
+      "Title": "Request Text Synthesis"
     },
     "TextSyntheses": {
       "CharacterCount": "Character count",

@@ -11,7 +11,7 @@ import { ITextSynthesisRequest } from './models'
   styleUrls: ['./text-synthesis.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextSynthesisComponent extends AcrylicAwareComponent {
+export class TextSynthesisComponent extends AcrylicAwareComponent<IApplicationState> {
   @Input() request: ITextSynthesisRequest
 
   public get isAcryclic(): boolean {
@@ -28,8 +28,8 @@ export class TextSynthesisComponent extends AcrylicAwareComponent {
 
   constructor(
     store$: Store<IApplicationState>,
-    private acrylic: AcrylicService
+    acrylic: AcrylicService
   ) {
-    super(store$)
+    super(store$, acrylic)
   }
 }

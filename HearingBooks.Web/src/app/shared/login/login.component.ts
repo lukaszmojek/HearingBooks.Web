@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms'
-import { ErrorStateMatcher } from '@angular/material/core'
+import { FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { AuthActions } from 'src/app/auth/auth.actions'
@@ -9,19 +8,7 @@ import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
 import { IMainComponent } from '../main-component.interface'
 import { IApplicationState } from '../state'
-
-class SimpleErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    if (!control) {
-      return false
-    }
-
-    const isSubmitted = form && form.submitted
-    const isControlChangedOrSubmitted = control.dirty || control.touched || isSubmitted
-
-    return !!(control && control.invalid && isControlChangedOrSubmitted)
-  }
-}
+import { SimpleErrorStateMatcher } from './simple-error-state-matcher'
 
 @Component({
   selector: 'hb-login',

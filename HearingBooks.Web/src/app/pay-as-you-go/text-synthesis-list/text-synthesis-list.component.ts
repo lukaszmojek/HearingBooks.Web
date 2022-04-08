@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
+import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
 import { ITextSynthesisRequest } from '../text-synthesis/models'
@@ -11,9 +12,8 @@ import { ITextSynthesisRequest } from '../text-synthesis/models'
   styleUrls: ['./text-synthesis-list.component.scss'],
 })
 export class TextSynthesisListComponent
-  extends AcrylicAwareComponent
-  implements IMainComponent
-{
+  extends AcrylicAwareComponent<IApplicationState>
+  implements IMainComponent {
   titleTranslationKey = 'PayAsYouGo.TextSyntheses.Title'
   divider = true
   elevation = true
@@ -41,7 +41,7 @@ export class TextSynthesisListComponent
     },
   ]
 
-  constructor(store$: Store<IApplicationState>) {
-    super(store$)
+  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+    super(store$, acrylic)
   }
 }
