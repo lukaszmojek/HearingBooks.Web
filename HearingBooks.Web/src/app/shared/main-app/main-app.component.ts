@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
 import { selectInnerCardType, selectIsAcrylicEnabled, selectLanguage, selectMainCardType } from 'src/app/preferences/preferences.selectors'
+import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
 import { IApplicationState } from '../state'
@@ -19,6 +20,7 @@ export class MainAppComponent
   @ViewChild('drawer')
   public drawer: MatDrawer
   public language: string
+  public isMenuOpened: boolean
 
   constructor(
     private toolbar: ToolbarService,
@@ -30,6 +32,10 @@ export class MainAppComponent
     this.safeSelect$(selectLanguage).subscribe(language => {
       this.language = language
       this.translate.use(this.language)
+    })
+
+    this.safeSelect$(selectIsSideMenuOpened).subscribe(isMenuOpened => {
+      this.isMenuOpened = isMenuOpened
     })
 
     this.acrylic.initialize(selectMainCardType, selectInnerCardType, selectIsAcrylicEnabled)

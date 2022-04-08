@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AuthActions } from 'src/app/auth/auth.actions'
 import { selectUserName } from 'src/app/auth/auth.selectors'
+import { UIActions } from 'src/app/ui/ui.actions'
 import { IApplicationState } from '../state'
 import StoreConnectedComponent from '../store-connected.component'
 
@@ -22,6 +23,7 @@ export class LoggedUserComponent extends StoreConnectedComponent<IApplicationSta
   }
 
   public logOut(): void {
+    this.store$.dispatch(UIActions.toggleSideMenu({ isSideMenuOpened: false }))
     this.store$.dispatch(AuthActions.logOut())
   }
 }
