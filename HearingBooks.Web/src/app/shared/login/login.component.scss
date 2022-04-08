@@ -5,36 +5,17 @@
   @include bootstrap.flex-set;
   height: 40%;
 
-  // .card {
-  //   width: 50%;
-  // }
-
-  .card-title {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 16px;
-  }
-
   .login-form {
-    padding: 16px;
+    padding: bootstrap.$spacing-margin-xl;
 
-    .email {
+    .field {
       width: 60%;
       max-width: 600px;
-      margin-bottom: 16px;
-    }
-
-    .password {
-      width: 60%;
-      max-width: 600px;
-      margin-bottom: 16px;
+      margin-bottom: bootstrap.$spacing-margin-xl;
     }
   }
 
   .register-button {
-    margin-left: 16px;
+    margin-left: bootstrap.$spacing-margin-xl;
   }
 }
