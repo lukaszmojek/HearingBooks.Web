@@ -1,3 +1,4 @@
+using HearingBooks.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HearingBooks.Api.Syntheses;
@@ -19,12 +20,15 @@ public static class TextSynthesesEndpointExtensions
         
         app.MapPost(
             $"/{_baseEndpointGroupRoute}", 
-            async ([FromServices] TextSynthesisService textSynthesisService, [FromBody] TextSyntehsisRequest request) =>
+            async ([FromServices] TextSynthesisService textSynthesisService, [FromBody] TextSyntehsisRequest request, HttpContext context) =>
             {
                 // var result = await speech.SynthesizeAudioAsync();
-                await textSynthesisService.CreateRequest(request);
+                var requestingUser = (User) context.Items["User"];
+                request.RequestingUserId = requestingUser.Id;
                 
-                return $"Succeded: ";
+                var requestId = await textSynthesisService.CreateRequest(request);
+
+                return Results.Created($"{requestId.ToString()}", null);
             });
     }
 }

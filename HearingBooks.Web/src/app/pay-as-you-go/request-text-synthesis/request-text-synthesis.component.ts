@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { FormControl, Validators } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { SimpleErrorStateMatcher } from 'src/app/shared/login/simple-error-state-matcher'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
+import { TextSynthesisRequest, TextSynthesisService } from '../text-synthesis.service'
 import { ISynthesisLanguage, ISynthesisVoice, SynthesisVoiceGender } from './models'
 
 @Component({
@@ -29,6 +30,12 @@ export class RequestTextSynthesisComponent
   languageFormControl = new FormControl('', [Validators.required])
   voiceFormControl = new FormControl('', [Validators.required])
   textToSynthesizeFormControl = new FormControl('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
+  textSynthesisFormGroup = new FormGroup({
+    'title': this.titleFormControl,
+    'language': this.languageFormControl,
+    'voice': this.voiceFormControl,
+    'textToSynthesize': this.textToSynthesizeFormControl
+  })
 
   //TODO: Move languages and voices to DB
   availableLanguages: ISynthesisLanguage[] = [
@@ -55,7 +62,27 @@ export class RequestTextSynthesisComponent
     return `${this.textToSynthesizeFormControl.value.length}/${this.textToSynthesizeMaxCharacterCount}`
   }
 
-  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+  get isFormInvalid(): boolean {
+    return this.textSynthesisFormGroup.invalid
+  }
+
+  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService, private textSynthesisService: TextSynthesisService) {
     super(store$, acrylic)
+    this.textToSynthesizeFormControl.valueChanges.subscribe(_ => {
+      console.log(this.textSynthesisFormGroup)
+    })
+  }
+
+  requestTextSynthesis(): void {
+    const textSyntesisRequest = {
+      title: this.titleFormControl.value,
+      textToSynthesize: this.textToSynthesizeFormControl.value,
+      // language: this.languageFormControl.value,
+      // voice: this.voiceFormControl.value,
+    } as TextSynthesisRequest
+
+    this.textSynthesisService.requestTextSynthesis$(textSyntesisRequest).subscribe(result => {
+      console.log(result)
+    })
   }
 }

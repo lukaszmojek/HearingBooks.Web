@@ -1,5 +1,4 @@
-﻿using HearingBooks.Domain;
-using HearingBooks.Domain.Entities;
+﻿using HearingBooks.Domain.Entities;
 
 namespace Infrastructure.Repositories;
 

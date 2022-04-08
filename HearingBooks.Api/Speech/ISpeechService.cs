@@ -2,5 +2,5 @@ namespace HearingBooks.Api.Speech;
 
 public interface ISpeechService
 {
-    public Task<bool> SynthesizeAudioAsync();
+    public Task<(bool, string)> SynthesizeAudioAsync(string requestId, string textToSynthesize);
 }

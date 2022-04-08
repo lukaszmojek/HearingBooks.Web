@@ -1,6 +1,4 @@
-﻿using HearingBooks.Domain;
-using HearingBooks.Domain.Entities;
-using HearingBooks.Domain.ValueObjects;
+﻿using HearingBooks.Domain.Entities;
 using HearingBooks.Domain.ValueObjects.User;
 
 namespace Infrastructure.Repositories;
@@ -15,8 +13,9 @@ public class UserRepository : IUserRepository
             FirstName = "Łukasz",
             LastName = "Mojek",
             Email = "lukasz@hb.com",
-            Type = UserType.HearingBooks,
             UserName = "shaggy",
+            Password = "zaq123",
+            Type = UserType.HearingBooks,
             IsActive = true
         }
     };

@@ -2,12 +2,14 @@
 
 <mat-drawer-container
   class="container max-width max-height"
-  [hasBackdrop]="false">
+  [hasBackdrop]="false"
+>
   <mat-drawer
     #drawer
     mode="over"
     [ngClass]="{ acrylic: isAcrylicEnabled }"
-    [opened]="isMenuOpened">
+    [opened]="isMenuOpened"
+  >
     <hb-side-menu></hb-side-menu>
   </mat-drawer>
 

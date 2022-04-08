@@ -15,24 +15,24 @@ public class SpeechService : ISpeechService
         _storage = storage;
     }
 
-    public async Task<bool> SynthesizeAudioAsync()
+    public async Task<(bool, string)> SynthesizeAudioAsync(string requestId, string textToSynthesize)
     {
         try
         {
-            var fileName = "file-001.wav";
-            // var localPath = await CreateSynthesis(fileName);
-            var localPath = $"./{fileName}";
+            var fileName = $"{requestId}.wav";
+            var localPath = await CreateSynthesis(fileName, textToSynthesize);
+            // var localPath = $"./{fileName}";
             await UploadSynthesis(fileName, localPath);
             
-            return true;
+            return (true, localPath);
         }
         catch (Exception e)
         {
-            return false;
+            return (false, "");
         }
     }
     
-    private async Task<string> CreateSynthesis(string fileName)
+    private async Task<string> CreateSynthesis(string fileName, string textToSynthesize)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -50,9 +50,7 @@ public class SpeechService : ISpeechService
         // Actual synthetizer instance for TTS
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);
 
-        await synthesizer.SpeakTextAsync(
-            "No i tu mamy przykładowy zsyntetyzowany tekst w języku polskim. Jak się masz kochanie? Jak się masz?"
-        );
+        await synthesizer.SpeakTextAsync(textToSynthesize);
 
         return localPath;
     }

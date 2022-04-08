@@ -79,6 +79,8 @@
       mat-flat-button
       type="button"
       color="accent"
+      [disabled]="isFormInvalid"
+      (click)="requestTextSynthesis()"
     >
       {{ 'PayAsYouGo.RequestTextSynthesis.Actions.Request' | translate }}
     </button>

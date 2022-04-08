@@ -54,8 +54,11 @@ builder.Services.AddSwaggerGen(
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 builder.Services.AddMarten(options =>
     {

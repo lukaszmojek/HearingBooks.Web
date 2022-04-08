@@ -2,11 +2,11 @@ namespace HearingBooks.Api.Storage;
 
 public class FileService : IFileService
 {
-    public StreamWriter CreateTextFile(string fileName)
+    public (StreamWriter, string) CreateTextFile(string fileName)
     {
         var path = CreateTextFilePath(fileName);
         
-        return File.CreateText(path);
+        return (File.CreateText(path), path);
     }
 
     public FileStream CreateFile(string fileName)

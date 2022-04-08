@@ -1,3 +1,4 @@
+using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
 using Marten;
@@ -8,31 +9,43 @@ public class TextSynthesisService
 {
     private readonly IStorageService _storageService;
     private readonly IFileService _fileService;
+    private readonly ISpeechService _speechService;
 
-    public TextSynthesisService(IStorageService storageService, IFileService fileService)
+    public TextSynthesisService(IStorageService storageService, IFileService fileService, ISpeechService speechService)
     {
         _storageService = storageService;
         _fileService = fileService;
+        _speechService = speechService;
     }
 
-    public async Task CreateRequest(TextSyntehsisRequest request)
+    public async Task<Guid> CreateRequest(TextSyntehsisRequest request)
     {
         var containerName = request.RequestingUserId.ToString();
 
         var blobContainerClient = await _storageService.ContainerExistsAsync(containerName)
-            ? await _storageService.CreateContainerAsync(containerName)
-            : _storageService.GetBlobContainerClient(containerName);
+            ? _storageService.GetBlobContainerClient(containerName)
+            : await _storageService.CreateContainerAsync(containerName);
 
         var requestId = Guid.NewGuid();
         var fileName = $"{requestId}.txt";
-        var filePath = $"./{requestId}.txt";
+        // var filePath = $"./{requestId}.txt";
         
-        await using var file = _fileService.CreateTextFile(fileName);
-        await _fileService.WriteToTextFileAsync(file, request.Content);
+        (var file, var textFilePath) = _fileService.CreateTextFile(fileName);
+        await _fileService.WriteToTextFileAsync(file, request.TextToSynthesize);
 
+        string synthesisFilePath = "";
+        
         try
         {
-            _ = await _storageService.UploadBlobAsync(blobContainerClient, containerName, filePath);
+            (var succeded, synthesisFilePath) = await _speechService.SynthesizeAudioAsync(
+                requestId.ToString(),
+                request.TextToSynthesize
+            );
+
+            if (succeded)
+            {
+                _ = await _storageService.UploadBlobAsync(blobContainerClient, requestId.ToString(), synthesisFilePath);
+            }
         }
         catch (Exception e)
         {
@@ -40,5 +53,15 @@ public class TextSynthesisService
             //TODO: Log exception
             throw;
         }
+        finally
+        {
+            File.Delete(textFilePath);
+            if (string.IsNullOrEmpty(synthesisFilePath))
+            {
+                File.Delete(synthesisFilePath);
+            }
+        }
+
+        return requestId;
     }
 }
