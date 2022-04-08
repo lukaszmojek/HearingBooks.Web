@@ -15,6 +15,7 @@ import { PreferencesComponent } from './users/profile/preferences/preferences.co
 import { ProfileDetailsComponent } from './users/profile/profile-details/profile-details.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CardComponent } from './card/card.component'
+import { LoginComponent } from './login/login.component'
 
 const components = [
   MainAppComponent,
@@ -24,7 +25,8 @@ const components = [
   ProfileComponent,
   PreferencesComponent,
   ProfileDetailsComponent,
-  CardComponent
+  CardComponent,
+  LoginComponent
 ]
 
 const modules = [

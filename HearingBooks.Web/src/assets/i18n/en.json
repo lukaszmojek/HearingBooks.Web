@@ -1,4 +1,26 @@
 {
+  "Login": {
+    "Actions": {
+      "Login": "Login",
+      "Registration": "Registration"
+    },
+    "Fields": {
+      "Email": {
+        "Errors": {
+          "Incorrect": "Enter valid email address!",
+          "Required": "Email is required!"
+        },
+        "Label": "Email"
+      },
+      "Password": {
+        "Errors": {
+          "Required": "Password is required!"
+        },
+        "Label": "Password"
+      }
+    },
+    "Title": "Login"
+  },
   "PayAsYouGo": {
     "RequestTextSynthesis": {
       "Title": "Request Text Syntheses"
