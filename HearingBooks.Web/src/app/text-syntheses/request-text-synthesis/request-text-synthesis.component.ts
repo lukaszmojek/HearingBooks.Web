@@ -68,9 +68,6 @@ export class RequestTextSynthesisComponent
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService, private textSynthesisService: TextSynthesisService) {
     super(store$, acrylic)
-    this.textToSynthesizeFormControl.valueChanges.subscribe(_ => {
-      console.log(this.textSynthesisFormGroup)
-    })
   }
 
   requestTextSynthesis(): void {

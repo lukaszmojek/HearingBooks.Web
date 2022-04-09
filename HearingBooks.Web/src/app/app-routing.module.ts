@@ -21,16 +21,18 @@ const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: '',
+    path: 'text-syntheses',
     canLoad: [AuthGuard],
+    pathMatch: 'full',
     loadChildren: () =>
-      import('./pay-as-you-go/pay-as-you-go.module').then(
-        m => m.PayAsYouGoModule
+      import('./text-syntheses/text-syntheses.module').then(
+        m => m.TextSynthesesModule
       ),
   },
   {
     path: '**',
-    redirectTo: 'login'
+    canLoad: [AuthGuard],
+    redirectTo: 'dashboard'
   }
 ]
 

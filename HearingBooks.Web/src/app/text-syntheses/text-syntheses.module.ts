@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { SharedModule } from '../shared/shared.module'
-import { PayAsYouGoRoutingModule } from './pay-as-you-go-routing.module'
+import { TextSynthesesRoutingModule } from './text-syntheses-routing.module'
 import { TextSynthesisListComponent } from './text-synthesis-list/text-synthesis-list.component'
 import { TextSynthesisComponent } from './text-synthesis/text-synthesis.component'
 import { TextSynthesisPipe } from './text-synthesis/text-synthesis.pipe'
@@ -14,7 +14,7 @@ const components = [
   RequestTextSynthesisComponent,
 ]
 
-const modules = [SharedModule, PayAsYouGoRoutingModule]
+const modules = [SharedModule, TextSynthesesRoutingModule]
 
 const pipes = [TextSynthesisPipe, SynthesisLanguagePipe, SynthesisVoicePipe]
 
@@ -23,4 +23,4 @@ const pipes = [TextSynthesisPipe, SynthesisLanguagePipe, SynthesisVoicePipe]
   declarations: [...components, ...pipes],
   exports: [...components, ...pipes],
 })
-export class PayAsYouGoModule { }
+export class TextSynthesesModule { }

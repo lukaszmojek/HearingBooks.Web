@@ -5,11 +5,11 @@ import { TextSynthesisListComponent } from './text-synthesis-list/text-synthesis
 
 const routes: Routes = [
   {
-    path: 'text-syntheses',
+    path: '',
     component: TextSynthesisListComponent,
   },
   {
-    path: 'request-text-syntheses',
+    path: 'request',
     component: RequestTextSynthesisComponent,
   },
 ]
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PayAsYouGoRoutingModule {}
+export class TextSynthesesRoutingModule { }
