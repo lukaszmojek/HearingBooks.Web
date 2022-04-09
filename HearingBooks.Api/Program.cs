@@ -1,6 +1,7 @@
 using System.Reflection;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
+using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses;
@@ -49,6 +50,15 @@ builder.Services.AddSwaggerGen(
     }
 );
 
+#if DEBUG
+builder.Services.AddDbContext<HearingBooksDbContext>(
+    options =>
+    {
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseUrl"))
+            .EnableSensitiveDataLogging();
+    });
+#endif
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 builder.Services.AddScoped<ISpeechService, SpeechService>();
@@ -57,14 +67,7 @@ builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-#if DEBUG
-builder.Services.AddDbContext<HearingBooksDatabaseContext>(
-    options =>
-    {
-        options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseUrl"))
-            .EnableSensitiveDataLogging();
-    });
-#endif
+
 
 var app = builder.Build();
 
@@ -92,5 +95,6 @@ app.UseMiddleware<JwtMiddleware>();
 
 app.MapAuthEndpoints();
 app.MapSynthesesEndpoints();
+app.MapSeedEndpoints();
 
 app.Run();
