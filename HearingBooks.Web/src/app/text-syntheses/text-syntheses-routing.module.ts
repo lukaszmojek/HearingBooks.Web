@@ -6,6 +6,7 @@ import { TextSynthesisListComponent } from './text-synthesis-list/text-synthesis
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: TextSynthesisListComponent,
   },
   {

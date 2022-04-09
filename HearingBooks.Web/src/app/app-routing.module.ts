@@ -22,8 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'text-syntheses',
-    canLoad: [AuthGuard],
-    pathMatch: 'full',
+    canActivateChild: [AuthGuard],
     loadChildren: () =>
       import('./text-syntheses/text-syntheses.module').then(
         m => m.TextSynthesesModule
@@ -32,7 +31,8 @@ const routes: Routes = [
   {
     path: '**',
     canLoad: [AuthGuard],
-    redirectTo: 'dashboard'
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
   }
 ]
 

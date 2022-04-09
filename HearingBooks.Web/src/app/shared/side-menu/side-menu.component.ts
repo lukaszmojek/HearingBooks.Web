@@ -15,22 +15,22 @@ export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
   public menuItems: MenuItem[] = [
     {
       translationKey: 'SideMenu.Profile',
-      routerLink: '/profile',
+      routerLink: ['profile'],
       shouldBeAvailable: () => true,
     },
     {
       translationKey: 'SideMenu.Dashboard',
-      routerLink: '/dashboard',
+      routerLink: ['dashboard'],
       shouldBeAvailable: () => true,
     },
     {
       translationKey: 'SideMenu.TextSyntheses',
-      routerLink: '/text-syntheses',
+      routerLink: ['text-syntheses'],
       shouldBeAvailable: () => true,
     },
     {
       translationKey: 'SideMenu.RequestTextSynthesis',
-      routerLink: '/request-text-syntheses',
+      routerLink: ['text-syntheses', 'request'],
       shouldBeAvailable: () => true,
     },
   ]
