@@ -1,12 +1,19 @@
 using HearingBooks.Domain.DDD;
+using Microsoft.EntityFrameworkCore;
 
 namespace HearingBooks.Domain.ValueObjects.TextSynthesis;
 
+[Owned]
 public class TextSynthesisData : ValueObject<TextSynthesisData>
 {
     public string Title { get; }
     public string BlobContainerName { get; }
     public string BlobName { get; }
+
+    public TextSynthesisData()
+    {
+        
+    }
     
     public TextSynthesisData(string title, string blobContainerName, string blobName)
     {

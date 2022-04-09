@@ -39,7 +39,8 @@ public class UserService : IUserService
                 }
             ),
 
-            Expires = DateTime.UtcNow.AddHours(1),
+            //TODO: Change that back to 1 hour
+            Expires = DateTime.UtcNow.AddMonths(1),
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature

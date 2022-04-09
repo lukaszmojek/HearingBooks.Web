@@ -1,15 +1,13 @@
 using System.Reflection;
-using HearingBooks.Api;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses;
+using HearingBooks.Persistance;
 using Infrastructure.Repositories;
-using Marten;
-using Marten.Events;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Weasel.Postgresql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,19 +57,14 @@ builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-
-builder.Services.AddMarten(options =>
+#if DEBUG
+builder.Services.AddDbContext<HearingBooksDatabaseContext>(
+    options =>
     {
-        options.Connection(builder.Configuration[ConfigurationKeys.MartenConnectionString]);
-        options.Events.StreamIdentity = StreamIdentity.AsGuid;
-        // If we're running in development mode, let Marten just take care
-        // of all necessary schema building and patching behind the scenes
-        if (builder.Environment.IsDevelopment())
-        {
-            options.AutoCreateSchemaObjects = AutoCreate.All;
-        }
-    }
-);
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseUrl"))
+            .EnableSensitiveDataLogging();
+    });
+#endif
 
 var app = builder.Build();
 
@@ -99,35 +92,5 @@ app.UseMiddleware<JwtMiddleware>();
 
 app.MapAuthEndpoints();
 app.MapSynthesesEndpoints();
-
-// app.MapGet("/party/events", async (IDocumentStore store) =>
-// {
-//     using var session = store.OpenSession();
-//         var started = new QuestStarted { Name = "Destroy the One Ring" };
-//         var joined1 = new MembersJoined(1, "Hobbiton", "Frodo", "Sam");
-//
-//         // Start a brand new stream and commit the new events as
-//         // part of a transaction
-//         session.Events.StartStream(typeof(QuestParty), Guid.NewGuid(), started, joined1);
-//         await session.SaveChangesAsync();
-//     
-//     return $"Succeded: kek";
-// });
-
-// app.MapGet("/party/{questId}/state", async (IDocumentStore store, [FromQuery] Guid questId) =>
-// {
-//     using var session = store.OpenSession();
-//     // questId is the id of the stream
-//     var party = session.Events.AggregateStream<QuestParty>(questId);
-//     Console.WriteLine(party);
-//
-//     // var party_at_version_3 = await session.Events
-//     //     .AggregateStreamAsync<QuestParty>(questId, 3);
-//     //
-//     // var party_yesterday = await session.Events
-//     //     .AggregateStreamAsync<QuestParty>(questId, timestamp: DateTime.UtcNow.AddDays(-1));
-//     
-//     return $"Succeded: kek";
-// });
 
 app.Run();
