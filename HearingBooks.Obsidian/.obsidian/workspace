@@ -7,10 +7,11 @@
         "id": "fe7fdee57cf81296",
         "type": "leaf",
         "state": {
-          "type": "diff-view",
+          "type": "markdown",
           "state": {
-            "file": "HearingBooks.Obsidian/.obsidian/plugins/obsidian-git/styles.css",
-            "staged": false
+            "file": "Development/Migrations.md",
+            "mode": "source",
+            "source": false
           }
         }
       }
@@ -56,8 +57,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -77,6 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Development/Migrations.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -95,6 +96,7 @@
   },
   "active": "fe7fdee57cf81296",
   "lastOpenFiles": [
+    "Development/Migrations.md",
     "Security/ClamAV.md",
     "Security/Security.md",
     "Synthesis/EpubSyntesis.md",
@@ -103,7 +105,6 @@
     "Synthesis/PlainTextSynthesis.md",
     "Synthesis/Synthesis.md",
     "TextExtraction/CleanPdfTextExtraction.md",
-    "TextExtraction/OCREngine.md",
-    "TextExtraction/TextExtraction.md"
+    "TextExtraction/OCREngine.md"
   ]
 }
