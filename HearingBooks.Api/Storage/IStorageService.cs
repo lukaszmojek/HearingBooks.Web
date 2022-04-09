@@ -8,7 +8,7 @@ public interface IStorageService
 {
     Task<bool> ContainerExistsAsync(string containerName);
     
-    BlobContainerClient GetBlobContainerClient(string containerName);
+    Task<BlobContainerClient> GetBlobContainerClientAsync(string containerName);
     
     Task<BlobContainerClient> CreateContainerAsync(string containerName);
     

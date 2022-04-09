@@ -38,21 +38,15 @@ public class StorageService : IStorageService
         return false;
     }
 
-    public BlobContainerClient GetBlobContainerClient(string containerName)
+    public async Task<BlobContainerClient> GetBlobContainerClientAsync(string containerName)
     {
-        return _blobServiceClient.GetBlobContainerClient(containerName);
+        return await ContainerExistsAsync(containerName)
+            ? _blobServiceClient.GetBlobContainerClient(containerName)
+            : await CreateContainerAsync(containerName);
     }
 
     public async Task<BlobContainerClient> CreateContainerAsync(string containerName)
     {
-        // Create a BlobServiceClient object which will be used to create a container client
-        // BlobServiceClient blobServiceClient =
-        //     new BlobServiceClient(_configuration[ConfigurationKeys.AzureStorageConnectionString]);
-
-        //Create a unique name for the container
-        // containerName = "quickstartblobs" + Guid.NewGuid().ToString();
-
-        // Create the container and return a container client object
         var containerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
 
         return containerClient;

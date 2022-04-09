@@ -15,20 +15,20 @@ public class SpeechService : ISpeechService
         _storage = storage;
     }
 
-    public async Task<(bool, string)> SynthesizeAudioAsync(string requestId, string textToSynthesize)
+    public async Task<string> SynthesizeAudioAsync(string containerName, string requestId, string textToSynthesize)
     {
         try
         {
             var fileName = $"{requestId}.wav";
             var localPath = await CreateSynthesis(fileName, textToSynthesize);
-            // var localPath = $"./{fileName}";
-            await UploadSynthesis(fileName, localPath);
+
+            await UploadSynthesis(containerName, fileName, localPath);
             
-            return (true, localPath);
+            return localPath;
         }
         catch (Exception e)
         {
-            return (false, "");
+            return "";
         }
     }
     
@@ -38,6 +38,7 @@ public class SpeechService : ISpeechService
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
             _configuration[ConfigurationKeys.TextToSpeechRegion]
         );
+        
         // Note: if only language is set, the default voice of that language is chosen.
         config.SpeechSynthesisLanguage = "pl-PL"; // For example, "de-DE"
         // The voice setting will overwrite the language setting.
@@ -55,14 +56,9 @@ public class SpeechService : ISpeechService
         return localPath;
     }
 
-    private async Task UploadSynthesis(string fileName, string localPath)
+    private async Task UploadSynthesis(string containerName, string fileName, string localPath)
     {
-        var containerName = "test-001";
-        var containerExists = await _storage.ContainerExistsAsync(containerName);
-        
-        var blobContainerClient =  containerExists
-            ? _storage.GetBlobContainerClient(containerName)
-            : await _storage.CreateContainerAsync(containerName);
+        var blobContainerClient = await _storage.GetBlobContainerClientAsync(containerName);
         
         await _storage.UploadBlobAsync(blobContainerClient, fileName, localPath);
     }
