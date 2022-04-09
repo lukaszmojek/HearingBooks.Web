@@ -7,6 +7,6 @@ import { ISynthesisVoice } from './models';
 export class SynthesisVoicePipe implements PipeTransform {
 
   transform(value: ISynthesisVoice, ...args: unknown[]): unknown {
-    return `${value.name} - ${value.gender}`;
+    return `${value.name} - ${value.type}`;
   }
 }

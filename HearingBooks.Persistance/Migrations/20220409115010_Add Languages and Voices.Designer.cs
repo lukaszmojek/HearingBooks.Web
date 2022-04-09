@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HearingBooks.Persistance.Migrations
 {
-    [DbContext(typeof(HearingBooksDatabaseContext))]
+    [DbContext(typeof(HearingBooksDbContext))]
     [Migration("20220409115010_Add Languages and Voices")]
     partial class AddLanguagesandVoices
     {

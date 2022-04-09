@@ -7,7 +7,7 @@ import { SimpleErrorStateMatcher } from 'src/app/shared/login/simple-error-state
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
 import { TextSynthesisRequest, TextSynthesisService } from '../text-synthesis.service'
-import { ISynthesisLanguage, ISynthesisVoice, SynthesisVoiceGender } from './models'
+import { ISynthesisLanguage, ISynthesisVoice } from './models'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -38,25 +38,14 @@ export class RequestTextSynthesisComponent
   })
 
   //TODO: Move languages and voices to DB
-  availableLanguages: ISynthesisLanguage[] = [
-    {
-      symbol: 'PL',
-      name: 'Polski'
-    },
-    {
-      symbol: 'EN',
-      name: 'English'
-    },
-  ]
-
-  availableVoices: ISynthesisVoice[] = [
-    {
-      name: 'Krysia',
-      gender: SynthesisVoiceGender.Woman
-    }
-  ]
+  availableLanguages: ISynthesisLanguage[]
 
   matcher = new SimpleErrorStateMatcher()
+
+
+  get availableVoices(): ISynthesisVoice[] {
+    return []
+  }
 
   get textToSynthesizeLength(): string {
     return `${this.textToSynthesizeFormControl.value.length}/${this.textToSynthesizeMaxCharacterCount}`

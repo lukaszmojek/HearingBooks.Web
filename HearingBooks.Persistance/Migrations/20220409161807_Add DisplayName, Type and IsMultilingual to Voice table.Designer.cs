@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HearingBooks.Persistance.Migrations
 {
     [DbContext(typeof(HearingBooksDbContext))]
-    [Migration("20220409074124_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220409161807_Add DisplayName, Type and IsMultilingual to Voice table")]
+    partial class AddDisplayNameTypeandIsMultilingualtoVoicetable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,25 @@ namespace HearingBooks.Persistance.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("HearingBooks.Domain.Entities.Language", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+                });
 
             modelBuilder.Entity("HearingBooks.Domain.Entities.TextSynthesis", b =>
                 {
@@ -81,6 +100,36 @@ namespace HearingBooks.Persistance.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("HearingBooks.Domain.Entities.Voice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsMultilingual")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("LanguageId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("Voices");
+                });
+
             modelBuilder.Entity("HearingBooks.Domain.Entities.TextSynthesis", b =>
                 {
                     b.OwnsOne("HearingBooks.Domain.ValueObjects.TextSynthesis.TextSynthesisData", "TextSynthesisData", b1 =>
@@ -98,6 +147,18 @@ namespace HearingBooks.Persistance.Migrations
 
                     b.Navigation("TextSynthesisData")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HearingBooks.Domain.Entities.Voice", b =>
+                {
+                    b.HasOne("HearingBooks.Domain.Entities.Language", null)
+                        .WithMany("Voices")
+                        .HasForeignKey("LanguageId");
+                });
+
+            modelBuilder.Entity("HearingBooks.Domain.Entities.Language", b =>
+                {
+                    b.Navigation("Voices");
                 });
 #pragma warning restore 612, 618
         }

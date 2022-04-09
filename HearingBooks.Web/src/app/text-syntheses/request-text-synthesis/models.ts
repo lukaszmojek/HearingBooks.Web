@@ -5,10 +5,13 @@ export interface ISynthesisLanguage {
 
 export interface ISynthesisVoice {
   name: string
-  gender: SynthesisVoiceGender
+  displayName: string
+  type: SynthesisVoiceType
+  isMultilingual: boolean
 }
 
-export enum SynthesisVoiceGender {
-  Man = 'Man',
-  Woman = 'Woman'
+export enum SynthesisVoiceType {
+  Male,
+  Female,
+  Kid
 }

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HearingBooks.Persistance.Migrations
 {
-    [DbContext(typeof(HearingBooksDatabaseContext))]
+    [DbContext(typeof(HearingBooksDbContext))]
     partial class HearingBooksDatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -104,12 +104,22 @@ namespace HearingBooks.Persistance.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsMultilingual")
+                        .HasColumnType("boolean");
+
                     b.Property<Guid?>("LanguageId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
