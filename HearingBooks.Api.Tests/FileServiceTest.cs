@@ -25,7 +25,7 @@ public class FileServiceTest
     {
         const string content = "some example content as plain text";
         var fileService = CreateFileService(); 
-        var writer = fileService.CreateTextFile(_fileName);
+        (var writer, _) = fileService.CreateTextFile(_fileName);
         
         await fileService.WriteToTextFileAsync(writer, content);
         var fileContent = await File.ReadAllTextAsync(_filePath);
