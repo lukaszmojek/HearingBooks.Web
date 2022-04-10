@@ -16,6 +16,7 @@ import { ProfileDetailsComponent } from './users/profile/profile-details/profile
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CardComponent } from './card/card.component'
 import { LoginComponent } from './login/login.component'
+import { LanguagesModule } from '../languages/languages.module'
 
 const components = [
   MainAppComponent,
@@ -35,6 +36,7 @@ const modules = [
   RouterModule,
   TranslateModule,
   AuthModule,
+  LanguagesModule,
   UIModule,
   PreferencesModule,
   FormsModule,
