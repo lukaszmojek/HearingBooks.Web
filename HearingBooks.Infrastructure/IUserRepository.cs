@@ -4,6 +4,6 @@ namespace Infrastructure.Repositories;
 
 public interface IUserRepository
 {
-    Task<User> GetUserById(Guid userId);
-    User GetUserByCredentials(string email, string password);
+    Task<User> GetUserByIdAsync(Guid userId);
+    Task<User> GetUserByCredentials(string email, string password);
 }

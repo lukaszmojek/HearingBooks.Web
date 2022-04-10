@@ -1,28 +1,23 @@
 ﻿using HearingBooks.Domain.Entities;
-using HearingBooks.Domain.ValueObjects.User;
+using HearingBooks.Persistance;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private IList<User> _users = new List<User>
+    private readonly HearingBooksDbContext _dbContext;
+    private readonly DbSet<User> _dbSet;
+    
+    public UserRepository(HearingBooksDbContext dbContext)
     {
-        new ()
-        {
-            Id = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-            FirstName = "Łukasz",
-            LastName = "Mojek",
-            Email = "lukasz@hb.com",
-            UserName = "shaggy",
-            Password = "zaq123",
-            Type = UserType.HearingBooks,
-            IsActive = true
-        }
-    };
+        _dbContext = dbContext;
+        _dbSet = _dbContext.Set<User>();
+    }
 
-    public async Task<User> GetUserById(Guid userId)
+    public async Task<User> GetUserByIdAsync(Guid userId)
     {
-        var user = _users.FirstOrDefault(x => x.Id == userId);
+        var user = _dbSet.FirstOrDefault(x => x.Id == userId);
 
         if (user == null)
         {
@@ -32,14 +27,10 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public Task<User> GetUserById(int userId)
+    public async Task<User> GetUserByCredentials(string email, string password)
     {
-        throw new NotImplementedException();
-    }
-    
-    public User GetUserByCredentials(string email, string password)
-    {
-        var user = _users.SingleOrDefault(x => x.Email == email && x.Password == password);
+        var user = await _dbSet.SingleOrDefaultAsync(x => 
+            x.Email == email && x.Password == password);
 
         return user;
     }

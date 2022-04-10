@@ -58,7 +58,7 @@ public partial class JwtMiddleware
             var jwtToken = (JwtSecurityToken) validatedToken;
             var userId = Guid.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
-            context.Items["User"] = await userRepository.GetUserById(userId);
+            context.Items["User"] = await userRepository.GetUserByIdAsync(userId);
         }
         catch (Exception e)
         {
