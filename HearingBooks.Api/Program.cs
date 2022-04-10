@@ -1,12 +1,13 @@
 using System.Reflection;
 using HearingBooks.Api.Auth;
 using HearingBooks.Api.Configuration;
+using HearingBooks.Api.Languages;
 using HearingBooks.Api.Seed;
 using HearingBooks.Api.Speech;
 using HearingBooks.Api.Storage;
 using HearingBooks.Api.Syntheses;
+using HearingBooks.Infrastructure.Repositories;
 using HearingBooks.Persistance;
-using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -66,8 +67,9 @@ builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<TextSynthesisService, TextSynthesisService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILanguageRepository, LanguageRepository>();
 
-
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
@@ -93,8 +95,23 @@ app.UseCors(x =>
 
 app.UseMiddleware<JwtMiddleware>();
 
+//TODO: Move that to middleware
+// app.Use(async (ctx, next) =>
+// {
+//     try
+//     {
+//         await next();
+//     }
+//     catch(BadHttpRequestException ex)
+//     {
+//         ctx.Response.StatusCode = ex.StatusCode;
+//         await ctx.Response.WriteAsync(ex.Message);
+//     }
+// });
+
 app.MapAuthEndpoints();
 app.MapSynthesesEndpoints();
+app.MapLanguagesEndpoints();
 app.MapSeedEndpoints();
 
 app.Run();
