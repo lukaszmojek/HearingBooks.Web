@@ -44,6 +44,13 @@ public static class SeedEndpointExtensions
                         Type = UserType.PayAsYouGo,
                     }
                 };
+
+                var usersToDelete = context.Users
+                    .AsEnumerable()
+                    .Where(entity => users.Any(user => user.Email == entity.Email));
+                
+                context.Users.RemoveRange(usersToDelete);
+                await context.SaveChangesAsync();
                 
                 await context.Users.AddRangeAsync(users);
                 await context.SaveChangesAsync();
@@ -55,105 +62,136 @@ public static class SeedEndpointExtensions
             $"/{_baseEndpointGroupRoute}/languages-and-voices",
             async ([FromServices] HearingBooksDbContext context) =>
             {
+                var enVoices = new[]
+                {
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "pl-PL-AgnieszkaNeural",
+                        DisplayName = "Amber",
+                        Type = VoiceType.Female,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "pl-PL-ZofiaNeural",
+                        DisplayName = "Zofia",
+                        Type = VoiceType.Female,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "pl-PL-MarekNeural",
+                        DisplayName = "Marek",
+                        Type = VoiceType.Male,
+                        IsMultilingual = false
+                    },
+                };
+
+                var plVoices = new[]
+                {
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-AmberNeural",
+                        DisplayName = "Amber",
+                        Type = VoiceType.Female,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-AriaNeural",
+                        DisplayName = "Aria",
+                        Type = VoiceType.Female,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-JennyMultilingualNeural",
+                        DisplayName = "Jenny",
+                        Type = VoiceType.Female,
+                        IsMultilingual = true
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-AnaNeural",
+                        DisplayName = "Ana",
+                        Type = VoiceType.Kid,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-BrandonNeural",
+                        DisplayName = "Brandon",
+                        Type = VoiceType.Male,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-ChristopherNeural",
+                        DisplayName = "Christopher",
+                        Type = VoiceType.Male,
+                        IsMultilingual = false
+                    },
+                    new Voice
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "en-US-JacobNeural",
+                        DisplayName = "Jacob",
+                        Type = VoiceType.Male,
+                        IsMultilingual = false
+                    },
+                };
+                
                 var languages = new List<Language>
                 {
                     new() {
                         Id = Guid.NewGuid(),
                         Name = "Polish",
                         Symbol = "pl-PL",
-                        Voices = new []
-                        {
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "pl-PL-AgnieszkaNeural",
-                                DisplayName = "Amber",
-                                Type = VoiceType.Female,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "pl-PL-ZofiaNeural",
-                                DisplayName = "Zofia",
-                                Type = VoiceType.Female,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "pl-PL-MarekNeural",
-                                DisplayName = "Marek",
-                                Type = VoiceType.Male,
-                                IsMultilingual = false
-                            },
-                        }
+                        Voices = enVoices
                     },
                     new() {
                         Id = Guid.NewGuid(),
                         Name = "English",
                         Symbol = "en-US",
-                        Voices = new []
-                        {
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-AmberNeural",
-                                DisplayName = "Amber",
-                                Type = VoiceType.Female,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-AriaNeural",
-                                DisplayName = "Aria",
-                                Type = VoiceType.Female,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-JennyMultilingualNeural",
-                                DisplayName = "Jenny",
-                                Type = VoiceType.Female,
-                                IsMultilingual = true
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-AnaNeural",
-                                DisplayName = "Ana",
-                                Type = VoiceType.Kid,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-BrandonNeural",
-                                DisplayName = "Brandon",
-                                Type = VoiceType.Male,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-ChristopherNeural",
-                                DisplayName = "Christopher",
-                                Type = VoiceType.Male,
-                                IsMultilingual = false
-                            },
-                            new Voice
-                            {
-                                Id = Guid.NewGuid(),
-                                Name = "en-US-JacobNeural",
-                                DisplayName = "Jacob",
-                                Type = VoiceType.Male,
-                                IsMultilingual = false
-                            },
-                        }
+                        Voices = plVoices
                     }
                 };
+
+                var languagesToDelete = context.Languages
+                    .AsEnumerable()
+                    .Where(
+                        entity =>
+                            languages.Any(
+                                language =>
+                                    language.Name == entity.Name &&
+                                    language.Symbol == entity.Symbol
+                            )
+                    );
+                
+                var voicesToDelete = context.Voices
+                    .AsEnumerable()
+                    .Where(
+                        entity =>
+                            enVoices.Concat(plVoices)
+                                .Any(
+                                    voice =>
+                                        voice.Name == entity.Name &&
+                                        voice.Type == entity.Type
+                                )
+                    );
+
+                context.Voices.RemoveRange(voicesToDelete);
+                context.Languages.RemoveRange(languagesToDelete);
+                await context.SaveChangesAsync();
                 
                 await context.Languages.AddRangeAsync(languages);
                 await context.SaveChangesAsync();
