@@ -1,4 +1,5 @@
 using HearingBooks.Domain.Entities;
+using HearingBooks.Domain.ValueObjects.User;
 using HearingBooks.Persistance;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,47 @@ public static class SeedEndpointExtensions
     public static void MapSeedEndpoints(this WebApplication app)
     {
         app.MapGet(
-            $"/{_baseEndpointGroupRoute}",
+            $"/{_baseEndpointGroupRoute}/users",
+            async ([FromServices] HearingBooksDbContext context) =>
+            {
+                var users = new List<User>
+                {
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstName = "Łukasz",
+                        LastName = "Mojek",
+                        UserName = "shaggy",
+                        Email = "lukasz@hb.com",
+                        Password = "zaq123", 
+                        EmailNotificationsEnabled = true,
+                        EmailIsUsername = false,
+                        IsActive = true,
+                        Type = UserType.HearingBooks,
+                    },
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstName = "Łukasz",
+                        LastName = "Mojek",
+                        UserName = "user",
+                        Email = "user@email.com",
+                        Password = "zaq123", 
+                        EmailNotificationsEnabled = true,
+                        EmailIsUsername = true,
+                        IsActive = true,
+                        Type = UserType.PayAsYouGo,
+                    }
+                };
+                
+                await context.Users.AddRangeAsync(users);
+                await context.SaveChangesAsync();
+                
+                return Results.Ok();
+            });//.RequireAuthorization("hearing-books");
+        
+        app.MapGet(
+            $"/{_baseEndpointGroupRoute}/languages-and-voices",
             async ([FromServices] HearingBooksDbContext context) =>
             {
                 var languages = new List<Language>
@@ -118,6 +159,6 @@ public static class SeedEndpointExtensions
                 await context.SaveChangesAsync();
                 
                 return Results.Ok();
-            });
+            });//.RequireAuthorization("hearing-books");
     }
 }

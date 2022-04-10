@@ -12,8 +12,10 @@ public class User : Entity<Guid>
     public bool IsActive { get; set; }
     public string UserName { get; set; }
     public string Email { get; set; }
+    //TODO: Change Password to password hash
     public string Password { get; set; }
     public bool EmailNotificationsEnabled { get; set; }
+    public bool EmailIsUsername { get; set; }
 
     public User()
     {
