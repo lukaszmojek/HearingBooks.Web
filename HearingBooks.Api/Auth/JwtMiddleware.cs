@@ -1,7 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using HearingBooks.Api.Configuration;
-using Infrastructure.Repositories;
+using HearingBooks.Infrastructure.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
 #pragma warning disable CS1591

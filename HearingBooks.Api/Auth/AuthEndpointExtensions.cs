@@ -1,7 +1,7 @@
 using Api.Factories;
 using Contracts.Responses;
 using HearingBooks.Api.Syntheses;
-using Infrastructure.Repositories;
+using HearingBooks.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HearingBooks.Api.Auth;
@@ -31,7 +31,7 @@ public static class AuthEndpointExtensions
 					// 	.SingleOrDefaultAsync(u => u.Email.Equals(request.Email)
 					// 	                           && u.Password.Equals(request.Password));
 
-					var user = userRepository.GetUserByCredentials(request.Email, request.Password);
+					var user = await userRepository.GetUserByCredentialsAsync(request.Email, request.Password);
 
 					if (user == null)
 					{

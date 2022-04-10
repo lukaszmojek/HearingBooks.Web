@@ -2,7 +2,7 @@
 using HearingBooks.Persistance;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace HearingBooks.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
@@ -27,7 +27,7 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public async Task<User> GetUserByCredentials(string email, string password)
+    public async Task<User> GetUserByCredentialsAsync(string email, string password)
     {
         var user = await _dbSet.SingleOrDefaultAsync(x => 
             x.Email == email && x.Password == password);
