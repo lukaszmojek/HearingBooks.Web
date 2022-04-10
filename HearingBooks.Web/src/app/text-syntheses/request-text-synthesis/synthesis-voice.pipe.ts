@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISynthesisVoice } from './models';
+import { ISynthesisVoice } from '../../languages/models';
 
 @Pipe({
   name: 'synthesisVoice'

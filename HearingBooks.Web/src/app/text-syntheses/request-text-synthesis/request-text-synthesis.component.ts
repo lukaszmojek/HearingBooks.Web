@@ -7,7 +7,8 @@ import { SimpleErrorStateMatcher } from 'src/app/shared/login/simple-error-state
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
 import { TextSynthesisRequest, TextSynthesisService } from '../text-synthesis.service'
-import { ISynthesisLanguage, ISynthesisVoice } from './models'
+import { ISynthesisLanguage, ISynthesisVoice } from '../../languages/models'
+import { LanguagesActions } from 'src/app/languages/languages.actions'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -57,6 +58,7 @@ export class RequestTextSynthesisComponent
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService, private textSynthesisService: TextSynthesisService) {
     super(store$, acrylic)
+    this.store$.dispatch(LanguagesActions.loadLangaugesWithVoices())
   }
 
   requestTextSynthesis(): void {

@@ -8,4 +8,7 @@ export const ApiEndpoints = {
     getAll: `${environment.baseApiUrl}/text-syntheses`,
     request: `${environment.baseApiUrl}/text-syntheses`,
   },
+  languages: {
+    getWithVoices: `${environment.baseApiUrl}/languages`,
+  }
 }
