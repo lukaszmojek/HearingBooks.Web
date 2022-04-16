@@ -15,7 +15,7 @@ public class SpeechService : ISpeechService
         _storage = storage;
     }
 
-    public async Task<string> SynthesizeAudioAsync(string containerName, string requestId, string textToSynthesize)
+    public async Task<(string, string)> SynthesizeAudioAsync(string containerName, string requestId, string textToSynthesize)
     {
         try
         {
@@ -24,11 +24,12 @@ public class SpeechService : ISpeechService
 
             await UploadSynthesis(containerName, fileName, localPath);
             
-            return localPath;
+            return (localPath, fileName);
         }
         catch (Exception e)
         {
-            return "";
+            //TODO: Add logging
+            throw;
         }
     }
     
