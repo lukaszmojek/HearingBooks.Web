@@ -45,6 +45,7 @@ public class TextSynthesisService
                 Status = TextSynthesisStatus.Submitted,
                 // TextSynthesisData = textSynthesisData
                 Title = request.Title,
+                SynthesisText = request.TextToSynthesize,
                 BlobContainerName = containerName,
                 BlobName = synthesisFileName,
                 Voice = request.Voice,
