@@ -3,13 +3,14 @@
   $basis: auto,
   $shrink: 1fr,
   $grow: 1fr,
-  $justify-content: center,
-  $align-items: center
+  $align-items: center,
+  $align-content: center
 ) {
   display: flex;
+  flex-basis: $basis;
   flex-direction: $direction;
   flex-shrink: $shrink;
   flex-grow: $grow;
-  justify-content: $justify-content;
   align-items: $align-items;
+  align-content: $align-content;
 }

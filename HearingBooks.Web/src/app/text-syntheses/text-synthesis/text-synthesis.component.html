@@ -4,18 +4,28 @@
   [ngClass]="{ border: isMaterial }"
 >
   <mat-expansion-panel-header>
-    <mat-panel-title>
+    <div class="header-title">
       {{ textSynthesis.title }}
-    </mat-panel-title>
+    </div>
 
-    <mat-panel-description>
-      {{ textSynthesis | textSynthesis$ | async }}
-    </mat-panel-description>
+    <div class="header-synthesis-text">
+      {{ textSynthesis.synthesisText }}
+    </div>
+
+    <div class="header-language">
+      {{ textSynthesis.language }}
+    </div>
+
+    <div class="header-voice">
+      {{ textSynthesis.voice }}
+    </div>
   </mat-expansion-panel-header>
 
   <mat-divider></mat-divider>
 
-  <div class="content">
-    {{ textSynthesis.content }}
+  <div class="details">
+    <div class="synthesis-text">
+      {{ textSynthesis.synthesisText }}
+    </div>
   </div>
 </mat-expansion-panel>

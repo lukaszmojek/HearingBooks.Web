@@ -1,11 +1,13 @@
 export interface ITextSynthesis {
   title: string
-  content: string
+  synthesisText: string
   characterCount: number
   price: string
   requestedOn: Date
   synthesisLength: string
   synthesisFileUrl: string
+  language: string
+  voice: string
 }
 
 export interface ITextSynthesisRequest {
