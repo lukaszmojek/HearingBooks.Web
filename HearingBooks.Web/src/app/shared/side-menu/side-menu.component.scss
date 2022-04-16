@@ -1,0 +1,25 @@
+@use '../../../styles/bootstrap.scss';
+
+$menu-container-size: bootstrap.$dimensions-side-nav-menu-width;
+
+:host {
+  @include bootstrap.flex-set;
+
+  .menu-container {
+    width: $menu-container-size;
+    @include bootstrap.flex-set;
+  }
+
+  .menu-item {
+    display: block;
+    width: calc(
+      100% - bootstrap.$spacing-padding-s - bootstrap.$spacing-margin-l
+    );
+    padding: bootstrap.$spacing-padding-s;
+    margin-top: bootstrap.$spacing-margin-l;
+  }
+
+  .active {
+    background-color: bootstrap.$colors-active-item-accent;
+  }
+}

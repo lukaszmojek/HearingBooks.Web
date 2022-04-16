@@ -1,0 +1,21 @@
+@use '../../../styles/bootstrap.scss';
+
+:host {
+  @include bootstrap.dimensions-host;
+  @include bootstrap.flex-set;
+  height: 40%;
+
+  .login-form {
+    padding: bootstrap.$spacing-margin-xl;
+
+    .field {
+      width: 60%;
+      max-width: 600px;
+      margin-bottom: bootstrap.$spacing-margin-xl;
+    }
+  }
+
+  .register-button {
+    margin-left: bootstrap.$spacing-margin-xl;
+  }
+}

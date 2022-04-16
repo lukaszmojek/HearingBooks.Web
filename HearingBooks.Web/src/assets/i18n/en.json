@@ -1,0 +1,74 @@
+{
+  "Login": {
+    "Actions": {
+      "Login": "Login",
+      "Registration": "Registration"
+    },
+    "Fields": {
+      "Email": {
+        "Errors": {
+          "Incorrect": "Enter valid email address!",
+          "Required": "Email is required!"
+        },
+        "Label": "Email"
+      },
+      "Password": {
+        "Errors": {
+          "Required": "Password is required!"
+        },
+        "Label": "Password"
+      }
+    },
+    "Title": "Login"
+  },
+  "PayAsYouGo": {
+    "RequestTextSynthesis": {
+      "Actions": {
+        "Request": "Request"
+      },
+      "Fields": {
+        "Language": {
+          "Label": "Language"
+        },
+        "TextToSynthesize": {
+          "Label": "Text to synthesize",
+          "Errors": {
+            "TooLong": "Text to synthesize is too long!"
+          }
+        },
+        "Title": {
+          "Label": "Title"
+        },
+        "Voice": {
+          "Label": "Voice"
+        }
+      },
+      "Title": "Request Text Synthesis"
+    },
+    "TextSyntheses": {
+      "CharacterCount": "Character count",
+      "Price": "Price",
+      "Title": "Text Syntheses"
+    }
+  },
+  "Profile": {
+    "Preferences": {
+      "Acrylic": "Acrylic UI",
+      "Language": "Language",
+      "Title": "Preferences"
+    },
+    "Title": "Your profile"
+  },
+  "SideMenu": {
+    "Dashboard": "Dashboard",
+    "Profile": "Profile",
+    "RequestTextSynthesis": "Request Text Synthesis",
+    "TextSyntheses": "Text Syntheses"
+  },
+  "Toolbar": {
+    "LoggedUser": {
+      "Hello": "Hello",
+      "Logout": "Logout"
+    }
+  }
+}

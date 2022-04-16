@@ -1,0 +1,19 @@
+<hb-toolbar></hb-toolbar>
+
+<mat-drawer-container
+  class="container max-width max-height"
+  [hasBackdrop]="false"
+>
+  <mat-drawer
+    #drawer
+    mode="over"
+    [ngClass]="{ acrylic: isAcrylicEnabled }"
+    [opened]="isMenuOpened"
+  >
+    <hb-side-menu></hb-side-menu>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

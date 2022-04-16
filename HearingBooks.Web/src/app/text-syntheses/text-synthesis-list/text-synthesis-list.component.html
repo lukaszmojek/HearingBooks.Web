@@ -1,0 +1,17 @@
+<hb-card
+  [titleTranslationKey]="titleTranslationKey"
+  [type]="mainCardType"
+  [divider]="divider"
+  [elevation]="elevation"
+  [border]="border"
+>
+  <div class="flex-column">
+    <mat-accordion multi>
+      <hb-text-synthesis
+        *ngFor="let textSynthesis of textSyntheses$ | async"
+        [textSynthesis]="textSynthesis"
+      >
+      </hb-text-synthesis>
+    </mat-accordion>
+  </div>
+</hb-card>

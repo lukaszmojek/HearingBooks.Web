@@ -1,0 +1,11 @@
+<div class="menu-container">
+  <button
+    *ngFor="let menuItem of menuItems"
+    mat-flat-button
+    color="accent"
+    class="menu-item"
+    [routerLink]="menuItem.routerLink"
+    routerLinkActive="active">
+    {{ menuItem.translationKey | translate }}
+  </button>
+</div>

@@ -1,0 +1,26 @@
+{
+  "Profile": {
+    "Preferences": {
+      "Acrylic": "Akrylowe UI",
+      "Language": "Język",
+      "Title": "Preferencje"
+    },
+    "Title": "Twój profil"
+  },
+  "SideMenu": {
+    "Dashboard": "Pulpit",
+    "Profile": "Profil",
+    "TextSyntheses": "Syntezy Tekstowe"
+  },
+  "TextSyntheses": {
+    "CharacterCount": "Ilość znaków",
+    "Price": "Cena",
+    "Title": "Syntezy Tekstowe"
+  },
+  "Toolbar": {
+    "LoggedUser": {
+      "Hello": "Witaj",
+      "Logout": "Wyloguj"
+    }
+  }
+}
