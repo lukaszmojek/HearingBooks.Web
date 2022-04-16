@@ -11,4 +11,6 @@ public class TextSynthesis : Entity<Guid>
 	public string Title { get; set; }
 	public string BlobContainerName { get; set; }
 	public string BlobName { get; set; }
+	public string Language { get; set; }
+	public string Voice { get; set; }
 }

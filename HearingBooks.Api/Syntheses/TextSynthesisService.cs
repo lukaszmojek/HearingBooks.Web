@@ -24,9 +24,9 @@ public class TextSynthesisService
         var containerName = request.RequestingUserId.ToString();
 
         var requestId = Guid.NewGuid();
-        
+
         string synthesisFilePath = "";
-        string synthesisFileName = "";
+        string synthesisFileName;
         
         try
         {
@@ -46,7 +46,9 @@ public class TextSynthesisService
                 // TextSynthesisData = textSynthesisData
                 Title = request.Title,
                 BlobContainerName = containerName,
-                BlobName = synthesisFileName
+                BlobName = synthesisFileName,
+                Voice = request.Voice,
+                Language = request.Language
             };
 
             await _textSynthesisRepository.Insert(textSynthesis);
