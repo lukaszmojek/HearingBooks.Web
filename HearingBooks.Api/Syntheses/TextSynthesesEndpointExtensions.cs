@@ -1,4 +1,5 @@
 using HearingBooks.Domain.Entities;
+using HearingBooks.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HearingBooks.Api.Syntheses;
@@ -11,11 +12,13 @@ public static class TextSynthesesEndpointExtensions
     {
         app.MapGet(
             $"/{_baseEndpointGroupRoute}",
-            async () =>
+            async (HttpContext context, ITextSynthesisRepository textSynthesisRepository) =>
             {
-                var syntheses = new List<TextSynthesisDto>();
+                var requestingUser = (User) context.Items["User"];
                 
-                return Task.FromResult(syntheses);
+                var syntheses = await textSynthesisRepository.GetAllForUser(requestingUser.Id);
+                
+                return Results.Ok(syntheses);
             });
         
         app.MapPost(
