@@ -6,12 +6,14 @@ export const featureName = 'languages'
 
 const initialState: ILanguagesState = {
   languages: [],
-  isActionInProgress: false
+  isActionInProgress: false,
+  selectedLanguage: null
 }
 
 export interface ILanguagesState {
   languages: ISynthesisLanguage[],
-  isActionInProgress: boolean
+  isActionInProgress: boolean,
+  selectedLanguage: ISynthesisLanguage | null
 }
 
 const reducer = createReducer(
@@ -28,6 +30,10 @@ const reducer = createReducer(
   on(LanguagesActions.loadLangaugesWithVoicesFailed, state => ({
     ...state,
     isActionInProgress: false,
+  })),
+  on(LanguagesActions.languageSelected, (state, { language }) => ({
+    ...state,
+    selectedLanguage: language,
   })),
 )
 

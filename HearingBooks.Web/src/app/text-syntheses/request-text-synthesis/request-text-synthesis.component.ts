@@ -9,6 +9,8 @@ import { IApplicationState } from 'src/app/shared/state'
 import { TextSynthesisRequest, TextSynthesisService } from '../text-synthesis.service'
 import { ISynthesisLanguage, ISynthesisVoice } from '../../languages/models'
 import { LanguagesActions } from 'src/app/languages/languages.actions'
+import { Observable } from 'rxjs'
+import { selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -39,14 +41,12 @@ export class RequestTextSynthesisComponent
   })
 
   //TODO: Move languages and voices to DB
-  availableLanguages: ISynthesisLanguage[]
+  availableLanguages$: Observable<ISynthesisLanguage[]>
+  availableVoices$: Observable<ISynthesisVoice[]>
+
+  selectedLanguage$: ISynthesisLanguage
 
   matcher = new SimpleErrorStateMatcher()
-
-
-  get availableVoices(): ISynthesisVoice[] {
-    return []
-  }
 
   get textToSynthesizeLength(): string {
     return `${this.textToSynthesizeFormControl.value.length}/${this.textToSynthesizeMaxCharacterCount}`
@@ -59,6 +59,9 @@ export class RequestTextSynthesisComponent
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService, private textSynthesisService: TextSynthesisService) {
     super(store$, acrylic)
     this.store$.dispatch(LanguagesActions.loadLangaugesWithVoices())
+
+    this.availableLanguages$ = this.safeSelect$(selectLanguages)
+    this.availableVoices$ = this.safeSelect$(selectVoicesFromSelectedLanguage)
   }
 
   requestTextSynthesis(): void {
@@ -72,5 +75,9 @@ export class RequestTextSynthesisComponent
     this.textSynthesisService.requestTextSynthesis$(textSyntesisRequest).subscribe(result => {
       console.log(result)
     })
+  }
+
+  updateSelectedLanguage(selectedLanguage: ISynthesisLanguage): void {
+    this.store$.dispatch(LanguagesActions.languageSelected({ language: selectedLanguage }))
   }
 }

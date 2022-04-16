@@ -30,9 +30,12 @@
           }}
         </mat-label>
 
-        <mat-select [formControl]="languageFormControl">
+        <mat-select
+          [formControl]="languageFormControl"
+          (selectionChange)="updateSelectedLanguage($event.value)"
+        >
           <mat-option
-            *ngFor="let language of availableLanguages"
+            *ngFor="let language of availableLanguages$ | async"
             [value]="language"
           >
             {{ language | synthesisLanguage }}
@@ -47,7 +50,7 @@
 
         <mat-select [formControl]="voiceFormControl">
           <mat-option
-            *ngFor="let voice of availableVoices"
+            *ngFor="let voice of availableVoices$ | async"
             [value]="voice"
           >
             {{ voice | synthesisVoice }}

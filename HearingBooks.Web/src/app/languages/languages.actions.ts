@@ -14,8 +14,14 @@ const loadLangaugesWithVoicesFailed = createAction(
   '[Langauges] Load languages with voices FAILED'
 )
 
+const languageSelected = createAction(
+  '[Langauges] Language for synthesis selected',
+  props<{ language: ISynthesisLanguage }>()
+)
+
 export const LanguagesActions = {
   loadLangaugesWithVoices,
   loadLangaugesWithVoicesSucceded,
-  loadLangaugesWithVoicesFailed
+  loadLangaugesWithVoicesFailed,
+  languageSelected
 }
