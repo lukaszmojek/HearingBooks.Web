@@ -68,8 +68,8 @@ export class RequestTextSynthesisComponent
     const textSyntesisRequest = {
       title: this.titleFormControl.value,
       textToSynthesize: this.textToSynthesizeFormControl.value,
-      // language: this.languageFormControl.value,
-      // voice: this.voiceFormControl.value,
+      language: (this.languageFormControl.value as ISynthesisLanguage).symbol,
+      voice: (this.voiceFormControl.value as ISynthesisVoice).name,
     } as TextSynthesisRequest
 
     this.textSynthesisService.requestTextSynthesis$(textSyntesisRequest).subscribe(result => {

@@ -1,4 +1,5 @@
 using HearingBooks.Api.Storage;
+using HearingBooks.Api.Syntheses;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -15,12 +16,12 @@ public class SpeechService : ISpeechService
         _storage = storage;
     }
 
-    public async Task<(string, string)> SynthesizeAudioAsync(string containerName, string requestId, string textToSynthesize)
+    public async Task<(string, string)> SynthesizeAudioAsync(string containerName, string requestId, TextSyntehsisRequest textSyntehsisRequest)
     {
         try
         {
             var fileName = $"{requestId}.wav";
-            var localPath = await CreateSynthesis(fileName, textToSynthesize);
+            var localPath = await CreateSynthesis(fileName, textSyntehsisRequest);
 
             await UploadSynthesis(containerName, fileName, localPath);
             
@@ -33,7 +34,7 @@ public class SpeechService : ISpeechService
         }
     }
     
-    private async Task<string> CreateSynthesis(string fileName, string textToSynthesize)
+    private async Task<string> CreateSynthesis(string fileName, TextSyntehsisRequest textSyntehsisRequest)
     {
         var config = SpeechConfig.FromSubscription(
             _configuration[ConfigurationKeys.TextToSpeechSubscriptionKey],
@@ -41,10 +42,10 @@ public class SpeechService : ISpeechService
         );
         
         // Note: if only language is set, the default voice of that language is chosen.
-        config.SpeechSynthesisLanguage = "pl-PL"; // For example, "de-DE"
+        config.SpeechSynthesisLanguage = textSyntehsisRequest.Language; // For example, "de-DE"
         // The voice setting will overwrite the language setting.
         // The voice setting will not overwrite the voice element in input SSML.
-        config.SpeechSynthesisVoiceName = "pl-PL-AgnieszkaNeural";
+        config.SpeechSynthesisVoiceName = textSyntehsisRequest.Voice;
 
         // Create AudioConfig for to let the application know how to handle the synthesis
         var localPath = $"./{fileName}";
@@ -52,7 +53,7 @@ public class SpeechService : ISpeechService
         // Actual synthetizer instance for TTS
         using var synthesizer = new SpeechSynthesizer(config, audioConfig);
 
-        await synthesizer.SpeakTextAsync(textToSynthesize);
+        await synthesizer.SpeakTextAsync(textSyntehsisRequest.TextToSynthesize);
 
         return localPath;
     }

@@ -33,7 +33,7 @@ public class TextSynthesisService
             (synthesisFilePath, synthesisFileName) = await _speechService.SynthesizeAudioAsync(
                 containerName,
                 requestId.ToString(),
-                request.TextToSynthesize
+                request
             );
 
             var textSynthesisData = new TextSynthesisData(request.Title, containerName, synthesisFilePath);
@@ -59,7 +59,7 @@ public class TextSynthesisService
         }
         finally
         {
-            if (string.IsNullOrEmpty(synthesisFilePath))
+            if (!string.IsNullOrEmpty(synthesisFilePath))
             {
                 File.Delete(synthesisFilePath);
             }
