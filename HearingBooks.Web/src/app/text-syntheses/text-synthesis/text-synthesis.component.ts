@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IApplicationState } from 'src/app/shared/state'
-import { ITextSynthesisRequest } from './models'
+import { ITextSynthesis } from '../state/models'
 
 @Component({
   selector: 'hb-text-synthesis',
@@ -12,7 +12,7 @@ import { ITextSynthesisRequest } from './models'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextSynthesisComponent extends AcrylicAwareComponent<IApplicationState> {
-  @Input() request: ITextSynthesisRequest
+  @Input() textSynthesis: ITextSynthesis
 
   public get isAcryclic(): boolean {
     return this.acrylic.isAcrylic(this.innerCardType)

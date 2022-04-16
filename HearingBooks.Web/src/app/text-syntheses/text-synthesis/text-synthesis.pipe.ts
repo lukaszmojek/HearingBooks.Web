@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core'
 import { TranslateService } from '@ngx-translate/core'
 import { combineLatest, exhaustMap, Observable, of } from 'rxjs'
-import { ITextSynthesisRequest } from './models'
+import { ITextSynthesis } from '../state/models'
 
 @Pipe({
   name: 'textSynthesis$',
@@ -22,7 +22,7 @@ export class TextSynthesisPipe implements PipeTransform {
   }
 
   transform(
-    value: ITextSynthesisRequest,
+    value: ITextSynthesis,
     ...args: unknown[]
   ): Observable<string> {
     return combineLatest([

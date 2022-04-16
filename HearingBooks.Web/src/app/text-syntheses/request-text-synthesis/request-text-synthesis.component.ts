@@ -6,11 +6,12 @@ import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { SimpleErrorStateMatcher } from 'src/app/shared/login/simple-error-state-matcher'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
-import { TextSynthesisRequest, TextSynthesisService } from '../text-synthesis.service'
 import { ISynthesisLanguage, ISynthesisVoice } from '../../languages/models'
 import { LanguagesActions } from 'src/app/languages/languages.actions'
 import { Observable } from 'rxjs'
 import { selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
+import { ITextSynthesisRequest } from '../state/models'
+import { TextSynthesesActions } from '../state/text-syntheses.actions'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -56,7 +57,7 @@ export class RequestTextSynthesisComponent
     return this.textSynthesisFormGroup.invalid
   }
 
-  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService, private textSynthesisService: TextSynthesisService) {
+  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
     this.store$.dispatch(LanguagesActions.loadLangaugesWithVoices())
 
@@ -70,11 +71,9 @@ export class RequestTextSynthesisComponent
       textToSynthesize: this.textToSynthesizeFormControl.value,
       language: (this.languageFormControl.value as ISynthesisLanguage).symbol,
       voice: (this.voiceFormControl.value as ISynthesisVoice).name,
-    } as TextSynthesisRequest
+    } as ITextSynthesisRequest
 
-    this.textSynthesisService.requestTextSynthesis$(textSyntesisRequest).subscribe(result => {
-      console.log(result)
-    })
+    this.store$.dispatch(TextSynthesesActions.requestTextSynthesis({ textSynthesisRequest: textSyntesisRequest }))
   }
 
   updateSelectedLanguage(selectedLanguage: ISynthesisLanguage): void {

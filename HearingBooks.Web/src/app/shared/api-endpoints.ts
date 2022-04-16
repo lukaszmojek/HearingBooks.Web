@@ -6,6 +6,7 @@ export const ApiEndpoints = {
   },
   textSyntheses: {
     getAll: `${environment.baseApiUrl}/text-syntheses`,
+    getForUser: `${environment.baseApiUrl}/text-syntheses`,
     request: `${environment.baseApiUrl}/text-syntheses`,
   },
   languages: {

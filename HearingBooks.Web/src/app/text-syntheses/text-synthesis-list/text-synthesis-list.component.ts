@@ -1,10 +1,13 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
-import { ITextSynthesisRequest } from '../text-synthesis/models'
+import { ITextSynthesis, ITextSynthesisRequest } from '../state/models'
+import { TextSynthesesActions } from '../state/text-syntheses.actions'
+import { selectTextSyntheses } from '../state/text-syntheses.selectors'
 
 @Component({
   selector: 'hb-text-synthesis-list',
@@ -13,35 +16,20 @@ import { ITextSynthesisRequest } from '../text-synthesis/models'
 })
 export class TextSynthesisListComponent
   extends AcrylicAwareComponent<IApplicationState>
-  implements IMainComponent {
+  implements IMainComponent, OnInit {
   titleTranslationKey = 'PayAsYouGo.TextSyntheses.Title'
   divider = true
   elevation = true
   border = false
 
-  requests: ITextSynthesisRequest[] = [
-    {
-      title: 'First synthesis',
-      content: 'Content that is maybe a bit short but at leasit it is xD',
-      characterCount: 123,
-      price: '0.7 EUR',
-      requestedOn: new Date(),
-      synthesisLength: '0:30',
-      synthesisFileUrl: 'some_random_url_will_go_here',
-    },
-    {
-      title: 'Second synthesis',
-      content:
-        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione itaque accusantium delectus culpa eligendi, similique, eveniet nostrum alias ducimus ab velit explicabo quae reiciendis quis? Inventore voluptatum dignissimos magnam sit.',
-      characterCount: 20004,
-      price: '15.3 EUR',
-      requestedOn: new Date(),
-      synthesisLength: '23:44',
-      synthesisFileUrl: 'some_random_url_will_go_here',
-    },
-  ]
+  textSyntheses$: Observable<ITextSynthesis[]>
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
+    this.textSyntheses$ = this.safeSelect$(selectTextSyntheses)
+  }
+
+  ngOnInit(): void {
+    this.store$.dispatch(TextSynthesesActions.loadTextSynthesesForUser())
   }
 }

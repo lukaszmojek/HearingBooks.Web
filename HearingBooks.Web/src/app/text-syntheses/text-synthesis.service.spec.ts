@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TextSynthesisService } from './text-synthesis.service';
+import { TextSynthesisService } from './state/text-synthesis.service';
 
 describe('TextSynthesisService', () => {
   let service: TextSynthesisService;
