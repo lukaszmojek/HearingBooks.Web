@@ -3,6 +3,7 @@
     "rules": "storage.rules"
   },
   "hosting": {
+    "site": "hearingbooks-test",
     "public": "dist/hearing-books-web",
     "ignore": [
       "firebase.json",
