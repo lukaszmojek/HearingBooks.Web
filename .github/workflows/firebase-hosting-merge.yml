@@ -6,27 +6,16 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-      
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Use Node.js 17.2
-        uses: actions/setup-node@v1
-        with:
-          node-version: 17.2
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Build test env
-        run: npm run build-test
-          
+
+      - run: npm ci && npm run build-test
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEARINGBOOKS_8C734 }}'
-          channelId: live
           projectId: hearingbooks-8c734
