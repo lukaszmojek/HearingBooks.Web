@@ -1,4 +1,5 @@
 export interface ITextSynthesis {
+  id: string
   title: string
   synthesisText: string
   characterCount: number

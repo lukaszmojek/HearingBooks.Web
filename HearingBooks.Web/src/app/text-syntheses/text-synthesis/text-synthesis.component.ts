@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { FilesService } from 'src/app/files/files.service'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IApplicationState } from 'src/app/shared/state'
@@ -28,8 +29,13 @@ export class TextSynthesisComponent extends AcrylicAwareComponent<IApplicationSt
 
   constructor(
     store$: Store<IApplicationState>,
-    acrylic: AcrylicService
+    acrylic: AcrylicService,
+    private fileService: FilesService
   ) {
     super(store$, acrylic)
+  }
+
+  downloadSynthesis(): void {
+    this.fileService.downloadTextSynthesis$(this.textSynthesis.id)
   }
 }

@@ -14,6 +14,12 @@ public class TextSynthesisRepository
 		_set = context.Set<TextSynthesis>();
 	}
 
+	public async Task<TextSynthesis> GetById(Guid synthesisId)
+	{
+		return await _set
+			.FirstAsync(x => x.Id == synthesisId);
+	}
+
 	public async Task<IEnumerable<TextSynthesis>> GetAllForUser(Guid userId)
 	{
 		return await _set

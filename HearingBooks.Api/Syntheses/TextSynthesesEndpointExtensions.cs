@@ -1,3 +1,5 @@
+using Azure.Storage.Blobs.Models;
+using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
 using HearingBooks.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +23,45 @@ public static class TextSynthesesEndpointExtensions
                 return Results.Ok(syntheses);
             });
         
+        //TODO: How to still have route here?
+        //TODO: Consider switching to FastEndpoints
+        app.MapGet(
+            "/text-syntheses/{textSynthesisId}",
+            async ([FromRoute] Guid textSynthesisId, HttpContext context, HttpResponse httpResponse, ITextSynthesisRepository textSynthesisRepository,
+                IStorageService storageService) =>
+            {
+                var requestingUser = (User) context.Items["User"];
+                
+                var synthesis = await textSynthesisRepository.GetById(textSynthesisId);
+
+                // if (synthesis.RequestingUserId != requestingUser.Id)
+                // {
+                //     return Results.Forbid();
+                // }
+
+                var containerClient = await storageService.GetBlobContainerClientAsync(synthesis.RequestingUserId.ToString());
+                var blobClient = containerClient.GetBlobClient(synthesis.BlobName);
+
+                var blob = blobClient.DownloadContent();
+
+                var blobBytes = blob.Value.Content.ToArray();
+                    
+                // var blobResponse = new BlobResponse
+                // {
+                //     Details = blob.Value.Details,
+                //     Content = blobBytes
+                // };
+                //
+                // var blobDataStream = new MemoryStream(blobBytes);
+                
+                httpResponse.Headers.ContentDisposition = "attachment";
+                httpResponse.Headers.ContentType = "application/octet-stream";
+                
+                await httpResponse.BodyWriter.WriteAsync(blobBytes);
+                await httpResponse.BodyWriter.FlushAsync();
+                await httpResponse.BodyWriter.CompleteAsync();
+            });
+        
         app.MapPost(
             $"/{_baseEndpointGroupRoute}", 
             async ([FromServices] TextSynthesisService textSynthesisService, [FromBody] TextSyntehsisRequest request, HttpContext context) =>
@@ -34,4 +75,10 @@ public static class TextSynthesesEndpointExtensions
                 return Results.Created($"{requestId.ToString()}", null);
             });
     }
+}
+
+public class BlobResponse
+{
+    public BlobDownloadDetails Details { get; set; }
+    public byte[] Content { get; set; }
 }
