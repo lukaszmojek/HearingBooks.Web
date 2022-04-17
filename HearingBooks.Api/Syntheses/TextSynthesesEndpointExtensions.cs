@@ -1,3 +1,4 @@
+using AutoMapper;
 using Azure.Storage.Blobs.Models;
 using HearingBooks.Api.Storage;
 using HearingBooks.Domain.Entities;
@@ -14,13 +15,14 @@ public static class TextSynthesesEndpointExtensions
     {
         app.MapGet(
             $"/{_baseEndpointGroupRoute}",
-            async (HttpContext context, ITextSynthesisRepository textSynthesisRepository) =>
+            async (HttpContext context, ITextSynthesisRepository textSynthesisRepository, IMapper mapper) =>
             {
                 var requestingUser = (User) context.Items["User"];
                 
                 var syntheses = await textSynthesisRepository.GetAllForUser(requestingUser.Id);
+                var synthesesDto = mapper.Map<IEnumerable<TextSynthesisDto>>(syntheses);
                 
-                return Results.Ok(syntheses);
+                return Results.Ok(synthesesDto);
             });
         
         //TODO: How to still have route here?
