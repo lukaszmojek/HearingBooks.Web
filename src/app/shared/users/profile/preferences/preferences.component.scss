@@ -1,5 +1,19 @@
+@use '../../../../../styles/bootstrap';
+
 :host {
+  .acrylic {
+    &-name,
+    &-field {
+      @include bootstrap.flex-set(column);
+    }
+  }
+
   .language {
     align-items: baseline;
+
+    &-name,
+    &-field {
+      @include bootstrap.flex-set(column);
+    }
   }
 }
