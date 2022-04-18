@@ -3,10 +3,15 @@
 :host {
   @include bootstrap.dimensions-host;
   @include bootstrap.flex-set;
+
   height: 40%;
+  min-height: 250px;
   max-height: 350px;
+
   width: 40%;
+  min-width: 300px;
   max-width: 600px;
+
   margin-top: -150px;
 
   .login-form {
