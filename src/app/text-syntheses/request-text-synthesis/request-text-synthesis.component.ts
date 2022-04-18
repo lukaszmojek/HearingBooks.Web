@@ -9,7 +9,7 @@ import { IApplicationState } from 'src/app/shared/state'
 import { ISynthesisLanguage, ISynthesisVoice } from '../../languages/models'
 import { LanguagesActions } from 'src/app/languages/languages.actions'
 import { Observable } from 'rxjs'
-import { selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
+import { isLanguageSelected, selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
 import { ITextSynthesisRequest } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
 
@@ -28,6 +28,7 @@ export class RequestTextSynthesisComponent
   border = false
 
   textToSynthesizeMaxCharacterCount = 500
+  textToSynthesizeRows = 20
 
   //TODO: Consider changing that to reactive forms
   titleFormControl = new FormControl('', [Validators.required])
@@ -44,6 +45,7 @@ export class RequestTextSynthesisComponent
   //TODO: Move languages and voices to DB
   availableLanguages$: Observable<ISynthesisLanguage[]>
   availableVoices$: Observable<ISynthesisVoice[]>
+  isLanguageSelected$: Observable<boolean>
 
   selectedLanguage$: ISynthesisLanguage
 
@@ -63,6 +65,7 @@ export class RequestTextSynthesisComponent
 
     this.availableLanguages$ = this.safeSelect$(selectLanguages)
     this.availableVoices$ = this.safeSelect$(selectVoicesFromSelectedLanguage)
+    this.isLanguageSelected$ = this.safeSelect$(isLanguageSelected)
   }
 
   requestTextSynthesis(): void {

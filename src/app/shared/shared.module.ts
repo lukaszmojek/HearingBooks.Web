@@ -16,7 +16,8 @@ import { ProfileDetailsComponent } from './users/profile/profile-details/profile
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CardComponent } from './card/card.component'
 import { LoginComponent } from './login/login.component'
-import { LanguagesModule } from '../languages/languages.module'
+import { LanguagesModule } from '../languages/languages.module';
+import { ShortenTextPipe } from './shorten-text.pipe'
 
 const components = [
   MainAppComponent,
@@ -44,9 +45,12 @@ const modules = [
   ReactiveFormsModule,
 ]
 
+const pipes = [
+  ShortenTextPipe
+]
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, ...pipes],
   imports: [...modules],
-  exports: [...components, ...modules],
+  exports: [...components, ...modules, ...pipes],
 })
 export class SharedModule { }

@@ -7,6 +7,8 @@ body {
 
 body {
   margin: 0;
+  background-color: #343430;
+  background-image: url('../assets/background-10.png');
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
@@ -52,5 +54,13 @@ body {
 .text {
   &-center {
     text-align: center;
+  }
+
+  &-light {
+    font-weight: 300;
+  }
+
+  &-bold {
+    font-weight: 500;
   }
 }

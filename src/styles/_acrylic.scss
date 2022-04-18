@@ -1,6 +1,8 @@
 $glass-opacity: 0.2;
+$glass-toolbar-opacity: 0.4;
 $blur-size: 16px;
 $glass-tint: #000000;
+$glass-tint-toolbar: #4f28a5;
 
 @mixin set(
   $blur-size: $blur-size,
@@ -10,4 +12,12 @@ $glass-tint: #000000;
   background-color: rgba($color: $glass-tint, $alpha: $glass-opacity);
   backdrop-filter: blur($blur-size);
   -webkit-backdrop-filter: $blur-size;
+}
+
+@mixin set-toolbar(
+  $blur-size: $blur-size,
+  $glass-tint-toolbar: $glass-tint-toolbar,
+  $glass-opacity: $glass-toolbar-opacity
+) {
+  @include set($blur-size, $glass-tint-toolbar, $glass-opacity);
 }

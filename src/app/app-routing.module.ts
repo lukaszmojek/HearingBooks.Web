@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: '**',
     canLoad: [AuthGuard],
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ]

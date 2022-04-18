@@ -2,4 +2,10 @@
 
 :host {
   @include bootstrap.dimensions-host;
+
+  .mat-form-field {
+    width: 50%;
+    min-width: 300px;
+    max-width: 600px;
+  }
 }

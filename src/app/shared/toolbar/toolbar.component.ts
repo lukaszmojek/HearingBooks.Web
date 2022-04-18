@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store'
 import { selectIsLoggedIn } from 'src/app/auth/auth.selectors'
 import { UIActions } from 'src/app/ui/ui.actions'
 import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
+import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
+import { AcrylicService } from '../acrylic/acrylic.service'
 import { IApplicationState } from '../state'
-import StoreConnectedComponent from '../store-connected.component'
 import { ToolbarService } from './toolbar.service'
 
 @Component({
@@ -12,15 +13,16 @@ import { ToolbarService } from './toolbar.service'
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent extends StoreConnectedComponent<IApplicationState> {
+export class ToolbarComponent extends AcrylicAwareComponent<IApplicationState> {
   public isLoggedIn: boolean
   public isSideMenuOpened: boolean
 
   constructor(
     store$: Store<IApplicationState>,
+    acrylicService: AcrylicService,
     private toolbar: ToolbarService
   ) {
-    super(store$)
+    super(store$, acrylicService)
     this.safeSelect$(selectIsLoggedIn).subscribe(x => (this.isLoggedIn = x))
     this.safeSelect$(selectIsSideMenuOpened).subscribe(
       x => (this.isSideMenuOpened = x)

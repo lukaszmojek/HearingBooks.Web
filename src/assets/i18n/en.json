@@ -47,6 +47,15 @@
     },
     "TextSyntheses": {
       "CharacterCount": "Character count",
+      "Content": {
+        "Download": "Download"
+      },
+      "Header": {
+        "Title": "Title",
+        "Language": "Language",
+        "SynthetizedText": "Synthetized text",
+        "Voice": "Voice"
+      },
       "Price": "Price",
       "Title": "Text Syntheses"
     }
