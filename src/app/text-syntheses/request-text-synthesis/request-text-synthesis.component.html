@@ -22,44 +22,45 @@
       />
     </mat-form-field>
 
-    <div class="flex-row">
-      <mat-form-field appearance="outline">
-        <mat-label>
-          {{
-            'PayAsYouGo.RequestTextSynthesis.Fields.Language.Label' | translate
-          }}
-        </mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestTextSynthesis.Fields.Language.Label' | translate
+        }}
+      </mat-label>
 
-        <mat-select
-          [formControl]="languageFormControl"
-          (selectionChange)="updateSelectedLanguage($event.value)"
+      <mat-select
+        [formControl]="languageFormControl"
+        (selectionChange)="updateSelectedLanguage($event.value)"
+      >
+        <mat-option
+          *ngFor="let language of availableLanguages$ | async"
+          [value]="language"
         >
-          <mat-option
-            *ngFor="let language of availableLanguages$ | async"
-            [value]="language"
-          >
-            {{ language | synthesisLanguage }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>
-          {{ 'PayAsYouGo.RequestTextSynthesis.Fields.Voice.Label' | translate }}
-        </mat-label>
-
-        <mat-select [formControl]="voiceFormControl">
-          <mat-option
-            *ngFor="let voice of availableVoices$ | async"
-            [value]="voice"
-          >
-            {{ voice | synthesisVoice }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+          {{ language | synthesisLanguage }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
+      <mat-label>
+        {{ 'PayAsYouGo.RequestTextSynthesis.Fields.Voice.Label' | translate }}
+      </mat-label>
+
+      <mat-select [formControl]="voiceFormControl">
+        <mat-option
+          *ngFor="let voice of availableVoices$ | async"
+          [value]="voice"
+        >
+          {{ voice | synthesisVoice }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      class="text-to-synthesize"
+    >
       <mat-label>
         {{
           'PayAsYouGo.RequestTextSynthesis.Fields.TextToSynthesize.Label'
@@ -70,6 +71,7 @@
       <textarea
         matInput
         [formControl]="textToSynthesizeFormControl"
+        [rows]="textToSynthesizeRows"
       >
       </textarea>
 

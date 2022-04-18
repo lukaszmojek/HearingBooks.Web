@@ -28,6 +28,7 @@ export class RequestTextSynthesisComponent
   border = false
 
   textToSynthesizeMaxCharacterCount = 500
+  textToSynthesizeRows = 20
 
   //TODO: Consider changing that to reactive forms
   titleFormControl = new FormControl('', [Validators.required])
