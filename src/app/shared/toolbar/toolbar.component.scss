@@ -6,6 +6,12 @@
     justify-content: space-between;
   }
 
+  .mat-toolbar {
+    &.acrylic-toolbar {
+      @include bootstrap.acrylic-set-toolbar();
+    }
+  }
+
   .menu-button {
     margin-right: bootstrap.$spacing-margin-xl;
   }
