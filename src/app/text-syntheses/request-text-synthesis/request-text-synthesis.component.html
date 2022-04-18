@@ -47,7 +47,11 @@
         {{ 'PayAsYouGo.RequestTextSynthesis.Fields.Voice.Label' | translate }}
       </mat-label>
 
-      <mat-select [formControl]="voiceFormControl">
+      <!-- TODO: Refactor this disabled attribute -->
+      <mat-select
+        [formControl]="voiceFormControl"
+        [disabled]="!(isLanguageSelected$ | async)!"
+      >
         <mat-option
           *ngFor="let voice of availableVoices$ | async"
           [value]="voice"

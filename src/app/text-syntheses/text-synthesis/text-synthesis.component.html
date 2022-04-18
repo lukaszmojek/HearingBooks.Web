@@ -5,19 +5,43 @@
 >
   <mat-expansion-panel-header>
     <div class="header-title">
-      {{ textSynthesis.title }}
+      <div class="label text-light">
+        {{ 'PayAsYouGo.TextSyntheses.Header.Title' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ textSynthesis.title }}
+      </div>
     </div>
 
     <div class="header-synthesis-text">
-      {{ textSynthesis.synthesisText }}
+      <div class="label text-light">
+        {{ 'PayAsYouGo.TextSyntheses.Header.SynthetizedText' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ textSynthesis.synthesisText | shortenText: 60 }}
+      </div>
     </div>
 
     <div class="header-language">
-      {{ textSynthesis.language }}
+      <div class="label text-light">
+        {{ 'PayAsYouGo.TextSyntheses.Header.Language' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ textSynthesis.language }}
+      </div>
     </div>
 
     <div class="header-voice">
-      {{ textSynthesis.voice }}
+      <div class="label text-light">
+        {{ 'PayAsYouGo.TextSyntheses.Header.Voice' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ textSynthesis.voice }}
+      </div>
     </div>
   </mat-expansion-panel-header>
 
@@ -29,10 +53,12 @@
     </div>
 
     <button
+      mat-flat-button
+      color="accent"
       class="synthesis-text"
       (click)="downloadSynthesis()"
     >
-      Download
+      {{ 'PayAsYouGo.TextSyntheses.Content.Download' | translate }}
     </button>
   </div>
 </mat-expansion-panel>

@@ -1,25 +1,24 @@
 @use '../../../styles/bootstrap.scss';
 
-$titleWidth: 250px;
-$synthesisTextWidth: 300px;
+$titleWidth: 230px;
+$synthesisTextWidth: 320px;
 $languageWidth: 40px;
 $voiceWidth: 150px;
 
 :host {
   .header-title {
     @include bootstrap.flex-set(column, $titleWidth, 0, 1.5, flex-start);
+    padding-right: 16px;
   }
 
   .header-synthesis-text {
     @include bootstrap.flex-set(column, $synthesisTextWidth, 2, 3, flex-start);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    min-width: 0;
+    padding-right: 16px;
   }
 
   .header-language {
     @include bootstrap.flex-set(column, $languageWidth, 0, 0.5, flex-start);
+    padding-right: 16px;
   }
 
   .header-voice {
@@ -33,9 +32,16 @@ $voiceWidth: 150px;
   .mat-expansion-panel {
     margin-bottom: bootstrap.$spacing-margin-l;
 
+    .mat-expansion-panel-header {
+      height: 70px;
+
+      .mat-content {
+        column-gap: 10px;
+      }
+    }
+
     .mat-panel-title {
       @include bootstrap.flex-set(row);
-      column-gap: 10px;
     }
   }
 }
