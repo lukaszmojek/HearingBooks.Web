@@ -2,12 +2,11 @@
 
 :host {
   .container {
-    display: flexbox;
     height: 95vh;
+    background-color: transparent;
   }
 
   .mat-drawer-content {
-    background-image: url('../../../assets/background-10.png');
     @include bootstrap.flex-set;
     padding-top: bootstrap.$spacing-padding-xxl;
   }
