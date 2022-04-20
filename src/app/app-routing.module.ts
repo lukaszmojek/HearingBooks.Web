@@ -30,7 +30,6 @@ const routes: Routes = [
   },
   {
     path: '**',
-    canLoad: [AuthGuard],
     redirectTo: 'login',
     pathMatch: 'full'
   }
