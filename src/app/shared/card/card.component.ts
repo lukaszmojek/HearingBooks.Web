@@ -39,6 +39,10 @@ import { CardType } from './card-type'
           @include bootstrap.flex-set;
         }
 
+        .mat-card-content {
+          padding-bottom: bootstrap.$spacing-padding-xl;
+        }
+
         .margin-top-xxl {
           margin-top: bootstrap.$spacing-margin-xxl;
         }
