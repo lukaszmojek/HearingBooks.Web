@@ -4,6 +4,7 @@ import { TextSynthesesActions } from './text-syntheses.actions'
 import { exhaustMap, catchError, map } from 'rxjs/operators'
 import { of } from 'rxjs'
 import { TextSynthesisService } from './text-synthesis.service'
+import { Router } from '@angular/router'
 
 @Injectable()
 export class TextSynthesesEffects {
@@ -26,10 +27,13 @@ export class TextSynthesesEffects {
       ofType(TextSynthesesActions.requestTextSynthesis),
       exhaustMap(action =>
         this.textSynthesisService.requestTextSynthesis$(action.textSynthesisRequest).pipe(
-          map(response =>
-            TextSynthesesActions.requestTextSynthesisSucceded()
-          ),
-          catchError(_ => of(TextSynthesesActions.requestTextSynthesisFailed()))
+          map(response => {
+            this.router.navigate(['text-syntheses'])
+            return TextSynthesesActions.requestTextSynthesisSucceded()
+          }),
+          catchError(_ => {
+            return of(TextSynthesesActions.requestTextSynthesisFailed())
+          })
         )
       )
     )
@@ -38,5 +42,6 @@ export class TextSynthesesEffects {
   constructor(
     private actions$: Actions,
     private textSynthesisService: TextSynthesisService,
+    private router: Router
   ) { }
 }
