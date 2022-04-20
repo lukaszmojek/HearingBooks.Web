@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router'
 import { Store } from '@ngrx/store'
-import { iif, Observable, of, switchMap } from 'rxjs'
+import { Observable } from 'rxjs'
 import { IAuthState } from './auth.reducer'
 import { selectIsLoggedIn } from './auth.selectors'
 
@@ -29,13 +29,5 @@ export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
 
   private guard(): GuardOutcome {
     return this.store$.select(selectIsLoggedIn)
-    // .pipe(
-    //   switchMap(isLoggedIn =>
-    //     iif(
-    //       () => isLoggedIn,
-    //       of(true),
-    //       of(this.router.createUrlTree(['login']))
-    //     ))
-    // )
   }
 }
