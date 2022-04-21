@@ -21,6 +21,15 @@
     },
     "Title": "Login"
   },
+  "Notifications": {
+    "TextSyntheses": {
+      "LoadError": "Unfortunately there was a problem with getting your Text Syntheses",
+      "Request": {
+        "Error": "There was a problem with requesting Text Synthesis. Please, try again",
+        "Success": "Text Synthesis request was submitted and will be processed shortly"
+      }
+    }
+  },
   "PayAsYouGo": {
     "RequestTextSynthesis": {
       "Actions": {
