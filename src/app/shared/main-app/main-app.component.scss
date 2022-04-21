@@ -2,12 +2,20 @@
 
 :host {
   .container {
-    height: 95vh;
+    height: calc(100% - bootstrap.$dimensions-toolbar-height);
     background-color: transparent;
   }
 
   .mat-drawer-content {
-    @include bootstrap.flex-set;
+    @include bootstrap.flex-set(
+      column,
+      auto,
+      1fr,
+      1fr,
+      center,
+      flex-start,
+      center
+    );
     padding-top: bootstrap.$spacing-padding-xxl;
   }
 }
