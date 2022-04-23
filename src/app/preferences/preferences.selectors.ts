@@ -2,24 +2,24 @@ import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { CardType } from '../shared/card/card-type'
 import { featureName, IPreferencesState } from './preferences.reducer'
 
-export const selectAuthFeature =
+export const selectPreferencesFeature =
   createFeatureSelector<IPreferencesState>(featureName)
 
 export const selectIsAcrylicEnabled = createSelector(
-  selectAuthFeature,
+  selectPreferencesFeature,
   state => state.isAcrylicEnabled
 )
 
-export const selectMainCardType = createSelector(selectAuthFeature, state =>
+export const selectMainCardType = createSelector(selectPreferencesFeature, state =>
   state.isAcrylicEnabled ? CardType.Acrylic : CardType.Material
 )
 
-export const selectInnerCardType = createSelector(selectAuthFeature, state =>
+export const selectInnerCardType = createSelector(selectPreferencesFeature, state =>
   state.isAcrylicEnabled ? CardType.Transparent : CardType.Material
 )
 
 export const selectLanguage = createSelector(
-  selectAuthFeature,
+  selectPreferencesFeature,
   state => state.language
 )
 
