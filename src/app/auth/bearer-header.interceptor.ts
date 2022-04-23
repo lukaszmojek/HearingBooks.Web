@@ -5,13 +5,9 @@ import {
   HttpEvent,
   HttpRequest,
   HttpHandler,
-  HttpErrorResponse,
-  HttpStatusCode,
 } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import { Observable } from 'rxjs'
 import { Store } from '@ngrx/store'
-import { AuthActions } from './auth.actions'
 import { selectToken } from './auth.selectors'
 import { IAuthState } from './auth.reducer'
 import StoreConnectedComponent from '../shared/store-connected.component'
@@ -47,40 +43,5 @@ export class BearerHeaderInterceptor
           },
         })
       )
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          // this.snackBar.displaySnackbar(`Błąd - Status ${error.status}: ${this.mapHttpStatusCode(error.status)}`)
-          let errorMsg = ''
-          console.log(error)
-          if (error.error instanceof ErrorEvent) {
-            console.log('This is client side error')
-            errorMsg = `Error: ${error.error.message}`
-          } else {
-            console.log('This is server side error')
-            if (error.status === HttpStatusCode.Unauthorized) {
-              this.store$.dispatch(AuthActions.logOut())
-            }
-            errorMsg = `Error Code: ${error.status},  Message: ${error.message}`
-          }
-
-          console.log(errorMsg)
-          return throwError(() => new Error(errorMsg))
-        })
-      )
-  }
-
-  private mapHttpStatusCode(code: HttpStatusCode): string {
-    switch (code as number) {
-      case HttpStatusCode.Unauthorized:
-        return 'Brak uprawnień'
-      case HttpStatusCode.BadRequest:
-        return 'Zapytanie nie mogło zostac wykonane z powodu złych danych'
-      case HttpStatusCode.NotFound:
-        return 'Nie znaleziono'
-      case 0:
-        return 'Brak połączania z API'
-      default:
-        return 'Nieznany błąd'
-    }
   }
 }
