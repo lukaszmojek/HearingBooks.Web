@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component'
 import { LanguagesModule } from '../languages/languages.module'
 import { ShortenTextPipe } from './shorten-text.pipe'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonComponent } from './skeleton/skeleton.component'
 
 const components = [
   MainAppComponent,
@@ -30,6 +31,7 @@ const components = [
   ProfileDetailsComponent,
   CardComponent,
   LoginComponent,
+  SkeletonComponent
 ]
 
 const modules = [

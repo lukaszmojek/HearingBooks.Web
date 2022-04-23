@@ -4,8 +4,12 @@
   [divider]="divider"
   [elevation]="elevation"
   [border]="border"
+  [showLoadingIndicator]="true"
+  [isLoading]="isActionInProgress$ | async"
 >
   <div class="flex-column">
+    <hb-skeleton *ngIf="isActionInProgress$ | async"></hb-skeleton>
+
     <mat-accordion multi>
       <hb-text-synthesis
         *ngFor="let textSynthesis of textSyntheses$ | async"
