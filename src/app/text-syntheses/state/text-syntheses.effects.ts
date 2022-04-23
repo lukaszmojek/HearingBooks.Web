@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { TextSynthesesActions } from './text-syntheses.actions'
 import { exhaustMap, catchError, map } from 'rxjs/operators'
-import { combineLatest, of } from 'rxjs'
+import { combineLatest, } from 'rxjs'
 import { TextSynthesisService } from './text-synthesis.service'
 import { SnackbarNotificationsService } from 'src/app/shared/notifications/snackbar-notifications.service'
 import { Router } from '@angular/router'
 import { TranslateService } from '@ngx-translate/core'
+import { HttpErrorResponse } from '@angular/common/http'
 
 @Injectable()
 export class TextSynthesesEffects {
@@ -18,10 +19,13 @@ export class TextSynthesesEffects {
           map(response =>
             TextSynthesesActions.loadTextSynthesesForUserSucceded({ textSyntheses: response })
           ),
-          catchError(_ =>
+          catchError((httpError: HttpErrorResponse) =>
             this.translate.get('Notifications.TextSyntheses.LoadError').pipe(
               map(errorMessage => {
-                this.notifications.showNotification(errorMessage)
+                if (!httpError.message.includes('404')) {
+                  this.notifications.showErrorNotification(errorMessage)
+                }
+
                 return TextSynthesesActions.loadTextSynthesesForUserFailed()
               })
             )
@@ -48,7 +52,7 @@ export class TextSynthesesEffects {
             catchError(_ =>
               this.translate.get('Notifications.TextSyntheses.Request.Error').pipe(
                 map(errorMessage => {
-                  this.notifications.showNotification(errorMessage)
+                  this.notifications.showErrorNotification(errorMessage)
                   return TextSynthesesActions.requestTextSynthesisFailed()
                 })
               )
