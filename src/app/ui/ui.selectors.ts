@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { featureName, IUIState } from './ui.reducer'
 
-export const selectAuthFeature = createFeatureSelector<IUIState>(featureName)
+export const selectUIFeature = createFeatureSelector<IUIState>(featureName)
 
 export const selectIsSideMenuOpened = createSelector(
-  selectAuthFeature,
+  selectUIFeature,
   state => state.isSideMenuOpened
 )
