@@ -8,17 +8,17 @@ $voiceWidth: 150px;
 :host {
   .header-title {
     @include bootstrap.flex-set(column, $titleWidth, 0, 1.5, flex-start);
-    padding-right: 16px;
+    padding-right: bootstrap.$spacing-padding-xl;
   }
 
   .header-synthesis-text {
     @include bootstrap.flex-set(column, $synthesisTextWidth, 2, 3, flex-start);
-    padding-right: 16px;
+    padding-right: bootstrap.$spacing-padding-xl;
   }
 
   .header-language {
     @include bootstrap.flex-set(column, $languageWidth, 0, 0.5, flex-start);
-    padding-right: 16px;
+    padding-right: bootstrap.$spacing-padding-xl;
   }
 
   .header-voice {
