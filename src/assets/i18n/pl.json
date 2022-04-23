@@ -21,6 +21,15 @@
     },
     "Title": "Logowanie"
   },
+  "Notifications": {
+    "TextSyntheses": {
+      "LoadError": "Niestety nie udało się załadować Twoich Syntez Tekstowych",
+      "Request": {
+        "Error": "Wystąpił problem podczas tworzenia Syntezy Tekstowej. Spróbuj ponownie",
+        "Success": "Synteza Tekstowa została utwrzona i zostanie niedługo przetworzona"
+      }
+    }
+  },
   "PayAsYouGo": {
     "RequestTextSynthesis": {
       "Actions": {
