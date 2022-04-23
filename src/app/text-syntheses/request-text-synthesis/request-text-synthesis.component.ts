@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
@@ -22,6 +22,13 @@ import { TextSynthesesActions } from '../state/text-syntheses.actions'
 export class RequestTextSynthesisComponent
   extends AcrylicAwareComponent<IApplicationState>
   implements IMainComponent {
+  private formFieldNames = {
+    title: 'title',
+    language: 'language',
+    voice: 'voice',
+    textToSynthesize: 'textToSynthesize',
+  }
+
   titleTranslationKey = 'PayAsYouGo.RequestTextSynthesis.Title'
   divider = true
   elevation = true
@@ -30,19 +37,8 @@ export class RequestTextSynthesisComponent
   textToSynthesizeMaxCharacterCount = 500
   textToSynthesizeRows = 20
 
-  //TODO: Consider changing that to reactive forms
-  titleFormControl = new FormControl('', [Validators.required])
-  languageFormControl = new FormControl('', [Validators.required])
-  voiceFormControl = new FormControl('', [Validators.required])
-  textToSynthesizeFormControl = new FormControl('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
-  textSynthesisFormGroup = new FormGroup({
-    'title': this.titleFormControl,
-    'language': this.languageFormControl,
-    'voice': this.voiceFormControl,
-    'textToSynthesize': this.textToSynthesizeFormControl
-  })
+  textSynthesisFormGroup: FormGroup
 
-  //TODO: Move languages and voices to DB
   availableLanguages$: Observable<ISynthesisLanguage[]>
   availableVoices$: Observable<ISynthesisVoice[]>
   isLanguageSelected$: Observable<boolean>
@@ -50,6 +46,22 @@ export class RequestTextSynthesisComponent
   selectedLanguage$: ISynthesisLanguage
 
   matcher = new SimpleErrorStateMatcher()
+
+  get titleFormControl(): FormControl {
+    return this.getFormControl(this.formFieldNames.title)
+  }
+
+  get languageFormControl(): FormControl {
+    return this.getFormControl(this.formFieldNames.language)
+  }
+
+  get voiceFormControl(): FormControl {
+    return this.getFormControl(this.formFieldNames.voice)
+  }
+
+  get textToSynthesizeFormControl(): FormControl {
+    return this.getFormControl(this.formFieldNames.textToSynthesize)
+  }
 
   get textToSynthesizeLength(): string {
     return `${this.textToSynthesizeFormControl.value.length}/${this.textToSynthesizeMaxCharacterCount}`
@@ -59,9 +71,15 @@ export class RequestTextSynthesisComponent
     return this.textSynthesisFormGroup.invalid
   }
 
-  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+  private getFormControl(name: string): FormControl {
+    return this.textSynthesisFormGroup.get(name) as FormControl
+  }
+
+  constructor(private formBuilder: FormBuilder, store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
     this.store$.dispatch(LanguagesActions.loadLangaugesWithVoices())
+
+    this.createRequestTextSynthesisForm()
 
     this.availableLanguages$ = this.safeSelect$(selectLanguages)
     this.availableVoices$ = this.safeSelect$(selectVoicesFromSelectedLanguage)
@@ -81,5 +99,14 @@ export class RequestTextSynthesisComponent
 
   updateSelectedLanguage(selectedLanguage: ISynthesisLanguage): void {
     this.store$.dispatch(LanguagesActions.languageSelected({ language: selectedLanguage }))
+  }
+
+  private createRequestTextSynthesisForm() {
+    this.textSynthesisFormGroup = this.formBuilder.group({
+      'title': this.formBuilder.control('', [Validators.required]),
+      'language': this.formBuilder.control('', [Validators.required]),
+      'voice': this.formBuilder.control('', [Validators.required]),
+      'textToSynthesize': this.formBuilder.control('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
+    })
   }
 }

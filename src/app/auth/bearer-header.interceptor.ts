@@ -51,7 +51,7 @@ export class BearerHeaderInterceptor
         catchError((error: HttpErrorResponse) => {
           // this.snackBar.displaySnackbar(`Błąd - Status ${error.status}: ${this.mapHttpStatusCode(error.status)}`)
           let errorMsg = ''
-
+          console.log(error)
           if (error.error instanceof ErrorEvent) {
             console.log('This is client side error')
             errorMsg = `Error: ${error.error.message}`
