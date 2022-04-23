@@ -21,6 +21,7 @@
         [formControl]="emailFormControl"
         [errorStateMatcher]="matcher"
         placeholder="Ex. pat@example.com"
+        (keyup)="handleKeyUp($event)"
       />
 
       <mat-error *ngIf="emailNotValid">
@@ -45,7 +46,8 @@
         matInput
         [formControl]="passwordFormControl"
         [errorStateMatcher]="matcher"
-        placeholder="********"
+        placeholder="***** ***"
+        (keyup)="handleKeyUp($event)"
       />
 
       <mat-error *ngIf="passwordFormControl.hasError('required')">
@@ -55,7 +57,7 @@
 
     <div class="flex">
       <button
-        [disabled]="!areEmailAndPasswordValid || isLoggedIn"
+        [disabled]="!areEmailAndPasswordValid"
         type="button"
         mat-flat-button
         color="accent"

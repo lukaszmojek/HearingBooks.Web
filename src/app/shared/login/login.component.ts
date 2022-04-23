@@ -45,7 +45,14 @@ export class LoginComponent extends AcrylicAwareComponent<IApplicationState> imp
     super(store$, acrylicService)
   }
 
-  public logIn() {
+  handleKeyUp($event: any): void {
+    if ($event.keyCode === 13 && this.areEmailAndPasswordValid) {
+      this.logIn()
+    }
+  }
+
+
+  logIn() {
     this.store$.dispatch(
       AuthActions.logIn({
         email: this.emailFormControl.value,
