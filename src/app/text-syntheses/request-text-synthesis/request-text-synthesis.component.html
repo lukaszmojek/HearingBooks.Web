@@ -5,7 +5,7 @@
   [elevation]="elevation"
   [border]="border"
   [showLoadingIndicator]="true"
-  [isLoading]="isActionInProgress$ | async"
+  [isLoading]="isAnyActionInProgress"
 >
   <form class="flex-column">
     <mat-form-field
@@ -49,11 +49,7 @@
         {{ 'PayAsYouGo.RequestTextSynthesis.Fields.Voice.Label' | translate }}
       </mat-label>
 
-      <!-- TODO: Refactor this disabled attribute -->
-      <mat-select
-        [formControl]="voiceFormControl"
-        [disabled]="!(isLanguageSelected$ | async)!"
-      >
+      <mat-select [formControl]="voiceFormControl">
         <mat-option
           *ngFor="let voice of availableVoices$ | async"
           [value]="voice"
@@ -90,7 +86,7 @@
       mat-flat-button
       type="button"
       color="accent"
-      [disabled]="isFormInvalid || (isActionInProgress$ | async)"
+      [disabled]="isFormInvalid || isAnyActionInProgress"
       (click)="requestTextSynthesis()"
     >
       {{ 'PayAsYouGo.RequestTextSynthesis.Actions.Request' | translate }}

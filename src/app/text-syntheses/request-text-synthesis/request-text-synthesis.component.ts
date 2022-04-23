@@ -12,7 +12,7 @@ import { Observable } from 'rxjs'
 import { selectIsLanguageSelected, selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
 import { ITextSynthesisRequest } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
-import { selectIsActionInProgress } from '../state/text-syntheses.selectors'
+import { selectIsAnyActionInProgress } from 'src/app/shared/state/index.selectors'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -42,8 +42,9 @@ export class RequestTextSynthesisComponent
 
   availableLanguages$: Observable<ISynthesisLanguage[]>
   availableVoices$: Observable<ISynthesisVoice[]>
-  isLanguageSelected$: Observable<boolean>
-  isActionInProgress$: Observable<boolean>
+
+  isLanguageSelected: boolean
+  isAnyActionInProgress: boolean
 
   selectedLanguage$: ISynthesisLanguage
 
@@ -85,8 +86,18 @@ export class RequestTextSynthesisComponent
 
     this.availableLanguages$ = this.safeSelect$(selectLanguages)
     this.availableVoices$ = this.safeSelect$(selectVoicesFromSelectedLanguage)
-    this.isLanguageSelected$ = this.safeSelect$(selectIsLanguageSelected)
-    this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
+
+    this.safeSelect$(selectIsLanguageSelected).subscribe(isLanguageSelected => {
+      this.isLanguageSelected = isLanguageSelected
+
+      this.handleVoiceFormControlStateUpdate()
+    })
+
+    this.safeSelect$(selectIsAnyActionInProgress).subscribe(isAnyActionInProgress => {
+      this.isAnyActionInProgress = isAnyActionInProgress
+
+      this.handleLanguageFormControlStateUpdate()
+    })
   }
 
   requestTextSynthesis(): void {
@@ -104,12 +115,24 @@ export class RequestTextSynthesisComponent
     this.store$.dispatch(LanguagesActions.languageSelected({ language: selectedLanguage }))
   }
 
-  private createRequestTextSynthesisForm() {
+  private createRequestTextSynthesisForm(): void {
     this.textSynthesisFormGroup = this.formBuilder.group({
       'title': this.formBuilder.control('', [Validators.required]),
       'language': this.formBuilder.control('', [Validators.required]),
       'voice': this.formBuilder.control('', [Validators.required]),
       'textToSynthesize': this.formBuilder.control('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
     })
+  }
+
+  private handleLanguageFormControlStateUpdate(): void {
+    this.isAnyActionInProgress
+      ? this.languageFormControl.disable()
+      : this.languageFormControl.enable()
+  }
+
+  private handleVoiceFormControlStateUpdate(): void {
+    this.isLanguageSelected
+      ? this.voiceFormControl.enable()
+      : this.voiceFormControl.disable()
   }
 }
