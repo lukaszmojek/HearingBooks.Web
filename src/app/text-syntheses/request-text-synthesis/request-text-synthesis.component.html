@@ -4,6 +4,8 @@
   [divider]="divider"
   [elevation]="elevation"
   [border]="border"
+  [showLoadingIndicator]="true"
+  [isLoading]="isActionInProgress$ | async"
 >
   <form class="flex-column">
     <mat-form-field

@@ -7,3 +7,8 @@ export const selectTextSyntheses = createSelector(
   selectTextSynthesesFeature,
   (state: ITextSynthesesState) => state.textSyntheses
 )
+
+export const selectIsActionInProgress = createSelector(
+  selectTextSynthesesFeature,
+  (state: ITextSynthesesState) => state.isActionInProgress
+)

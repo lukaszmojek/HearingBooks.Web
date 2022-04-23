@@ -9,9 +9,10 @@ import { IApplicationState } from 'src/app/shared/state'
 import { ISynthesisLanguage, ISynthesisVoice } from '../../languages/models'
 import { LanguagesActions } from 'src/app/languages/languages.actions'
 import { Observable } from 'rxjs'
-import { isLanguageSelected, selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
+import { selectIsLanguageSelected, selectLanguages, selectVoicesFromSelectedLanguage } from 'src/app/languages/languages.selectors'
 import { ITextSynthesisRequest } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
+import { selectIsActionInProgress } from '../state/text-syntheses.selectors'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -42,6 +43,7 @@ export class RequestTextSynthesisComponent
   availableLanguages$: Observable<ISynthesisLanguage[]>
   availableVoices$: Observable<ISynthesisVoice[]>
   isLanguageSelected$: Observable<boolean>
+  isActionInProgress$: Observable<boolean>
 
   selectedLanguage$: ISynthesisLanguage
 
@@ -83,7 +85,8 @@ export class RequestTextSynthesisComponent
 
     this.availableLanguages$ = this.safeSelect$(selectLanguages)
     this.availableVoices$ = this.safeSelect$(selectVoicesFromSelectedLanguage)
-    this.isLanguageSelected$ = this.safeSelect$(isLanguageSelected)
+    this.isLanguageSelected$ = this.safeSelect$(selectIsLanguageSelected)
+    this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
   }
 
   requestTextSynthesis(): void {

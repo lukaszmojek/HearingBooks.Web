@@ -29,7 +29,6 @@ const reducer = createReducer(
     ...state,
     isActionInProgress: false,
   })),
-  //TODO: Show some kind of banner for actions below
   on(TextSynthesesActions.requestTextSynthesis, state => ({
     ...state,
     isActionInProgress: true,
@@ -42,7 +41,6 @@ const reducer = createReducer(
     ...state,
     isActionInProgress: false,
   })),
-  ////TODO: Show some kind of banner for actions above
 )
 
 export const textSynthesesFeature = createFeature({
