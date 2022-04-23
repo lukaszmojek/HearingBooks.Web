@@ -18,6 +18,7 @@ import { CardComponent } from './card/card.component'
 import { LoginComponent } from './login/login.component'
 import { LanguagesModule } from '../languages/languages.module'
 import { ShortenTextPipe } from './shorten-text.pipe'
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 const components = [
   MainAppComponent,
@@ -28,7 +29,7 @@ const components = [
   PreferencesComponent,
   ProfileDetailsComponent,
   CardComponent,
-  LoginComponent
+  LoginComponent,
 ]
 
 const modules = [
@@ -43,6 +44,7 @@ const modules = [
   FormsModule,
   ReactiveFormsModule,
   ReactiveFormsModule,
+  NgxSkeletonLoaderModule
 ]
 
 const pipes = [
