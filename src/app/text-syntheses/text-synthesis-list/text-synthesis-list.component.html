@@ -17,5 +17,11 @@
       >
       </hb-text-synthesis>
     </mat-accordion>
+
+    <hb-empty-state
+      [messageTranslationKey]="emptyStateMessageTranslationKey"
+      [redirectButtonRoute]="requestTextSynthesisRoute"
+      [redirectButtonTranslationKey]="redirectButtonTranslationKey"
+    ></hb-empty-state>
   </div>
 </hb-card>

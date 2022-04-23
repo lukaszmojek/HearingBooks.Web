@@ -1,4 +1,7 @@
 {
+  "EmptyState": {
+    "TextSyntheses": "Jeszcze nic tu nie ma! Klinknij na przycisk poniżej, aby stworzyć swoją pierwszą Syntezę Tekstową"
+  },
   "Login": {
     "Actions": {
       "Login": "Zaloguj",
@@ -66,6 +69,7 @@
         "Voice": "Głos"
       },
       "Price": "Cena",
+      "Redirect": "Swtórz Syntezę Tekstową",
       "Title": "Synteza tekstowa"
     }
   },

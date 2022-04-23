@@ -18,6 +18,9 @@ export class TextSynthesisListComponent
   extends AcrylicAwareComponent<IApplicationState>
   implements IMainComponent, OnInit {
   titleTranslationKey = 'PayAsYouGo.TextSyntheses.Title'
+  emptyStateMessageTranslationKey = 'EmptyState.TextSyntheses'
+  requestTextSynthesisRoute = 'request'
+  redirectButtonTranslationKey = 'PayAsYouGo.TextSyntheses.Redirect'
   divider = true
   elevation = true
   border = false

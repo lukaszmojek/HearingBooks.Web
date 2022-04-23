@@ -1,4 +1,7 @@
 {
+  "EmptyState": {
+    "TextSyntheses": "There is nothing here yet! Click on the button below to create your first Text Synthesis"
+  },
   "Login": {
     "Actions": {
       "Login": "Login",
@@ -66,6 +69,7 @@
         "Voice": "Voice"
       },
       "Price": "Price",
+      "Redirect": "Request Text Synthesis",
       "Title": "Text Syntheses"
     }
   },
