@@ -90,7 +90,7 @@
       mat-flat-button
       type="button"
       color="accent"
-      [disabled]="isFormInvalid"
+      [disabled]="isFormInvalid || (isActionInProgress$ | async)"
       (click)="requestTextSynthesis()"
     >
       {{ 'PayAsYouGo.RequestTextSynthesis.Actions.Request' | translate }}
