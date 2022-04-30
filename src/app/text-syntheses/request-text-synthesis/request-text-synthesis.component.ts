@@ -117,10 +117,10 @@ export class RequestTextSynthesisComponent
 
   private createRequestTextSynthesisForm(): void {
     this.textSynthesisFormGroup = this.formBuilder.group({
-      'title': this.formBuilder.control('', [Validators.required]),
-      'language': this.formBuilder.control('', [Validators.required]),
-      'voice': this.formBuilder.control('', [Validators.required]),
-      'textToSynthesize': this.formBuilder.control('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
+      [this.formFieldNames.title]: this.formBuilder.control('', [Validators.required]),
+      [this.formFieldNames.language]: this.formBuilder.control('', [Validators.required]),
+      [this.formFieldNames.voice]: this.formBuilder.control('', [Validators.required]),
+      [this.formFieldNames.textToSynthesize]: this.formBuilder.control('', [Validators.required, Validators.maxLength(this.textToSynthesizeMaxCharacterCount)])
     })
   }
 
