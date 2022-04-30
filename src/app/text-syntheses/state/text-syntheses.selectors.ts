@@ -12,3 +12,8 @@ export const selectIsActionInProgress = createSelector(
   selectTextSynthesesFeature,
   (state: ITextSynthesesState) => state.isActionInProgress
 )
+
+export const selectShouldShowEmptyState = createSelector(
+  selectTextSynthesesFeature,
+  (state: ITextSynthesesState) => state.isActionInProgress === false && state.textSyntheses.length === 0
+)

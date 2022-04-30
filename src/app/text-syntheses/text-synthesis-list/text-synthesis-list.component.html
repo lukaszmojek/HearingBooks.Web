@@ -19,6 +19,7 @@
     </mat-accordion>
 
     <hb-empty-state
+      *ngIf="shouldShowEmptyState$ | async"
       [messageTranslationKey]="emptyStateMessageTranslationKey"
       [redirectButtonRoute]="requestTextSynthesisRoute"
       [redirectButtonTranslationKey]="redirectButtonTranslationKey"

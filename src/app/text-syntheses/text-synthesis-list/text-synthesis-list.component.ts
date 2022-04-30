@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs'
+import { Observable, tap } from 'rxjs'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
 import { ITextSynthesis } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
-import { selectIsActionInProgress, selectTextSyntheses } from '../state/text-syntheses.selectors'
+import { selectIsActionInProgress, selectShouldShowEmptyState, selectTextSyntheses } from '../state/text-syntheses.selectors'
 
 @Component({
   selector: 'hb-text-synthesis-list',
@@ -27,11 +27,13 @@ export class TextSynthesisListComponent
 
   isActionInProgress$: Observable<boolean>
   textSyntheses$: Observable<ITextSynthesis[]>
+  shouldShowEmptyState$: Observable<ITextSynthesis[]>
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
     this.textSyntheses$ = this.safeSelect$(selectTextSyntheses)
     this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
+    this.shouldShowEmptyState$ = this.safeSelect$(selectShouldShowEmptyState)
   }
 
   ngOnInit(): void {
