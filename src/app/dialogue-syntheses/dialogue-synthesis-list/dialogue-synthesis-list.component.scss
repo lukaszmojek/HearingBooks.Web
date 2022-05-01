@@ -1,0 +1,10 @@
+@use '../../../styles/bootstrap.scss';
+
+:host {
+  @include bootstrap.dimensions-host;
+  min-height: 600px;
+
+  .mat-accordion {
+    width: 100%;
+  }
+}

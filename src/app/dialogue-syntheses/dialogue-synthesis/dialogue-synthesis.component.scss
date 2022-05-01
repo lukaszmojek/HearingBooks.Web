@@ -1,0 +1,47 @@
+@use '../../../styles/bootstrap.scss';
+
+$titleWidth: 230px;
+$synthesisTextWidth: 320px;
+$languageWidth: 40px;
+$voiceWidth: 150px;
+
+:host {
+  .header-title {
+    @include bootstrap.flex-set(column, $titleWidth, 0, 1.5, flex-start);
+    padding-right: bootstrap.$spacing-padding-xl;
+  }
+
+  .header-synthesis-text {
+    @include bootstrap.flex-set(column, $synthesisTextWidth, 2, 3, flex-start);
+    padding-right: bootstrap.$spacing-padding-xl;
+  }
+
+  .header-language {
+    @include bootstrap.flex-set(column, $languageWidth, 0, 0.5, flex-start);
+    padding-right: bootstrap.$spacing-padding-xl;
+  }
+
+  .header-voice {
+    @include bootstrap.flex-set(column, $voiceWidth, 0, 1.5, flex-start);
+  }
+
+  .synthesis-text {
+    margin-top: bootstrap.$spacing-margin-l;
+  }
+
+  .mat-expansion-panel {
+    margin-bottom: bootstrap.$spacing-margin-l;
+
+    .mat-expansion-panel-header {
+      height: 70px;
+
+      .mat-content {
+        column-gap: 10px;
+      }
+    }
+
+    .mat-panel-title {
+      @include bootstrap.flex-set(row);
+    }
+  }
+}
