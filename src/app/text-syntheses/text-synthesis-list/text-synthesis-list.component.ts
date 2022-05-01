@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { Observable, tap } from 'rxjs'
+import { Observable } from 'rxjs'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
@@ -27,7 +27,7 @@ export class TextSynthesisListComponent
 
   isActionInProgress$: Observable<boolean>
   textSyntheses$: Observable<ITextSynthesis[]>
-  shouldShowEmptyState$: Observable<ITextSynthesis[]>
+  shouldShowEmptyState$: Observable<boolean>
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
