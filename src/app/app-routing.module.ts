@@ -31,6 +31,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'dialogue-syntheses',
+    canActivateChild: [AuthGuard],
+    loadChildren: () =>
+      import('./dialogue-syntheses/dialogue-syntheses.module').then(
+        m => m.DialogueSynthesesModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
