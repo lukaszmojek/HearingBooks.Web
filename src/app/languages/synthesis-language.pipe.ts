@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISynthesisLanguage } from '../../languages/models';
+import { ISynthesisLanguage } from '../languages/models';
 
 @Pipe({
   name: 'synthesisLanguage'

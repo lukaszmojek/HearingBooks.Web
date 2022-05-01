@@ -5,8 +5,6 @@ import { TextSynthesisListComponent } from './text-synthesis-list/text-synthesis
 import { TextSynthesisComponent } from './text-synthesis/text-synthesis.component'
 import { TextSynthesisPipe } from './text-synthesis/text-synthesis.pipe'
 import { RequestTextSynthesisComponent } from './request-text-synthesis/request-text-synthesis.component';
-import { SynthesisLanguagePipe } from './request-text-synthesis/synthesis-language.pipe';
-import { SynthesisVoicePipe } from './request-text-synthesis/synthesis-voice.pipe'
 import { TextSynthesesStateModule } from './state/text-syntheses-state.module'
 
 const components = [
@@ -17,7 +15,7 @@ const components = [
 
 const modules = [SharedModule, TextSynthesesRoutingModule, TextSynthesesStateModule]
 
-const pipes = [TextSynthesisPipe, SynthesisLanguagePipe, SynthesisVoicePipe]
+const pipes = [TextSynthesisPipe]
 
 @NgModule({
   imports: [...modules],
