@@ -10,9 +10,9 @@ export class FilesService {
 
   constructor(private http: HttpClient) { }
 
-  downloadTextSynthesis$(synthesisId: string): void {
+  downloadTextSynthesis$(synthesisId: string, filename: string): void {
     this.http.get(ApiEndpoints.textSyntheses.download(synthesisId), { responseType: "blob" }).subscribe(x => {
-      saveAs(x, 'sample.wav');
+      saveAs(x, filename);
     })
   }
 }

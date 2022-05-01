@@ -30,12 +30,13 @@ export class TextSynthesisPipe implements PipeTransform {
       this.priceTranslation$,
     ]).pipe(
       exhaustMap(([characterCountTranslation, priceTranslation]) => {
-        const characterCount = `${characterCountTranslation}: ${value.characterCount}`
-        const price = `${priceTranslation}: ${value.price}`
+        // const characterCount = `${characterCountTranslation}: ${value.characterCount}`
+        // const price = `${priceTranslation}: ${value.price}`
 
-        const summary = `${characterCount} - ${price}`
+        // const summary = `${characterCount} - ${price}`
 
-        return of(summary)
+        // return of(summary)
+        return of('')
       })
     )
   }

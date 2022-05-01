@@ -1,12 +1,14 @@
 export interface ITextSynthesis {
   id: string
   title: string
+  status: TextSynthesisStatus
   synthesisText: string
-  characterCount: number
-  price: string
-  requestedOn: Date
-  synthesisLength: string
-  synthesisFileUrl: string
+  blobName: string
+  // characterCount: number
+  // price: string
+  // requestedOn: Date
+  // synthesisLength: string
+  // synthesisFileUrl: string
   language: string
   voice: string
 }
@@ -17,4 +19,12 @@ export interface ITextSynthesisRequest {
   language: string
   voice: string
   requestingUserId: string
+}
+
+export enum TextSynthesisStatus {
+  Submitted = 0,
+  Pending = 1,
+  Processing = 2,
+  Completed = 3,
+  Cancelled = 4
 }

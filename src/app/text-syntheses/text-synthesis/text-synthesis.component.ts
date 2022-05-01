@@ -36,6 +36,6 @@ export class TextSynthesisComponent extends AcrylicAwareComponent<IApplicationSt
   }
 
   downloadSynthesis(): void {
-    this.fileService.downloadTextSynthesis$(this.textSynthesis.id)
+    this.fileService.downloadTextSynthesis$(this.textSynthesis.id, this.textSynthesis.blobName)
   }
 }
