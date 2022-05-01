@@ -1,5 +1,6 @@
 {
   "EmptyState": {
+    "DialogueSyntheses": "There is nothing here yet! Click on the button below to create your first Dialogue Synthesis",
     "TextSyntheses": "There is nothing here yet! Click on the button below to create your first Text Synthesis"
   },
   "Login": {
@@ -25,6 +26,13 @@
     "Title": "Login"
   },
   "Notifications": {
+    "DialogueSyntheses": {
+      "LoadError": "Unfortunately there was a problem with getting your Dialogue Syntheses",
+      "Request": {
+        "Error": "There was a problem with requesting Dialogue Synthesis. Please, try again",
+        "Success": "Dialogue Synthesis request was submitted and will be processed shortly"
+      }
+    },
     "TextSyntheses": {
       "LoadError": "Unfortunately there was a problem with getting your Text Syntheses",
       "Request": {
@@ -34,6 +42,48 @@
     }
   },
   "PayAsYouGo": {
+    "DialogueSyntheses": {
+      "CharacterCount": "Character count",
+      "Content": {
+        "Download": "Download"
+      },
+      "Header": {
+        "Title": "Title",
+        "Language": "Language",
+        "SynthetizedText": "Synthetized text",
+        "FirstSpeakerVoice": "First speaker voice",
+        "SecondSpeakerVoice": "Second speaker voice"
+      },
+      "Price": "Price",
+      "Redirect": "Request Dialogue Synthesis",
+      "Title": "Dialogue Syntheses"
+    },
+    "RequestDialogueSynthesis": {
+      "Actions": {
+        "Request": "Request"
+      },
+      "Fields": {
+        "FirstSpeakerVoice": {
+          "Label": "First speaker voice"
+        },
+        "Language": {
+          "Label": "Language"
+        },
+        "DialogueText": {
+          "Label": "Dialogue text",
+          "Errors": {
+            "TooLong": "Your dialogue is too long!"
+          }
+        },
+        "Title": {
+          "Label": "Title"
+        },
+        "SecondSpeakerVoice": {
+          "Label": "Second speaker voice"
+        }
+      },
+      "Title": "Request Dialolgue Synthesis"
+    },
     "RequestTextSynthesis": {
       "Actions": {
         "Request": "Request"
@@ -83,7 +133,9 @@
   },
   "SideMenu": {
     "Dashboard": "Dashboard",
+    "DialogueSyntheses": "Dialogue Syntheses",
     "Profile": "Profile",
+    "RequestDialogueSynthesis": "Request Dialogue Synthesis",
     "RequestTextSynthesis": "Request Text Synthesis",
     "TextSyntheses": "Text Syntheses"
   },

@@ -25,11 +25,18 @@
     "Title": "Logowanie"
   },
   "Notifications": {
+    "DialogueSyntheses": {
+      "LoadError": "Niestety nie udało się załadować Twoich Syntez Dialogowych",
+      "Request": {
+        "Error": "Wystąpił problem podczas tworzenia Syntezy Dialogowej. Spróbuj ponownie",
+        "Success": "Synteza Dialogowa została utworzona i zostanie niedługo przetworzona"
+      }
+    },
     "TextSyntheses": {
       "LoadError": "Niestety nie udało się załadować Twoich Syntez Tekstowych",
       "Request": {
         "Error": "Wystąpił problem podczas tworzenia Syntezy Tekstowej. Spróbuj ponownie",
-        "Success": "Synteza Tekstowa została utwrzona i zostanie niedługo przetworzona"
+        "Success": "Synteza Tekstowa została utworzona i zostanie niedługo przetworzona"
       }
     }
   },
