@@ -17,5 +17,4 @@ export interface IDialogueSynthesisRequest {
   language: string
   firstSpeakerVoice: string
   secondSpeakerVoice: string
-  requestingUserId: string
 }

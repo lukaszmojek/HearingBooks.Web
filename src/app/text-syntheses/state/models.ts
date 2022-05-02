@@ -1,5 +1,6 @@
 export interface ITextSynthesis {
   id: string
+  requestingUserId: string
   title: string
   status: TextSynthesisStatus
   synthesisText: string
@@ -18,7 +19,6 @@ export interface ITextSynthesisRequest {
   textToSynthesize: string
   language: string
   voice: string
-  requestingUserId: string
 }
 
 export enum TextSynthesisStatus {
