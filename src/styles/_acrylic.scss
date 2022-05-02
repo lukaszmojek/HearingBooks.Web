@@ -20,6 +20,7 @@ $glass-tint-error: #ff0000;
   background-color: rgba($color: $glass-tint, $alpha: $glass-opacity);
   backdrop-filter: blur($blur-size);
   -webkit-backdrop-filter: $blur-size;
+  box-shadow: none !important;
 }
 
 @mixin set-primary() {
