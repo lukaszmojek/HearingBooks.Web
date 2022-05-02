@@ -1,0 +1,164 @@
+<mat-card class="flex--column card">
+  <mat-card-header class="card-title">
+    {{ formTitle }}
+  </mat-card-header>
+
+  <form [formGroup]="userDetailsFormGroup" class="flex--row user-details-form">
+    <div class="flex--column">
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Imię</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="firstName"
+          placeholder="Imię"
+        >
+
+        <mat-error *ngIf="formControl('firstName').hasError('required')">
+          Imię jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Nazwisko</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="lastName"
+          placeholder="Nazwisko"
+        >
+
+        <mat-error *ngIf="formControl('lastName').hasError('required')">
+          Nazwisko jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Adres e-mail</mat-label>
+        <input type="email" 
+          matInput
+          formControlName="email"
+          placeholder="Np. lukasz@abc.com"
+        >
+
+        <mat-error *ngIf="formControl('email').hasError('required')">
+          Adres e-mail jest <strong>wymagany</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill"
+        [ngClass]="{'visibility-hidden': isChangeUserDetailsAction}"
+      >
+        <mat-label>Hasło</mat-label>
+        <input type="password" 
+          matInput
+          formControlName="password"
+          placeholder="********"
+        >
+
+        <mat-error *ngIf="formControl('password').hasError('required')">
+          Hasło jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill"
+        [ngClass]="{'visibility-hidden': isChangeUserDetailsAction}"
+      >
+        <mat-label>Powtórz hasło</mat-label>
+        <input type="password" 
+          matInput
+          formControlName="repeatPassword"
+          placeholder="********"
+        >
+
+        <mat-error *ngIf="formControl('repeatPassword').hasError('required')">
+          Powtórzenie hasła jest <strong>wymagane</strong>
+        </mat-error>
+
+        <mat-error *ngIf="formControl('repeatPassword').hasError('notIdentical')">
+          Hasłą nie są identyczne
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="flex--column">
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Ulica</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="street"
+          placeholder="Ulica"
+        >
+
+        <mat-error *ngIf="formControl('street').hasError('required')">
+          Ulica jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Numer domu i mieszkania</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="houseAndFlatNumber"
+          placeholder="Numer domu i mieszkania"
+        >
+
+        <mat-error *ngIf="formControl('houseAndFlatNumber').hasError('required')">
+          Numer domu i mieszkania są <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Kod pocztowy</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="postalCode"
+          placeholder="XX-XXX"
+        >
+
+        <mat-error *ngIf="formControl('postalCode').hasError('required')">
+          Kod pocztowy jest <strong>wymagany</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill">
+        <mat-label>Miasto</mat-label>
+        <input type="text" 
+          matInput
+          formControlName="city"
+          placeholder="user.address.city"
+        >
+
+        <mat-error *ngIf="formControl('city').hasError('required')">
+          Miasto jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="flex--row" appearance="fill"
+        [ngClass]="{'visibility-hidden': isRegisterUserAction}"
+      >
+        <mat-label>Typ</mat-label>
+        <mat-select [(value)]="selectedUserType"
+          [disabled]="!isAdministrator"
+        >
+          <mat-option [value]="0">Klient</mat-option>
+          <mat-option [value]="1">Kierowca</mat-option>
+          <mat-option [value]="2">Administrator</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="action-buttons">
+    <button 
+      [disabled]="!isFormValid"
+      type="button"
+      mat-flat-button
+      color="primary"
+      class="register-button"
+      (click)="emitSubmittedEvent()"
+    >
+      {{ actionButtonName }}
+    </button>
+
+    <ng-content></ng-content>
+  </div>
+</mat-card>
