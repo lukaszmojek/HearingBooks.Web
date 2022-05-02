@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
-import { UserType } from '../shared/users/models'
+import { UserType } from '../users/models'
 import { featureName, IAuthState } from './auth.reducer'
 import { DecodedToken } from './decoded-token'
 

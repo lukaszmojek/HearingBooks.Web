@@ -19,7 +19,7 @@ import StoreConnectedComponent from 'src/app/shared/store-connected.component'
 export class PreferencesComponent extends StoreConnectedComponent<IPreferencesState> {
   @Input() preferencesFormGroup: FormGroup
 
-  public innerCardBorder = true
+  public innerCardBorder = false
   public innerCardType: CardType
   public availableLanguages = availableLanguages
   public selectedLanguage: string

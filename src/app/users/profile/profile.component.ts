@@ -7,10 +7,10 @@ import {
 } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors'
-import AcrylicAwareComponent from '../../acrylic/acrylic-aware.component'
-import { AcrylicService } from '../../acrylic/acrylic.service'
-import { IMainComponent } from '../../main-component.interface'
-import { IApplicationState } from '../../state'
+import AcrylicAwareComponent from '../../shared/acrylic/acrylic-aware.component'
+import { AcrylicService } from '../../shared/acrylic/acrylic.service'
+import { IMainComponent } from '../../shared/main-component.interface'
+import { IApplicationState } from '../../shared/state'
 
 @Component({
   selector: 'hb-profile',
