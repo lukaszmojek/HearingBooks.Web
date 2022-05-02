@@ -15,11 +15,12 @@ export class AuthEffects {
         this.auth.logIn$(action.email, action.password).pipe(
           map(response => {
             this.router.navigateByUrl('text-syntheses')
-            return AuthActions.logInSuccess({ token: response.content.token })
-
-          }
-          ),
-          catchError(_ => of(AuthActions.logInFailed()))
+            return AuthActions.logInSuccess({ token: response.token })
+          }),
+          catchError(error => {
+            console.log(error)
+            return of(AuthActions.logInFailed())
+          })
         )
       )
     )

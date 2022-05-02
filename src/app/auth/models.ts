@@ -5,5 +5,6 @@ export interface IApiResponse<T> {
 }
 
 export interface ITokenResponse {
+  username: string
   token: string
 }

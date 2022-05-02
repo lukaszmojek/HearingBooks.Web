@@ -36,19 +36,19 @@ export class AuthenticationService {
   public logIn$(
     email: string,
     password: string
-  ): Observable<IApiResponse<ITokenResponse>> {
+  ): Observable<ITokenResponse> {
     const request = {
       email: email,
       password: password,
     }
 
     return this.http
-      .post<IApiResponse<ITokenResponse>>(ApiEndpoints.auth.login, request)
+      .post<ITokenResponse>(ApiEndpoints.auth.login, request)
       .pipe(
         tap(tokenResponse => {
           localStorage.setItem(
             this.localStorageTokenKey,
-            tokenResponse.content.token
+            tokenResponse.token
           )
         })
       )
