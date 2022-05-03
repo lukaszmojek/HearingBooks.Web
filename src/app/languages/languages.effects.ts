@@ -27,7 +27,7 @@ export class LanguagesEffects {
 
   private selectSourceOfDataForLanuages$(): Observable<ISynthesisLanguage[]> {
     return this.store$.pipe(
-      take(1), //TODO: Is this needed?
+      take(1),
       select(selectLanguages),
       mergeMap((languages: ISynthesisLanguage[]) =>
         iif(
