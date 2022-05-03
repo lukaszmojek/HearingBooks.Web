@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectUserId } from '../auth/auth.selectors';
-import { selectIsActionInProgress } from '../languages/languages.selectors';
 import AcrylicAwareComponent from '../shared/acrylic/acrylic-aware.component';
 import { AcrylicService } from '../shared/acrylic/acrylic.service';
 import { IMainComponent } from '../shared/main-component.interface';
 import { IApplicationState } from '../shared/state';
 import { DashboardActions } from './state/dashboard.actions';
-import { selectSynthesesSummary } from './state/dashboard.selectors';
+import { selectIsActionInProgress, selectSynthesesSummary } from './state/dashboard.selectors';
 import { ISynthesesSummary } from './state/models';
 
 @Component({
