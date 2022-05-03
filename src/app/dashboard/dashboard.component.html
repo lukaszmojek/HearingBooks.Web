@@ -7,6 +7,55 @@
   [showLoadingIndicator]="true"
   [isLoading]="isActionInProgress$ | async"
 >
+  <div
+    *ngIf="synthesesSummary !== null"
+    class="flex-column"
+  >
+    <div class="flex-row dashboard-row">
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.RequestedTextSyntheses' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.textSynthesesCount }}
+        </div>
+      </div>
+
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.RequestedDialogueSyntheses' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.dialogueSynthesesCount }}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-row dashboard-row">
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.SynthesesCharactersCount' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.synthesesCharactersCount }}
+        </div>
+      </div>
+
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.SynthesesDurationInSeconds' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.synthesesDurationInSeconds }}
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex-column">
     <hb-skeleton *ngIf="isActionInProgress$ | async"></hb-skeleton>
   </div>

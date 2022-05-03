@@ -1,6 +1,6 @@
 export interface ISynthesesSummary {
   dialogueSynthesesCount: number
   textSynthesesCount: number
-  synthesizedCharactersCount: number
-  timeOfSynthesesInSeconds: number
+  synthesesCharactersCount: number
+  synthesesDurationInSeconds: number
 }

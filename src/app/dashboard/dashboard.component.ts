@@ -8,6 +8,7 @@ import { AcrylicService } from '../shared/acrylic/acrylic.service';
 import { IMainComponent } from '../shared/main-component.interface';
 import { IApplicationState } from '../shared/state';
 import { DashboardActions } from './state/dashboard.actions';
+import { selectSynthesesSummary } from './state/dashboard.selectors';
 import { ISynthesesSummary } from './state/models';
 
 @Component({
@@ -17,15 +18,13 @@ import { ISynthesesSummary } from './state/models';
 })
 export class DashboardComponent extends AcrylicAwareComponent<IApplicationState>
   implements IMainComponent, OnInit {
-  titleTranslationKey = 'PayAsYouGo.DialogueSyntheses.Title'
-  requestTextSynthesisRoute = 'request'
-  redirectButtonTranslationKey = 'PayAsYouGo.DialogueSyntheses.Redirect'
+  titleTranslationKey = 'Dashboard.Title'
   divider = true
   elevation = true
   border = false
 
   isActionInProgress$: Observable<boolean>
-  synthesesSummary$: Observable<ISynthesesSummary>
+  synthesesSummary: ISynthesesSummary
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
@@ -35,6 +34,10 @@ export class DashboardComponent extends AcrylicAwareComponent<IApplicationState>
   ngOnInit(): void {
     this.safeSelect$(selectUserId).subscribe(userId => {
       this.store$.dispatch(DashboardActions.loadSynthesesSummaryForUser({ userId: userId }))
+    })
+
+    this.safeSelect$(selectSynthesesSummary).subscribe(synthesesSummary => {
+      this.synthesesSummary = synthesesSummary
     })
   }
 }

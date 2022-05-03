@@ -1,4 +1,11 @@
 {
+  "Dashboard": {
+    "Title": "Dashboard",
+    "RequestedDialogueSyntheses": "Requested Dialogue Syntheses",
+    "RequestedTextSyntheses": "Requested Text Syntheses",
+    "SynthesesCharactersCount": "Syntheses characters count",
+    "SynthesesDurationInSeconds": "Syntheses duration in seconds"
+  },
   "EmptyState": {
     "DialogueSyntheses": "There is nothing here yet! Click on the button below to create your first Dialogue Synthesis",
     "TextSyntheses": "There is nothing here yet! Click on the button below to create your first Text Synthesis"
