@@ -10,9 +10,19 @@ export class FilesService {
 
   constructor(private http: HttpClient) { }
 
-  downloadTextSynthesis$(synthesisId: string): void {
-    this.http.get(ApiEndpoints.textSyntheses.download(synthesisId), { responseType: "blob" }).subscribe(x => {
-      saveAs(x, 'sample.wav');
+  downloadTextSynthesis$(synthesisId: string, filename: string): void {
+    const downloadUrl = ApiEndpoints.textSyntheses.download(synthesisId)
+    this.downloadFile(downloadUrl, filename)
+  }
+
+  downloadDialogueSynthesis$(synthesisId: string, filename: string): void {
+    const downloadUrl = ApiEndpoints.dialogueSyntheses.download(synthesisId)
+    this.downloadFile(downloadUrl, filename)
+  }
+
+  private downloadFile(downloadUrl: string, filename: string): void {
+    this.http.get(downloadUrl, { responseType: "blob" }).subscribe(x => {
+      saveAs(x, filename)
     })
   }
 }

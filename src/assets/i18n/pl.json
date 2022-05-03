@@ -1,4 +1,85 @@
 {
+  "EmptyState": {
+    "TextSyntheses": "Jeszcze nic tu nie ma! Klinknij na przycisk poniżej, aby stworzyć swoją pierwszą Syntezę Tekstową"
+  },
+  "Login": {
+    "Actions": {
+      "Login": "Zaloguj",
+      "Registration": "Rejestracja"
+    },
+    "Fields": {
+      "Email": {
+        "Errors": {
+          "Incorrect": "Niepoprawny adres email!",
+          "Required": "Email jest wymagany!"
+        },
+        "Label": "Email"
+      },
+      "Password": {
+        "Errors": {
+          "Required": "Hasło jest wymagane!"
+        },
+        "Label": "Hasło"
+      }
+    },
+    "Title": "Logowanie"
+  },
+  "Notifications": {
+    "DialogueSyntheses": {
+      "LoadError": "Niestety nie udało się załadować Twoich Syntez Dialogowych",
+      "Request": {
+        "Error": "Wystąpił problem podczas tworzenia Syntezy Dialogowej. Spróbuj ponownie",
+        "Success": "Synteza Dialogowa została utworzona i zostanie niedługo przetworzona"
+      }
+    },
+    "TextSyntheses": {
+      "LoadError": "Niestety nie udało się załadować Twoich Syntez Tekstowych",
+      "Request": {
+        "Error": "Wystąpił problem podczas tworzenia Syntezy Tekstowej. Spróbuj ponownie",
+        "Success": "Synteza Tekstowa została utworzona i zostanie niedługo przetworzona"
+      }
+    }
+  },
+  "PayAsYouGo": {
+    "RequestTextSynthesis": {
+      "Actions": {
+        "Request": "Stwórz"
+      },
+      "Fields": {
+        "Language": {
+          "Label": "Język"
+        },
+        "TextToSynthesize": {
+          "Label": "Tekst do zsyntetyzowania",
+          "Errors": {
+            "TooLong": "Tekst do zsyntetyzowania jest za długi!"
+          }
+        },
+        "Title": {
+          "Label": "Tytuł"
+        },
+        "Voice": {
+          "Label": "Głos"
+        }
+      },
+      "Title": "Stwórz syntezę tekstową"
+    },
+    "TextSyntheses": {
+      "CharacterCount": "Ilość znaków",
+      "Content": {
+        "Download": "Pobierz"
+      },
+      "Header": {
+        "Title": "Tytuł",
+        "Language": "Jęzuk",
+        "SynthetizedText": "Zsyntetyzowany tekst",
+        "Voice": "Głos"
+      },
+      "Price": "Cena",
+      "Redirect": "Swtórz Syntezę Tekstową",
+      "Title": "Synteza tekstowa"
+    }
+  },
   "Profile": {
     "Preferences": {
       "Acrylic": "Akrylowe UI",
@@ -10,6 +91,7 @@
   "SideMenu": {
     "Dashboard": "Pulpit",
     "Profile": "Profil",
+    "RequestTextSynthesis": "Stwórz syntezę tekstową",
     "TextSyntheses": "Syntezy Tekstowe"
   },
   "TextSyntheses": {

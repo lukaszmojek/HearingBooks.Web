@@ -1,8 +1,7 @@
 $side-nav-menu-width: 200px;
+$toolbar-height: 50px;
 
 @mixin host() {
-  height: 100%;
-  // width: calc(95% - 2 * $side-nav-menu-width);
   width: 95%;
   max-width: 1200px;
 }

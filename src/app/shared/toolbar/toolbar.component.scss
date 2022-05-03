@@ -2,13 +2,13 @@
 
 :host {
   .toolbar {
-    height: 5vh;
+    height: bootstrap.$dimensions-toolbar-height;
     justify-content: space-between;
   }
 
   .mat-toolbar {
     &.acrylic-toolbar {
-      @include bootstrap.acrylic-set-toolbar();
+      @include bootstrap.acrylic-set-primary();
     }
   }
 

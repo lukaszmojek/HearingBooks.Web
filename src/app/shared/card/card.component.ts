@@ -16,7 +16,8 @@ import { CardType } from './card-type'
         {{ titleTranslationKey | translate }}
       </mat-card-title>
 
-      <mat-divider *ngIf="!!titleTranslationKey && divider"></mat-divider>
+      <mat-divider *ngIf="shouldDisplayDivider"></mat-divider>
+      <mat-progress-bar *ngIf="shouldDisplayProgressBar" mode="query"></mat-progress-bar>
 
       <mat-card-content [ngClass]="{ 'margin-top-xxl': !!titleTranslationKey }">
         <ng-content></ng-content>
@@ -39,6 +40,20 @@ import { CardType } from './card-type'
           @include bootstrap.flex-set;
         }
 
+        .mat-divider {
+          height: 4px;
+          border-top-width: 4px;
+        }
+
+        .mat-progress-bar {
+          position: absolute;
+          left: 0;
+        }
+
+        .mat-card-content {
+          padding-bottom: bootstrap.$spacing-padding-xl;
+        }
+
         .margin-top-xxl {
           margin-top: bootstrap.$spacing-margin-xxl;
         }
@@ -53,20 +68,30 @@ export class CardComponent {
   @Input() divider: boolean = false
   @Input() border: boolean = false
   @Input() elevation: boolean = false
+  @Input() showLoadingIndicator: boolean = false
+  @Input() isLoading: boolean | null = false
 
-  public get shouldHaveElevation(): boolean {
+  get shouldHaveElevation(): boolean {
     return this.isMaterial && this.elevation
   }
 
-  public get isAcryclic(): boolean {
+  get shouldDisplayDivider(): boolean {
+    return !!this.titleTranslationKey && this.divider && !this.shouldDisplayProgressBar
+  }
+
+  get shouldDisplayProgressBar(): boolean {
+    return this.showLoadingIndicator && this.isLoading!
+  }
+
+  get isAcryclic(): boolean {
     return this.acrylic.isAcrylic(this.type)
   }
 
-  public get isTransparent(): boolean {
+  get isTransparent(): boolean {
     return this.acrylic.isTransparent(this.type)
   }
 
-  public get isMaterial(): boolean {
+  get isMaterial(): boolean {
     return this.acrylic.isMaterial(this.type)
   }
 

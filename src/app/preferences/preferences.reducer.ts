@@ -25,6 +25,10 @@ const reducer = createReducer(
   on(PreferencesActions.languageChanged, (state, { language }) => ({
     ...state,
     language: language,
+  })),
+  on(PreferencesActions.preferencesLoaded, (state, { preferences }) => ({
+    ...state,
+    ...preferences,
   }))
 )
 

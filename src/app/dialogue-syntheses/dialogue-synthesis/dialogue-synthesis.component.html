@@ -1,0 +1,78 @@
+<mat-expansion-panel
+  hideToggle
+  class="flex"
+  [ngClass]="{ border: isMaterial }"
+>
+  <mat-expansion-panel-header>
+    <div class="header-title">
+      <div class="label text-light">
+        {{ 'PayAsYouGo.DialogueSyntheses.Header.Title' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.title }}
+      </div>
+    </div>
+
+    <div class="header-synthesis-text">
+      <div class="label text-light">
+        {{ 'PayAsYouGo.DialogueSyntheses.Header.SynthetizedText' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.dialogueText | shortenText: 60 }}
+      </div>
+    </div>
+
+    <div class="header-language">
+      <div class="label text-light">
+        {{ 'PayAsYouGo.DialogueSyntheses.Header.Language' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.language }}
+      </div>
+    </div>
+
+    <div class="header-voice">
+      <div class="label text-light">
+        {{
+          'PayAsYouGo.DialogueSyntheses.Header.FirstSpeakerVoice' | translate
+        }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.firstSpeakerVoice }}
+      </div>
+    </div>
+
+    <div class="header-voice">
+      <div class="label text-light">
+        {{
+          'PayAsYouGo.DialogueSyntheses.Header.SecondSpeakerVoice' | translate
+        }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.secondSpeakerVoice }}
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+
+  <mat-divider></mat-divider>
+
+  <div class="details">
+    <div class="synthesis-text">
+      {{ dialogueSynthesis.dialogueText }}
+    </div>
+
+    <button
+      mat-flat-button
+      color="accent"
+      class="synthesis-text"
+      (click)="downloadSynthesis()"
+    >
+      {{ 'PayAsYouGo.DialogueSyntheses.Content.Download' | translate }}
+    </button>
+  </div>
+</mat-expansion-panel>

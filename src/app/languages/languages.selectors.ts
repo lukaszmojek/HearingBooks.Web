@@ -13,7 +13,7 @@ export const selectIsActionInProgress = createSelector(
   (state: ILanguagesState) => state.isActionInProgress
 )
 
-export const isLanguageSelected = createSelector(
+export const selectIsLanguageSelected = createSelector(
   selectLanguagesFeature,
   (state: ILanguagesState) => state.selectedLanguage !== null
 )
@@ -25,7 +25,7 @@ export const selectSelectedLanguage = createSelector(
 
 export const selectVoicesFromSelectedLanguage = createSelector(
   selectLanguagesFeature,
-  isLanguageSelected,
+  selectIsLanguageSelected,
   (state: ILanguagesState, isLanguageSelected: boolean) => isLanguageSelected
     ? state.selectedLanguage!.voices
     : []

@@ -1,0 +1,30 @@
+@use '../../styles/bootstrap.scss';
+
+:host {
+  @include bootstrap.dimensions-host;
+  min-height: 600px;
+
+  .dashboard-row {
+    margin-top: bootstrap.$spacing-margin-xl;
+    column-gap: bootstrap.$spacing-margin-xl;
+
+    .dashboard-tile {
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: bootstrap.$spacing-padding-xxl;
+      background-color: rgba(bootstrap.$colors-primary, 0.04);
+      width: 300px;
+
+      &-title {
+        font-weight: 800;
+        font-size: 20px;
+      }
+
+      &-content {
+        margin-top: bootstrap.$spacing-margin-xl;
+        color: bootstrap.$colors-accent;
+        font-size: 20px;
+      }
+    }
+  }
+}

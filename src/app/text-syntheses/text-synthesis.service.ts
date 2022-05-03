@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiEndpoints } from '../../shared/api-endpoints';
-import { ITextSynthesis, ITextSynthesisRequest } from './models';
+import { ApiEndpoints } from '../shared/api-endpoints';
+import { ITextSynthesis, ITextSynthesisRequest } from './state/models';
 
 @Injectable({
   providedIn: 'root'

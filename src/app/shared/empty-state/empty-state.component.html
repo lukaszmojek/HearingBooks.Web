@@ -1,0 +1,14 @@
+<img src="../../../assets/empty-state-1.png" />
+
+<div>
+  {{ messageTranslationKey | translate }}
+</div>
+
+<button
+  class="redirect-button"
+  mat-flat-button
+  color="accent"
+  [routerLink]="redirectButtonRoute"
+>
+  {{ redirectButtonTranslationKey | translate }}
+</button>

@@ -13,13 +13,14 @@ export class AuthEffects {
       ofType(AuthActions.logIn),
       exhaustMap(action =>
         this.auth.logIn$(action.email, action.password).pipe(
-          map(response =>
-            AuthActions.logInSuccess({ token: response.content.token })
-          ),
-          tap(_ => {
-            this.router.navigateByUrl('dashboard')
+          map(response => {
+            this.router.navigateByUrl('text-syntheses')
+            return AuthActions.logInSuccess({ token: response.token })
           }),
-          catchError(_ => of(AuthActions.logInFailed()))
+          catchError(error => {
+            console.log(error)
+            return of(AuthActions.logInFailed())
+          })
         )
       )
     )
@@ -44,5 +45,5 @@ export class AuthEffects {
     private actions$: Actions,
     private auth: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 }

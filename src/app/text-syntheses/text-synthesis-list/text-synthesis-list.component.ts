@@ -5,9 +5,9 @@ import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.componen
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
 import { IApplicationState } from 'src/app/shared/state'
-import { ITextSynthesis, ITextSynthesisRequest } from '../state/models'
+import { ITextSynthesis } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
-import { selectTextSyntheses } from '../state/text-syntheses.selectors'
+import { selectIsActionInProgress, selectShouldShowEmptyState, selectTextSyntheses } from '../state/text-syntheses.selectors'
 
 @Component({
   selector: 'hb-text-synthesis-list',
@@ -18,15 +18,22 @@ export class TextSynthesisListComponent
   extends AcrylicAwareComponent<IApplicationState>
   implements IMainComponent, OnInit {
   titleTranslationKey = 'PayAsYouGo.TextSyntheses.Title'
+  emptyStateMessageTranslationKey = 'EmptyState.TextSyntheses'
+  requestTextSynthesisRoute = 'request'
+  redirectButtonTranslationKey = 'PayAsYouGo.TextSyntheses.Redirect'
   divider = true
   elevation = true
   border = false
 
+  isActionInProgress$: Observable<boolean>
   textSyntheses$: Observable<ITextSynthesis[]>
+  shouldShowEmptyState$: Observable<boolean>
 
   constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
     this.textSyntheses$ = this.safeSelect$(selectTextSyntheses)
+    this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
+    this.shouldShowEmptyState$ = this.safeSelect$(selectShouldShowEmptyState)
   }
 
   ngOnInit(): void {

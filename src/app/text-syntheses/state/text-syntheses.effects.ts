@@ -2,20 +2,34 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { TextSynthesesActions } from './text-syntheses.actions'
 import { exhaustMap, catchError, map } from 'rxjs/operators'
-import { of } from 'rxjs'
-import { TextSynthesisService } from './text-synthesis.service'
+import { combineLatest, } from 'rxjs'
+import { TextSynthesisService } from '../text-synthesis.service'
+import { SnackbarNotificationsService } from 'src/app/shared/notifications/snackbar-notifications.service'
+import { Router } from '@angular/router'
+import { TranslateService } from '@ngx-translate/core'
+import { HttpErrorResponse } from '@angular/common/http'
 
 @Injectable()
 export class TextSynthesesEffects {
   loadTextSynthesesForUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TextSynthesesActions.loadTextSynthesesForUser),
-      exhaustMap(action =>
+      exhaustMap(_ =>
         this.textSynthesisService.getTextSynthesesForUser$().pipe(
           map(response =>
             TextSynthesesActions.loadTextSynthesesForUserSucceded({ textSyntheses: response })
           ),
-          catchError(_ => of(TextSynthesesActions.loadTextSynthesesForUserFailed()))
+          catchError((httpError: HttpErrorResponse) =>
+            this.translate.get('Notifications.TextSyntheses.LoadError').pipe(
+              map(errorMessage => {
+                if (!httpError.message.includes('404')) {
+                  this.notifications.showErrorNotification(errorMessage)
+                }
+
+                return TextSynthesesActions.loadTextSynthesesForUserFailed()
+              })
+            )
+          )
         )
       )
     )
@@ -25,12 +39,25 @@ export class TextSynthesesEffects {
     this.actions$.pipe(
       ofType(TextSynthesesActions.requestTextSynthesis),
       exhaustMap(action =>
-        this.textSynthesisService.requestTextSynthesis$(action.textSynthesisRequest).pipe(
-          map(response =>
-            TextSynthesesActions.requestTextSynthesisSucceded()
-          ),
-          catchError(_ => of(TextSynthesesActions.requestTextSynthesisFailed()))
-        )
+        combineLatest([
+          this.textSynthesisService.requestTextSynthesis$(action.textSynthesisRequest),
+          this.translate.get('Notifications.TextSyntheses.Request.Success')
+        ])
+          .pipe(
+            map(([_, successMessage]) => {
+              this.notifications.showNotification(successMessage)
+              this.router.navigate(['text-syntheses'])
+              return TextSynthesesActions.requestTextSynthesisSucceded()
+            }),
+            catchError(_ =>
+              this.translate.get('Notifications.TextSyntheses.Request.Error').pipe(
+                map(errorMessage => {
+                  this.notifications.showErrorNotification(errorMessage)
+                  return TextSynthesesActions.requestTextSynthesisFailed()
+                })
+              )
+            )
+          )
       )
     )
   )
@@ -38,5 +65,8 @@ export class TextSynthesesEffects {
   constructor(
     private actions$: Actions,
     private textSynthesisService: TextSynthesisService,
+    private notifications: SnackbarNotificationsService,
+    private router: Router,
+    private translate: TranslateService
   ) { }
 }

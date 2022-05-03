@@ -3,7 +3,12 @@
 :host {
   @include bootstrap.dimensions-host;
   @include bootstrap.flex-set;
-  height: 40%;
+
+  height: 300px;
+
+  width: 40%;
+  min-width: 300px;
+  max-width: 600px;
 
   .login-form {
     padding: bootstrap.$spacing-margin-xl;

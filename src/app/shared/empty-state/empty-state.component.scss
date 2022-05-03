@@ -1,0 +1,10 @@
+@use '../../../styles/bootstrap.scss';
+
+:host {
+  @include bootstrap.dimensions-host;
+  @include bootstrap.flex-set;
+
+  .redirect-button {
+    margin-top: bootstrap.$spacing-margin-xl;
+  }
+}

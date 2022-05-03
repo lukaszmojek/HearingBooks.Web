@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { AuthActions } from 'src/app/auth/auth.actions'
-import { selectIsLoggedIn } from 'src/app/auth/auth.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
 import { IMainComponent } from '../main-component.interface'
@@ -15,7 +14,7 @@ import { SimpleErrorStateMatcher } from './simple-error-state-matcher'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent extends AcrylicAwareComponent<IApplicationState> implements OnInit, IMainComponent {
+export class LoginComponent extends AcrylicAwareComponent<IApplicationState> implements IMainComponent {
   titleTranslationKey = 'Login.Title'
   divider: true
   elevation: false
@@ -46,26 +45,19 @@ export class LoginComponent extends AcrylicAwareComponent<IApplicationState> imp
     super(store$, acrylicService)
   }
 
-  ngOnInit(): void {
-    this.subscribeToIsLoggedIn()
+  handleKeyUp($event: any): void {
+    if ($event.keyCode === 13 && this.areEmailAndPasswordValid) {
+      this.logIn()
+    }
   }
 
-  public logIn() {
+
+  logIn() {
     this.store$.dispatch(
       AuthActions.logIn({
         email: this.emailFormControl.value,
         password: this.passwordFormControl.value
       })
     )
-  }
-
-  private subscribeToIsLoggedIn(): void {
-    this.safeSelect$(selectIsLoggedIn).subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn
-
-      if (this.isLoggedIn) {
-        this.router.navigateByUrl('/dashboard')
-      }
-    })
   }
 }

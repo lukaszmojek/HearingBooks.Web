@@ -1,0 +1,119 @@
+<hb-card
+  [titleTranslationKey]="titleTranslationKey"
+  [type]="mainCardType"
+  [divider]="divider"
+  [elevation]="elevation"
+  [border]="border"
+  [showLoadingIndicator]="true"
+  [isLoading]="isAnyActionInProgress"
+>
+  <form class="flex-column">
+    <mat-form-field
+      class="flex--row email"
+      appearance="outline"
+    >
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestDialogueSynthesis.Fields.Title.Label' | translate
+        }}
+      </mat-label>
+
+      <input
+        type="text"
+        matInput
+        [formControl]="titleFormControl"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestDialogueSynthesis.Fields.Language.Label'
+            | translate
+        }}
+      </mat-label>
+
+      <mat-select
+        [formControl]="languageFormControl"
+        (selectionChange)="updateSelectedLanguage($event.value)"
+      >
+        <mat-option
+          *ngFor="let language of availableLanguages$ | async"
+          [value]="language"
+        >
+          {{ language | synthesisLanguage }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestDialogueSynthesis.Fields.FirstSpeakerVoice.Label'
+            | translate
+        }}
+      </mat-label>
+
+      <mat-select [formControl]="firstSpeakerVoiceFormControl">
+        <mat-option
+          *ngFor="let voice of availableVoices$ | async"
+          [value]="voice"
+        >
+          {{ voice | synthesisVoice }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestDialogueSynthesis.Fields.SecondSpeakerVoice.Label'
+            | translate
+        }}
+      </mat-label>
+
+      <mat-select [formControl]="secondSpeakerVoiceFormControl">
+        <mat-option
+          *ngFor="let voice of availableVoices$ | async"
+          [value]="voice"
+        >
+          {{ voice | synthesisVoice }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      class="text-to-synthesize"
+    >
+      <mat-label>
+        {{
+          'PayAsYouGo.RequestDialogueSynthesis.Fields.DialogueText.Label'
+            | translate
+        }}
+      </mat-label>
+
+      <textarea
+        matInput
+        [formControl]="dialogueTextFormControl"
+        [rows]="dialogueTextRows"
+      >
+      </textarea>
+
+      <mat-hint>
+        {{ dialogueTextLength }}
+      </mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      type="button"
+      color="accent"
+      [disabled]="isFormInvalid || isAnyActionInProgress"
+      (click)="requestDialogueSynthesis()"
+    >
+      {{ 'PayAsYouGo.RequestDialogueSynthesis.Actions.Request' | translate }}
+    </button>
+  </form>
+</hb-card>

@@ -1,8 +1,10 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core'
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core'
 import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
+import { PreferencesActions } from 'src/app/preferences/preferences.actions'
 import { selectInnerCardType, selectIsAcrylicEnabled, selectLanguage, selectMainCardType } from 'src/app/preferences/preferences.selectors'
+import { PreferencesService } from 'src/app/preferences/preferences.service'
 import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
@@ -16,7 +18,7 @@ import { ToolbarService } from '../toolbar/toolbar.service'
 })
 export class MainAppComponent
   extends AcrylicAwareComponent<IApplicationState>
-  implements AfterViewInit {
+  implements OnInit, AfterViewInit {
   @ViewChild('drawer')
   public drawer: MatDrawer
   public language: string
@@ -25,6 +27,7 @@ export class MainAppComponent
   constructor(
     private toolbar: ToolbarService,
     private translate: TranslateService,
+    private preferences: PreferencesService,
     store$: Store<IApplicationState>,
     acrylic: AcrylicService,
   ) {
@@ -39,6 +42,12 @@ export class MainAppComponent
     })
 
     this.acrylic.initialize(selectMainCardType, selectInnerCardType, selectIsAcrylicEnabled)
+  }
+
+  ngOnInit(): void {
+    if (this.preferences.exists()) {
+      this.preferences.load()
+    }
   }
 
   ngAfterViewInit(): void {

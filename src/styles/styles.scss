@@ -15,6 +15,29 @@ body {
 // TODO: Consider somehow cleaning up those classes
 .acrylic {
   @include bootstrap.acrylic-set();
+
+  &-notification {
+    @include bootstrap.acrylic-set-accent();
+    color: whitesmoke;
+
+    &--success {
+      @include bootstrap.acrylic-set-success();
+    }
+
+    &--warning {
+      @include bootstrap.acrylic-set-warning();
+    }
+
+    &--error {
+      @include bootstrap.acrylic-set-error();
+    }
+  }
+}
+
+.material {
+  &-notification {
+    //TODO: Fill styling for material notifications
+  }
 }
 
 .flex {
@@ -39,6 +62,7 @@ body {
 
 .transparent {
   background-color: rgba($color: #ffffff, $alpha: 0);
+  box-shadow: none !important;
 }
 
 .width {

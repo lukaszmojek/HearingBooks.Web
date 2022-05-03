@@ -4,9 +4,13 @@
   [titleTranslationKey]="titleTranslationKey"
   [divider]="divider"
   [elevation]="elevation"
-  [border]="border">
+  [border]="border"
+>
   <form class="flex-column login-form">
-    <mat-form-field class="flex--row email" appearance="fill">
+    <mat-form-field
+      class="flex--row email"
+      appearance="outline"
+    >
       <mat-label>
         {{ 'Login.Fields.Email.Label' | translate }}
       </mat-label>
@@ -16,7 +20,9 @@
         matInput
         [formControl]="emailFormControl"
         [errorStateMatcher]="matcher"
-        placeholder="Ex. pat@example.com" />
+        placeholder="Ex. pat@example.com"
+        (keyup)="handleKeyUp($event)"
+      />
 
       <mat-error *ngIf="emailNotValid">
         {{ 'Login.Fields.Email.Errors.Incorrect' | translate }}
@@ -27,7 +33,10 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="flex--row password" appearance="fill">
+    <mat-form-field
+      class="flex--row password"
+      appearance="outline"
+    >
       <mat-label>
         {{ 'Login.Fields.Password.Label' | translate }}
       </mat-label>
@@ -37,7 +46,9 @@
         matInput
         [formControl]="passwordFormControl"
         [errorStateMatcher]="matcher"
-        placeholder="********" />
+        placeholder="***** ***"
+        (keyup)="handleKeyUp($event)"
+      />
 
       <mat-error *ngIf="passwordFormControl.hasError('required')">
         {{ 'Login.Fields.Password.Errors.Required' | translate }}
@@ -46,11 +57,12 @@
 
     <div class="flex">
       <button
-        [disabled]="!areEmailAndPasswordValid || isLoggedIn"
+        [disabled]="!areEmailAndPasswordValid"
         type="button"
         mat-flat-button
-        color="primary"
-        (click)="logIn()">
+        color="accent"
+        (click)="logIn()"
+      >
         {{ 'Login.Actions.Login' | translate }}
       </button>
 
@@ -59,7 +71,8 @@
         type="button"
         mat-flat-button
         color="primary"
-        [routerLink]="['..', 'register']">
+        [routerLink]="['..', 'register']"
+      >
         {{ 'Login.Actions.Registration' | translate }}
       </button>
     </div>

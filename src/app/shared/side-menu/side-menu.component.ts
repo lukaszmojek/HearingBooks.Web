@@ -33,6 +33,16 @@ export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
       routerLink: ['text-syntheses', 'request'],
       shouldBeAvailable: () => true,
     },
+    {
+      translationKey: 'SideMenu.DialogueSyntheses',
+      routerLink: ['dialogue-syntheses'],
+      shouldBeAvailable: () => true,
+    },
+    {
+      translationKey: 'SideMenu.RequestDialogueSynthesis',
+      routerLink: ['dialogue-syntheses', 'request'],
+      shouldBeAvailable: () => true,
+    },
   ]
 
   constructor(store$: Store<IAuthState>) {
