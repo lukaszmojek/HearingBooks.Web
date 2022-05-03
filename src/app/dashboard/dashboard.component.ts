@@ -1,15 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectUserId } from '../auth/auth.selectors';
+import { selectIsActionInProgress } from '../languages/languages.selectors';
+import AcrylicAwareComponent from '../shared/acrylic/acrylic-aware.component';
+import { AcrylicService } from '../shared/acrylic/acrylic.service';
+import { IMainComponent } from '../shared/main-component.interface';
+import { IApplicationState } from '../shared/state';
+import { DashboardActions } from './state/dashboard.actions';
+import { ISynthesesSummary } from './state/models';
 
 @Component({
   selector: 'hb-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends AcrylicAwareComponent<IApplicationState>
+  implements IMainComponent, OnInit {
+  titleTranslationKey = 'PayAsYouGo.DialogueSyntheses.Title'
+  requestTextSynthesisRoute = 'request'
+  redirectButtonTranslationKey = 'PayAsYouGo.DialogueSyntheses.Redirect'
+  divider = true
+  elevation = true
+  border = false
 
-  constructor() { }
+  isActionInProgress$: Observable<boolean>
+  synthesesSummary$: Observable<ISynthesesSummary>
 
-  ngOnInit(): void {
+  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+    super(store$, acrylic)
+    this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
   }
 
+  ngOnInit(): void {
+    this.safeSelect$(selectUserId).subscribe(userId => {
+      this.store$.dispatch(DashboardActions.loadSynthesesSummaryForUser({ userId: userId }))
+    })
+  }
 }
+
