@@ -1,4 +1,13 @@
 {
+  "Dashboard": {
+    "DialogueSynthesesPriceInUsd": "Cena Syntez Dialogowych w USD",
+    "TextSynthesesPriceInUsd": "Cena Syntez Tekstowych w USD",
+    "Title": "Pulpit",
+    "RequestedDialogueSyntheses": "Stworzone Syntezy Dialogowe",
+    "RequestedTextSyntheses": "Stworzone Syntezy Tekstowe",
+    "SynthesesCharactersCount": "Ilość znaków w syntezach",
+    "SynthesesDurationInSeconds": "Długość syntez w sekundach"
+  },
   "EmptyState": {
     "TextSyntheses": "Jeszcze nic tu nie ma! Klinknij na przycisk poniżej, aby stworzyć swoją pierwszą Syntezę Tekstową"
   },
