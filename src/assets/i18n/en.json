@@ -1,5 +1,7 @@
 {
   "Dashboard": {
+    "DialogueSynthesesPriceInUsd": "Dialgoue Syntheses price in USD",
+    "TextSynthesesPriceInUsd": "Text Syntheses price in USD",
     "Title": "Dashboard",
     "RequestedDialogueSyntheses": "Requested Dialogue Syntheses",
     "RequestedTextSyntheses": "Requested Text Syntheses",
