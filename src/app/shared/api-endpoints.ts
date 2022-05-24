@@ -21,5 +21,8 @@ export const ApiEndpoints = {
   },
   languages: {
     getWithVoices: `${environment.baseApiUrl}/languages`,
+  },
+  signalr: {
+    syntheses: "syntheses"
   }
 }
