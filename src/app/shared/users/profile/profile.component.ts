@@ -32,6 +32,8 @@ export class ProfileComponent
 
   private preferencesNames = {
     acrylic: 'acrylic',
+    language: 'langauge',
+    emailNotifications: 'emailNotifications'
   }
 
   private profileFormGroup: FormGroup
@@ -69,6 +71,12 @@ export class ProfileComponent
       [this.formGroupNames.preferences]: this.formBuilder.group({
         [this.preferencesNames.acrylic]: this.formBuilder.control(
           this.isAcrylicEnabled
+        ),
+        // [this.preferencesNames.language]: this.formBuilder.control(
+        //   this.isAcrylicEnabled
+        // ),
+        [this.preferencesNames.emailNotifications]: this.formBuilder.control(
+          false
         ),
       }),
     })
