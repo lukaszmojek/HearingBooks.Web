@@ -135,6 +135,10 @@
   "Profile": {
     "Preferences": {
       "Acrylic": "Acrylic UI",
+      "EmailNotifications": {
+        "Title": "Email notifications",
+        "Tooltip": "We will only send you email notifications only about your Synthesis requests"
+      },
       "Language": "Language",
       "Title": "Preferences"
     },

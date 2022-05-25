@@ -28,6 +28,10 @@ export class PreferencesComponent extends StoreConnectedComponent<IPreferencesSt
     return this.preferencesFormGroup.get('acrylic') as FormControl
   }
 
+  public get emailNotificationsFormControl(): FormControl {
+    return this.preferencesFormGroup.get('emailNotifications') as FormControl
+  }
+
   constructor(store$: Store<IPreferencesState>) {
     super(store$)
     this.safeSelect$(selectInnerCardType).subscribe(
@@ -40,6 +44,12 @@ export class PreferencesComponent extends StoreConnectedComponent<IPreferencesSt
     this.store$.dispatch(
       PreferencesActions.isAcrylicEnabledToggled({ isAcrylicEnabled: value })
     )
+  }
+
+  public setEmailNotifications(value: boolean): void {
+    // this.store$.dispatch(
+    //   PreferencesActions.isAcrylicEnabledToggled({ isAcrylicEnabled: value })
+    // )
   }
 
   public setLanguage(value: any): void {
