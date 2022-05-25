@@ -37,6 +37,7 @@
   "Notifications": {
     "DialogueSyntheses": {
       "LoadError": "Unfortunately there was a problem with getting your Dialogue Syntheses",
+      "Processed": "Dialogue Synthesis was processed and is now available!",
       "Request": {
         "Error": "There was a problem with requesting Dialogue Synthesis. Please, try again",
         "Success": "Dialogue Synthesis request was submitted and will be processed shortly"
@@ -44,6 +45,7 @@
     },
     "TextSyntheses": {
       "LoadError": "Unfortunately there was a problem with getting your Text Syntheses",
+      "Processed": "Text Synthesis was processed and is now available!",
       "Request": {
         "Error": "There was a problem with requesting Text Synthesis. Please, try again",
         "Success": "Text Synthesis request was submitted and will be processed shortly"

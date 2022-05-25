@@ -1,7 +1,7 @@
 //TODO: Figure out better names for those
 $glass-opacity: 0.2;
 $glass-primary-opacity: 0.4;
-$glass-notification-opacity: 0.6;
+$glass-notification-opacity: 0.05;
 
 $blur-size: 16px;
 
@@ -35,10 +35,22 @@ $glass-tint-error: #ff0000;
   @include set($blur-size, $glass-tint-success, $glass-opacity);
 }
 
+@mixin set-success-notification() {
+  @include set($blur-size, $glass-tint-success, $glass-notification-opacity);
+}
+
 @mixin set-warning() {
   @include set($blur-size, $glass-tint-warning, $glass-opacity);
 }
 
+@mixin set-warning-notification() {
+  @include set($blur-size, $glass-tint-warning, $glass-notification-opacity);
+}
+
 @mixin set-error() {
   @include set($blur-size, $glass-tint-error, $glass-opacity);
+}
+
+@mixin set-error-notification() {
+  @include set($blur-size, $glass-tint-error, $glass-notification-opacity);
 }

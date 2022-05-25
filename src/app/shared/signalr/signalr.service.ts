@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 
 import * as signalR from "@microsoft/signalr";
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { combineLatest } from 'rxjs';
 import { selectUserId } from 'src/app/auth/auth.selectors';
 import { DialogueSynthesesActions } from 'src/app/dialogue-syntheses/state/dialogue-syntheses.actions';
 import { IDialogueSynthesis } from 'src/app/dialogue-syntheses/state/models';
 import { ITextSynthesis } from 'src/app/text-syntheses/state/models';
 import { TextSynthesesActions } from 'src/app/text-syntheses/state/text-syntheses.actions';
 import { environment } from 'src/environments/environment';
+import { SnackbarNotificationsService } from '../notifications/snackbar-notifications.service';
 
 
 @Injectable({
@@ -16,8 +19,26 @@ import { environment } from 'src/environments/environment';
 export class SignalRService {
   private connection: signalR.HubConnection;
   private userId: string | null
+  private synthesisProcessedTranslationKeys = {
+    text: 'Notifications.TextSyntheses.Processed',
+    dialogue: 'Notifications.DialogueSyntheses.Processed',
+  }
+  private synthesisProcessedTranslations: {
+    text: string,
+    dialogue: string,
+  }
 
-  constructor(private store$: Store) { }
+  constructor(private store$: Store, private snackbarNotifications: SnackbarNotificationsService, private translate: TranslateService) {
+    combineLatest([
+      this.translate.get(this.synthesisProcessedTranslationKeys.text),
+      this.translate.get(this.synthesisProcessedTranslationKeys.dialogue),
+    ]).subscribe(([textTranslation, dialogueTranslation]) => {
+      this.synthesisProcessedTranslations = {
+        text: textTranslation,
+        dialogue: dialogueTranslation
+      }
+    })
+  }
 
   connect(): void {
     if (this.connection)
@@ -36,6 +57,7 @@ export class SignalRService {
         return
       }
 
+      this.snackbarNotifications.showSuccessNotification(this.synthesisProcessedTranslations.text)
       this.store$.dispatch(TextSynthesesActions.textSynthesisUpdated({ textSynthesis: textSynthesis }))
     })
 
@@ -43,7 +65,8 @@ export class SignalRService {
       if (this.userId !== userId) {
         return
       }
-      console.log(dialogueSynthesis)
+      
+      this.snackbarNotifications.showSuccessNotification(this.synthesisProcessedTranslations.dialogue)
       this.store$.dispatch(DialogueSynthesesActions.dialogueSynthesisUpdated({ dialogueSynthesis: dialogueSynthesis }))
     });
     

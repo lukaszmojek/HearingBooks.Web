@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component';
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service';
 import { IMainComponent } from 'src/app/shared/main-component.interface';
+import { SignalRService } from 'src/app/shared/signalr/signalr.service';
 import { IApplicationState } from 'src/app/shared/state';
 import { ITextSynthesis } from 'src/app/text-syntheses/state/models';
 import { DialogueSynthesesActions } from '../state/dialogue-syntheses.actions';
@@ -29,8 +30,9 @@ export class DialogueSynthesisListComponent extends AcrylicAwareComponent<IAppli
   dialogueSyntheses$: Observable<IDialogueSynthesis[]>
   shouldShowEmptyState$: Observable<boolean>
 
-  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+  constructor(private signalR: SignalRService, store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
+    this.signalR.connect()
     this.dialogueSyntheses$ = this.safeSelect$(selectDialogueSyntheses)
     this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
     this.shouldShowEmptyState$ = this.safeSelect$(selectShouldShowEmptyState)

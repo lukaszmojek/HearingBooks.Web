@@ -27,13 +27,11 @@ export class MainAppComponent
   constructor(
     private toolbar: ToolbarService,
     private translate: TranslateService,
-    private signalR: SignalRService,
     private preferences: PreferencesService,
     store$: Store<IApplicationState>,
     acrylic: AcrylicService,
   ) {
     super(store$, acrylic)
-    this.signalR.connect();
     this.safeSelect$(selectLanguage).subscribe(language => {
       this.language = language
       this.translate.use(this.language)
@@ -47,6 +45,7 @@ export class MainAppComponent
   }
 
   ngOnInit(): void {
+
     if (this.preferences.exists()) {
       this.preferences.load()
     }

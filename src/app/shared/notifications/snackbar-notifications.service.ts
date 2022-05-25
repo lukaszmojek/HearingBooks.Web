@@ -16,6 +16,7 @@ export class SnackbarNotificationsService extends StoreConnectedComponent<IPrefe
   private verticalPosition: MatSnackBarVerticalPosition = 'bottom'
   private action: string = 'OK'
   private isAcrylicEnabled: boolean
+  private duration = 5000
 
   constructor(private snackbar: MatSnackBar, store$: Store<IPreferencesState>) {
     super(store$)
@@ -35,7 +36,12 @@ export class SnackbarNotificationsService extends StoreConnectedComponent<IPrefe
   showNotification(message: string, type: NotificationType = NotificationType.Information): void {
     const notificationClasses = this.getNotificationClasses(type)
 
-    this.snackbar.open(message, this.action, { verticalPosition: this.verticalPosition, horizontalPosition: this.horizontalPosition, panelClass: notificationClasses })
+    this.snackbar.open(message, this.action, { 
+      verticalPosition: this.verticalPosition, 
+      horizontalPosition: this.horizontalPosition, 
+      panelClass: notificationClasses,
+      // duration: this.duration
+    })
   }
 
   private getNotificationClasses(type: NotificationType): string[] {

@@ -21,15 +21,15 @@ body {
     color: whitesmoke;
 
     &--success {
-      @include bootstrap.acrylic-set-success();
+      @include bootstrap.acrylic-set-success-notification();
     }
 
     &--warning {
-      @include bootstrap.acrylic-set-warning();
+      @include bootstrap.acrylic-set-warning-notification();
     }
 
     &--error {
-      @include bootstrap.acrylic-set-error();
+      @include bootstrap.acrylic-set-error-notification();
     }
   }
 }

@@ -9,6 +9,7 @@ import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.componen
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service';
 import { SimpleErrorStateMatcher } from 'src/app/shared/login/simple-error-state-matcher';
 import { IMainComponent } from 'src/app/shared/main-component.interface';
+import { SignalRService } from 'src/app/shared/signalr/signalr.service';
 import { IApplicationState } from 'src/app/shared/state';
 import { selectIsAnyActionInProgress } from 'src/app/shared/state/index.selectors';
 import { DialogueSynthesesActions } from '../state/dialogue-syntheses.actions';

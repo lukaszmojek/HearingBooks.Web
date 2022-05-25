@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import AcrylicAwareComponent from 'src/app/shared/acrylic/acrylic-aware.component'
 import { AcrylicService } from 'src/app/shared/acrylic/acrylic.service'
 import { IMainComponent } from 'src/app/shared/main-component.interface'
+import { SignalRService } from 'src/app/shared/signalr/signalr.service'
 import { IApplicationState } from 'src/app/shared/state'
 import { ITextSynthesis } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
@@ -29,8 +30,9 @@ export class TextSynthesisListComponent
   textSyntheses$: Observable<ITextSynthesis[]>
   shouldShowEmptyState$: Observable<boolean>
 
-  constructor(store$: Store<IApplicationState>, acrylic: AcrylicService) {
+  constructor(private signalR: SignalRService, store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
+    this.signalR.connect()
     this.textSyntheses$ = this.safeSelect$(selectTextSyntheses)
     this.isActionInProgress$ = this.safeSelect$(selectIsActionInProgress)
     this.shouldShowEmptyState$ = this.safeSelect$(selectShouldShowEmptyState)
