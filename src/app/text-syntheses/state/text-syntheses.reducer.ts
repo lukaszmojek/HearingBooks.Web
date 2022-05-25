@@ -41,6 +41,24 @@ const reducer = createReducer(
     ...state,
     isActionInProgress: false,
   })),
+  on(TextSynthesesActions.textSynthesisUpdated, (state, { textSynthesis }) => {
+    const synthesisInStoreIndex = state.textSyntheses.findIndex(s => s.id === textSynthesis.id)
+    
+    if (synthesisInStoreIndex !== -1) {
+      const updatedTextSyntheses = state.textSyntheses
+      updatedTextSyntheses[synthesisInStoreIndex] = textSynthesis
+      
+      return {
+        ...state,
+        updatedTextSyntheses
+      }
+    }
+
+    return {
+      ...state,
+      textSyntheses: state.textSyntheses.concat([textSynthesis])
+    }
+  }),
 )
 
 export const textSynthesesFeature = createFeature({

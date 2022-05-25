@@ -101,8 +101,6 @@ export class RequestDialogueSynthesisComponent extends AcrylicAwareComponent<IAp
 
       this.handleLanguageFormControlStateUpdate()
     })
-
-    this.dialogueTextFormControl.valueChanges.subscribe(x => { console.log(this.dialogueSynthesisFormGroup) })
   }
 
   requestDialogueSynthesis(): void {

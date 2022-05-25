@@ -1,6 +1,11 @@
 import { createAction, props } from '@ngrx/store'
 import { IDialogueSynthesis, IDialogueSynthesisRequest } from './models'
 
+const dialogueSynthesisUpdated = createAction(
+  '[Dialogue Syntheses] Dialogue Synthesis updated',
+  props<{ dialogueSynthesis: IDialogueSynthesis }>()
+)
+
 const loadDialogueSynthesesForUser = createAction(
   '[Dialogue Syntheses] Load DialogueSyntheses for user'
 )
@@ -34,4 +39,5 @@ export const DialogueSynthesesActions = {
   requestDialogueSynthesis,
   requestDialogueSynthesisSucceded,
   requestDialogueSynthesisFailed,
+  dialogueSynthesisUpdated
 }
