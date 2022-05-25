@@ -62,8 +62,8 @@
   <mat-divider></mat-divider>
 
   <div class="details">
-    <div class="synthesis-text">
-      {{ dialogueSynthesis.dialogueText }}
+    <div class="synthesis-text"
+      [innerHtml]="dialogueSynthesis.dialogueText | dialogueSynthesis">
     </div>
 
     <button

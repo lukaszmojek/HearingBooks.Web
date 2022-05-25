@@ -4,7 +4,8 @@ import { DialogueSynthesisRoutingModule } from './dialogue-syntheses-routing.mod
 import { DialogueSynthesisListComponent } from './dialogue-synthesis-list/dialogue-synthesis-list.component'
 import { DialogueSynthesisComponent } from './dialogue-synthesis/dialogue-synthesis.component'
 import { RequestDialogueSynthesisComponent } from './request-dialogue-synthesis/request-dialogue-synthesis.component'
-import { DialogueSynthesesStateModule } from './state/dialogue-syntheses-state.module'
+import { DialogueSynthesesStateModule } from './state/dialogue-syntheses-state.module';
+import { DialogueSynthesisPipe } from './dialogue-synthesis.pipe'
 
 const components = [
   DialogueSynthesisListComponent,
@@ -16,7 +17,7 @@ const modules = [SharedModule, DialogueSynthesisRoutingModule, DialogueSyntheses
 
 @NgModule({
   imports: [...modules],
-  declarations: [...components],
+  declarations: [...components, DialogueSynthesisPipe],
   exports: [...components],
 })
 export class DialogueSynthesesModule { }
