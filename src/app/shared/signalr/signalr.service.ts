@@ -44,6 +44,8 @@ export class SignalRService {
     if (this.connection)
       return;
 
+    console.log('SignalR connected!')
+
     this.store$.select(selectUserId).subscribe(x => {
       this.userId = x
     })

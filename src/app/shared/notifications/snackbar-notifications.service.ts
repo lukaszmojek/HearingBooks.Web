@@ -40,7 +40,7 @@ export class SnackbarNotificationsService extends StoreConnectedComponent<IPrefe
       verticalPosition: this.verticalPosition, 
       horizontalPosition: this.horizontalPosition, 
       panelClass: notificationClasses,
-      // duration: this.duration
+      duration: this.duration
     })
   }
 
