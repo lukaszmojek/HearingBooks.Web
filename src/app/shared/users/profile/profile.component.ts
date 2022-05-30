@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store'
 import { selectUserDetails } from 'src/app/auth/auth.selectors'
 import { IUser } from 'src/app/auth/models'
 import { selectIsAcrylicEnabled } from 'src/app/preferences/preferences.selectors'
-import { IUIState } from 'src/app/ui/ui.reducer'
 import AcrylicAwareComponent from '../../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../../acrylic/acrylic.service'
 import { IMainComponent } from '../../main-component.interface'
@@ -37,6 +36,7 @@ export class ProfileComponent
     firstName: 'firstName',
     lastName: 'lastName',
     email: 'email',
+    balance: 'balance',
   }
 
   private preferencesNames = {
@@ -65,6 +65,8 @@ export class ProfileComponent
       this.lastNameFormControl.disable()
       this.emailFormControl.setValue(details.email)
       this.emailFormControl.disable()
+      this.balanceFormControl.setValue(details.balance)
+      this.balanceFormControl.disable()
       this.profileFormGroup.updateValueAndValidity()
     })
   }
@@ -88,6 +90,12 @@ export class ProfileComponent
   private get emailFormControl(): FormControl {
     return this.getFormPart(this.formGroupNames.details).get(
       this.detailsNames.email
+    ) as FormControl
+  }
+
+  private get balanceFormControl(): FormControl {
+    return this.getFormPart(this.formGroupNames.details).get(
+      this.detailsNames.balance
     ) as FormControl
   }
 
@@ -115,6 +123,9 @@ export class ProfileComponent
           ''
         ),
         [this.detailsNames.email]: this.formBuilder.control(
+          ''
+        ),
+        [this.detailsNames.balance]: this.formBuilder.control(
           ''
         ),
       }),

@@ -3,5 +3,9 @@
 :host {
   .field {
     width: 400px;
+
+    &-first {
+      margin-right: 16px;
+    }
   }
 }

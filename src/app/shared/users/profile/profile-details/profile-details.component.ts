@@ -30,6 +30,10 @@ export class ProfileDetailsComponent extends StoreConnectedComponent<IPreference
     return this.profileDetailsFormGroup.get('email') as FormControl
   }
 
+  public get balanceFormControl(): FormControl {
+    return this.profileDetailsFormGroup.get('balance') as FormControl
+  }
+
   constructor(store$: Store<IPreferencesState>) {
     super(store$)
     this.safeSelect$(selectInnerCardType).subscribe(
