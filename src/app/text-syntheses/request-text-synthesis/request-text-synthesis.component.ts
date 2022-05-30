@@ -110,7 +110,6 @@ export class RequestTextSynthesisComponent
     } as ITextSynthesisRequest
 
     this.store$.dispatch(TextSynthesesActions.requestTextSynthesis({ textSynthesisRequest: textSyntesisRequest }))
-    // this.signalR.send('dupa', 'fior')
   }
 
   updateSelectedLanguage(selectedLanguage: ISynthesisLanguage): void {

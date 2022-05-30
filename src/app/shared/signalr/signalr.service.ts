@@ -28,7 +28,11 @@ export class SignalRService {
     dialogue: string,
   }
 
-  constructor(private store$: Store, private snackbarNotifications: SnackbarNotificationsService, private translate: TranslateService) {
+  constructor(
+    private store$: Store,
+    private snackbarNotifications: SnackbarNotificationsService,
+    private translate: TranslateService
+  ) {
     combineLatest([
       this.translate.get(this.synthesisProcessedTranslationKeys.text),
       this.translate.get(this.synthesisProcessedTranslationKeys.dialogue),
@@ -42,41 +46,56 @@ export class SignalRService {
 
   connect(): void {
     if (this.connection)
-      return;
+      return
 
     console.log('SignalR connected!')
 
     this.store$.select(selectUserId).subscribe(x => {
       this.userId = x
     })
-      
+
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl(`${environment.baseSignalRUrl}/syntheses`)
-      .build();
+      .build()
 
-    this.connection.on('text-synthesis-updated', (userId: string, textSynthesis: ITextSynthesis) => {
-      if (this.userId !== userId) {
-        return
-      }
+    this.connection.on(
+      'text-synthesis-updated',
+      (userId: string, textSynthesis: ITextSynthesis) => {
+        if (this.userId !== userId) {
+          return
+        }
 
-      this.snackbarNotifications.showSuccessNotification(this.synthesisProcessedTranslations.text)
-      this.store$.dispatch(TextSynthesesActions.textSynthesisUpdated({ textSynthesis: textSynthesis }))
-    })
+        this.snackbarNotifications.showSuccessNotification(
+          this.synthesisProcessedTranslations.text
+        )
 
-    this.connection.on('dialogue-synthesis-updated', (userId: string, dialogueSynthesis: IDialogueSynthesis) => {
-      if (this.userId !== userId) {
-        return
-      }
-      
-      this.snackbarNotifications.showSuccessNotification(this.synthesisProcessedTranslations.dialogue)
-      this.store$.dispatch(DialogueSynthesesActions.dialogueSynthesisUpdated({ dialogueSynthesis: dialogueSynthesis }))
-    });
-    
-    this.connection.start().catch(err => document.write(err));
-  }
+        this.store$.dispatch(
+          TextSynthesesActions.textSynthesisUpdated({
+            textSynthesis: textSynthesis
+          })
+        )
+      })
 
-  send(username: string, message: string): void {
-    this.connection.send("SendMessage", username, message)
-      .then((_) => _);
+    this.connection.on(
+      'dialogue-synthesis-updated',
+      (userId: string, dialogueSynthesis: IDialogueSynthesis) => {
+        if (this.userId !== userId) {
+          return
+        }
+
+        this.snackbarNotifications.showSuccessNotification(
+          this.synthesisProcessedTranslations.dialogue
+        )
+
+        this.store$.dispatch(
+          DialogueSynthesesActions.dialogueSynthesisUpdated({
+            dialogueSynthesis: dialogueSynthesis
+          })
+        )
+      });
+
+    this.connection
+      .start()
+      .catch(err => document.write(err));
   }
 }

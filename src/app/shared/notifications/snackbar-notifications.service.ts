@@ -36,9 +36,9 @@ export class SnackbarNotificationsService extends StoreConnectedComponent<IPrefe
   showNotification(message: string, type: NotificationType = NotificationType.Information): void {
     const notificationClasses = this.getNotificationClasses(type)
 
-    this.snackbar.open(message, this.action, { 
-      verticalPosition: this.verticalPosition, 
-      horizontalPosition: this.horizontalPosition, 
+    this.snackbar.open(message, this.action, {
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition,
       panelClass: notificationClasses,
       duration: this.duration
     })
