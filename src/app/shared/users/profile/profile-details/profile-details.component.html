@@ -1,1 +1,60 @@
-<p>profile-details works!</p>
+<div [formGroup]="profileDetailsFormGroup">
+  <hb-card
+    [type]="innerCardType"
+    [border]="innerCardBorder"
+    class="width-50"
+  >
+  <div class="flex-column">
+  <mat-form-field
+      class="flex--row"
+      appearance="outline"
+    >
+      <mat-label>
+        {{ 'Profile.ProfileDetails.FirstName' | translate }}
+      </mat-label>
+
+      <input
+      class="field"
+      type="text"
+        matInput
+        [formControl]="firstNameFormControl"
+        placeholder="First Name"
+      />
+    </mat-form-field>
+
+    <mat-form-field
+      class="flex--row"
+      appearance="outline"
+    >
+      <mat-label>
+        {{ 'Profile.ProfileDetails.LastName' | translate }}
+      </mat-label>
+
+      <input
+      class="field"
+      type="text"
+        matInput
+        [formControl]="lastNameFormControl"
+        placeholder="Last Name"
+      />
+    </mat-form-field>
+
+    <mat-form-field
+      class="flex--row"
+      appearance="outline"
+    >
+      <mat-label>
+        {{ 'Profile.ProfileDetails.Email' | translate }}
+      </mat-label>
+
+      <input
+      class="field"
+      type="text"
+        matInput
+        [formControl]="emailFormControl"
+        placeholder="Email"
+      />
+    </mat-form-field>
+    </div>
+  </hb-card>
+</div>

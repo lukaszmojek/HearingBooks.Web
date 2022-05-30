@@ -2,4 +2,12 @@
 
 :host {
   @include bootstrap.dimensions-host;
+
+  .margin-top-xl {
+    margin-top: 16px;
+  }
+
+  .margin-bottom-xl {
+    margin-bottom: 16px;
+  }
 }
