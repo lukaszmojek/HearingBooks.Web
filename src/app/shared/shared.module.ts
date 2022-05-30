@@ -21,6 +21,7 @@ import { ShortenTextPipe } from './shorten-text.pipe'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { EmptyStateComponent } from './empty-state/empty-state.component'
+import { LoggedUserPipe } from './logged-user/logged-user.pipe'
 
 const components = [
   MainAppComponent,
@@ -52,7 +53,8 @@ const modules = [
 ]
 
 const pipes = [
-  ShortenTextPipe
+  ShortenTextPipe,
+  LoggedUserPipe
 ]
 @NgModule({
   declarations: [...components, ...pipes],

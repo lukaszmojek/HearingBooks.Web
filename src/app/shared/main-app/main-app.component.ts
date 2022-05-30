@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core'
 import { MatDrawer } from '@angular/material/sidenav'
 import { Store } from '@ngrx/store'
 import { TranslateService } from '@ngx-translate/core'
+import { AuthActions } from 'src/app/auth/auth.actions'
+import { selectIsLoggedIn } from 'src/app/auth/auth.selectors'
 import { selectInnerCardType, selectIsAcrylicEnabled, selectLanguage, selectMainCardType } from 'src/app/preferences/preferences.selectors'
 import { PreferencesService } from 'src/app/preferences/preferences.service'
 import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
@@ -41,11 +43,16 @@ export class MainAppComponent
       this.isMenuOpened = isMenuOpened
     })
 
+    this.safeSelect$(selectIsLoggedIn).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.store$.dispatch(AuthActions.loadUserDetails())
+      }
+    })
+
     this.acrylic.initialize(selectMainCardType, selectInnerCardType, selectIsAcrylicEnabled)
   }
 
   ngOnInit(): void {
-
     if (this.preferences.exists()) {
       this.preferences.load()
     }
