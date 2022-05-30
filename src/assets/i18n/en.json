@@ -61,7 +61,7 @@
       "Header": {
         "Title": "Title",
         "Language": "Language",
-        "SynthetizedText": "Synthetized text",
+        "SynthetizedText": "Dialogue text",
         "FirstSpeakerVoice": "First speaker voice",
         "SecondSpeakerVoice": "Second speaker voice"
       },
@@ -139,10 +139,16 @@
       "Acrylic": "Acrylic UI",
       "EmailNotifications": {
         "Title": "Email notifications",
-        "Tooltip": "We will only send you email notifications only about your Synthesis requests"
+        "Tooltip": "We will only send you email notifications only about your synthesis requests"
       },
       "Language": "Language",
       "Title": "Preferences"
+    },
+    "ProfileDetails": {
+      "Email": "Email",
+      "FirstName": "First name",
+      "LastName": "Last name",
+      "Title": "Profile Details"
     },
     "Title": "Your profile"
   },

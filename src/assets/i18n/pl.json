@@ -9,6 +9,7 @@
     "SynthesesDurationInSeconds": "Długość syntez w sekundach"
   },
   "EmptyState": {
+    "DialogueSyntheses": "Jeszcze nic tu nie ma! Klinknij na przycisk poniżej, aby stworzyć swoją pierwszą Syntezę Dialogową",
     "TextSyntheses": "Jeszcze nic tu nie ma! Klinknij na przycisk poniżej, aby stworzyć swoją pierwszą Syntezę Tekstową"
   },
   "Login": {
@@ -52,6 +53,48 @@
     }
   },
   "PayAsYouGo": {
+    "DialogueSyntheses": {
+      "CharacterCount": "Liczba znakó",
+      "Content": {
+        "Download": "Pobierz"
+      },
+      "Header": {
+        "Title": "Tytuł",
+        "Language": "Język",
+        "SynthetizedText": "Tekst dialogu",
+        "FirstSpeakerVoice": "Głos pierwszego rozmówcy",
+        "SecondSpeakerVoice": "Głos drugiego rozmówcy"
+      },
+      "Price": "Cena",
+      "Redirect": "Stwórz syntezę dialogową",
+      "Title": "Syntezy Dialogowe"
+    },
+    "RequestDialogueSynthesis": {
+      "Actions": {
+        "Request": "Stwórz"
+      },
+      "Fields": {
+        "FirstSpeakerVoice": {
+          "Label": "Głos pierwszego rozmówcy"
+        },
+        "Language": {
+          "Label": "Język"
+        },
+        "DialogueText": {
+          "Label": "Tekst dialogu",
+          "Errors": {
+            "TooLong": "Tekst dialogu jest za długi!"
+          }
+        },
+        "Title": {
+          "Label": "Tytuł"
+        },
+        "SecondSpeakerVoice": {
+          "Label": "Głos drugiego rozmówcy"
+        }
+      },
+      "Title": "Stwórz syntezę dialogową"
+    },
     "RequestTextSynthesis": {
       "Actions": {
         "Request": "Stwórz"
@@ -94,14 +137,26 @@
   "Profile": {
     "Preferences": {
       "Acrylic": "Akrylowe UI",
+      "EmailNotifications": {
+        "Title": "Powiadomienia email",
+        "Tooltip": "Będziemy wysyłać powiadomienia jedynie odnośnie Twoich syntez"
+      },
       "Language": "Język",
       "Title": "Preferencje"
+    },
+    "ProfileDetails": {
+      "Email": "Email",
+      "FirstName": "Imię",
+      "LastName": "Nazwisko",
+      "Title": "Szczegóły profilu"
     },
     "Title": "Twój profil"
   },
   "SideMenu": {
     "Dashboard": "Pulpit",
+    "DialogueSyntheses": "Syntezy dialogowe",
     "Profile": "Profil",
+    "RequestDialogueSynthesis": "Stwórz syntezę dialogową",
     "RequestTextSynthesis": "Stwórz syntezę tekstową",
     "TextSyntheses": "Syntezy Tekstowe"
   },
