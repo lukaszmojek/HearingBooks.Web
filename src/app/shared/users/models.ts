@@ -1,5 +1,3 @@
-export class User {}
-
 export enum UserType {
   PayAsYouGo = 0,
   Subscriber = 1,

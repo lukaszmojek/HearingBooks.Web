@@ -145,10 +145,20 @@
       "Title": "Preferencje"
     },
     "ProfileDetails": {
+      "Balance": "Środki",
       "Email": "Email",
       "FirstName": "Imię",
       "LastName": "Nazwisko",
-      "Title": "Szczegóły profilu"
+      "Title": "Szczegóły profilu",
+      "TopUp": "Doładuj konto",
+      "TopUpDialog": {
+        "Title": "Doładuj konto",
+        "Amount": "Kwota",
+        "Actions": {
+          "Cancel": "Anuluj",
+          "TopUp": "Doładuj"
+        }
+      }
     },
     "Title": "Twój profil"
   },

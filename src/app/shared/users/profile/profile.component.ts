@@ -59,6 +59,10 @@ export class ProfileComponent
       this.profileFormGroup.updateValueAndValidity()
     })
     this.safeSelect$(selectUserDetails).subscribe((details: IUser) => {
+      if (!details) {
+        return
+      }
+
       this.firstNameFormControl.setValue(details.firstName)
       this.firstNameFormControl.disable()
       this.lastNameFormControl.setValue(details.lastName)

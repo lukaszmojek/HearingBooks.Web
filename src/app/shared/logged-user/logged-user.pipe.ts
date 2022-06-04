@@ -7,6 +7,10 @@ import { IUser } from 'src/app/auth/models';
 export class LoggedUserPipe implements PipeTransform {
 
   transform(value: IUser, ...args: unknown[]): unknown {
+    if (!value) {
+      return ''
+    }
+
     return `${value.firstName} | ${value.balance} USD`
   }
 }

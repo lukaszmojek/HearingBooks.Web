@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core'
 import { FormGroup, FormControl } from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog'
 import { Store } from '@ngrx/store'
 import { IPreferencesState } from 'src/app/preferences/preferences.reducer'
 import { selectInnerCardType, selectLanguage } from 'src/app/preferences/preferences.selectors'
 import { CardType } from 'src/app/shared/card/card-type'
 import StoreConnectedComponent from 'src/app/shared/store-connected.component'
+import { TopUpDialogComponent } from '../top-up-dialog/top-up-dialog.component'
 
 @Component({
   selector: 'hb-profile-details',
@@ -34,11 +36,15 @@ export class ProfileDetailsComponent extends StoreConnectedComponent<IPreference
     return this.profileDetailsFormGroup.get('balance') as FormControl
   }
 
-  constructor(store$: Store<IPreferencesState>) {
+  constructor(store$: Store<IPreferencesState>, private dialog: MatDialog) {
     super(store$)
     this.safeSelect$(selectInnerCardType).subscribe(
       x => (this.innerCardType = x)
     )
     this.safeSelect$(selectLanguage).subscribe(x => (this.selectedLanguage = x))
+  }
+
+  public openTopUpDialog(): void {
+    this.dialog.open(TopUpDialogComponent, { width: '400px', height: '250px' })
   }
 }

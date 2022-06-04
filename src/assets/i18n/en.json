@@ -145,10 +145,20 @@
       "Title": "Preferences"
     },
     "ProfileDetails": {
+      "Balance": "Balance",
       "Email": "Email",
       "FirstName": "First name",
       "LastName": "Last name",
-      "Title": "Profile Details"
+      "Title": "Profile Details",
+      "TopUp": "Top up",
+      "TopUpDialog": {
+        "Title": "Top up",
+        "Amount": "Amount",
+        "Actions": {
+          "Cancel": "Cancel",
+          "TopUp": "Top up"
+        }
+      }
     },
     "Title": "Your profile"
   },

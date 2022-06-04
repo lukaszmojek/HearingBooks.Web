@@ -21,7 +21,8 @@ import { ShortenTextPipe } from './shorten-text.pipe'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { EmptyStateComponent } from './empty-state/empty-state.component'
-import { LoggedUserPipe } from './logged-user/logged-user.pipe'
+import { LoggedUserPipe } from './logged-user/logged-user.pipe';
+import { TopUpDialogComponent } from './users/profile/top-up-dialog/top-up-dialog.component'
 
 const components = [
   MainAppComponent,
@@ -57,7 +58,7 @@ const pipes = [
   LoggedUserPipe
 ]
 @NgModule({
-  declarations: [...components, ...pipes],
+  declarations: [...components, ...pipes, TopUpDialogComponent],
   imports: [...modules],
   exports: [...components, ...modules, ...pipes],
 })

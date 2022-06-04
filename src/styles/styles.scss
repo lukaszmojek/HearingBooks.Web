@@ -38,6 +38,18 @@ body {
   }
 }
 
+.mat-dialog-container {
+  @include bootstrap.acrylic-set-dialog();
+}
+
+.mat-dialog-title {
+  text-align: center;
+}
+
+.mat-dialog-actions[align='end'] {
+  justify-content: center !important;
+}
+
 .material {
   &-notification {
     //TODO: Fill styling for material notifications
