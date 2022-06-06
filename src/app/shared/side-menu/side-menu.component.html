@@ -5,7 +5,9 @@
     color="accent"
     class="menu-item"
     [routerLink]="menuItem.routerLink"
-    routerLinkActive="active">
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
     {{ menuItem.translationKey | translate }}
   </button>
 </div>

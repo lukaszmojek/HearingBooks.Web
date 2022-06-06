@@ -14,13 +14,13 @@ export class SideMenuComponent extends StoreConnectedComponent<IAuthState> {
   // TODO: Make selected menu item filled in, while unselected will stay as outlined
   public menuItems: MenuItem[] = [
     {
-      translationKey: 'SideMenu.Profile',
-      routerLink: ['profile'],
+      translationKey: 'SideMenu.Dashboard',
+      routerLink: ['dashboard'],
       shouldBeAvailable: () => true,
     },
     {
-      translationKey: 'SideMenu.Dashboard',
-      routerLink: ['dashboard'],
+      translationKey: 'SideMenu.Profile',
+      routerLink: ['profile'],
       shouldBeAvailable: () => true,
     },
     {
