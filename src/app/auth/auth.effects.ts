@@ -5,6 +5,8 @@ import { AuthActions } from './auth.actions'
 import { exhaustMap, catchError, map, tap } from 'rxjs/operators'
 import { of } from 'rxjs'
 import { Router } from '@angular/router'
+import { IApplicationState } from '../shared/state'
+import { Store } from '@ngrx/store'
 
 @Injectable()
 export class AuthEffects {
@@ -41,9 +43,22 @@ export class AuthEffects {
     )
   )
 
+  loadUserDetails$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.loadUserDetails),
+      exhaustMap(_ =>
+        this.auth.loadUserDetails$().pipe(
+          map(userDetails => AuthActions.loadUserDetailsSuccess({ userDetails: userDetails })),
+          catchError(_ => of(AuthActions.loadUserDetailsFailed()))
+        )
+      )
+    )
+  )
+
   constructor(
     private actions$: Actions,
     private auth: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private store$: Store<IApplicationState>,
   ) { }
 }

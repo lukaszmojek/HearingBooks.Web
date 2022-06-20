@@ -7,6 +7,7 @@ import { IEnvironment } from './environment.interface'
 export const environment: IEnvironment = {
   production: false,
   baseApiUrl: 'https://localhost:7134',
+  baseSignalRUrl: 'https://localhost:7275',
 }
 
 /*

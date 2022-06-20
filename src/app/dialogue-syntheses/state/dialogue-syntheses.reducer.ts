@@ -41,6 +41,24 @@ const reducer = createReducer(
     ...state,
     isActionInProgress: false,
   })),
+  on(DialogueSynthesesActions.dialogueSynthesisUpdated, (state, { dialogueSynthesis }) => {
+    const synthesisInStoreIndex = state.dialogueSyntheses.findIndex(s => s.id === dialogueSynthesis.id)
+    
+    if (synthesisInStoreIndex !== -1) {
+      const updatedDialogueSyntheses = state.dialogueSyntheses
+      updatedDialogueSyntheses[synthesisInStoreIndex] = dialogueSynthesis
+      
+      return {
+        ...state,
+        dialogueSyntheses: updatedDialogueSyntheses
+      }
+    }
+
+    return {
+      ...state,
+      dialogueSyntheses: state.dialogueSyntheses.concat([dialogueSynthesis])
+    }
+  }),
 )
 
 export const dialogueSynthesesFeature = createFeature({

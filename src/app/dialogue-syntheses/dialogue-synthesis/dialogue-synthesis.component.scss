@@ -1,9 +1,9 @@
 @use '../../../styles/bootstrap.scss';
 
-$titleWidth: 230px;
-$synthesisTextWidth: 320px;
-$languageWidth: 40px;
-$voiceWidth: 150px;
+$titleWidth: 150px;
+$synthesisTextWidth: 200px;
+$languageWidth: 60px;
+$voiceWidth: 90px;
 
 :host {
   .header-title {

@@ -1,1 +1,90 @@
-<p>profile-details works!</p>
+<div [formGroup]="profileDetailsFormGroup">
+  <hb-card
+    [type]="innerCardType"
+    [border]="innerCardBorder"
+    class="width-50"
+  >
+    <div class="flex-row">
+      <mat-form-field
+        class="flex-column field-first"
+        appearance="outline"
+      >
+        <mat-label>
+          {{ 'Profile.ProfileDetails.FirstName' | translate }}
+        </mat-label>
+
+        <input
+          class="field"
+          type="text"
+          matInput
+          [formControl]="firstNameFormControl"
+          placeholder="First Name"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        class="flex-column"
+        appearance="outline"
+      >
+        <mat-label>
+          {{ 'Profile.ProfileDetails.LastName' | translate }}
+        </mat-label>
+
+        <input
+          class="field"
+          type="text"
+          matInput
+          [formControl]="lastNameFormControl"
+          placeholder="Last Name"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="flex-row">
+      <mat-form-field
+        class="flex-column field-first"
+        appearance="outline"
+      >
+        <mat-label>
+          {{ 'Profile.ProfileDetails.Email' | translate }}
+        </mat-label>
+
+        <input
+          class="field"
+          type="text"
+          matInput
+          [formControl]="emailFormControl"
+          placeholder="Email"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        class="flex-column"
+        appearance="outline"
+      >
+        <mat-label>
+          {{ 'Profile.ProfileDetails.Balance' | translate }}
+        </mat-label>
+
+        <input
+          class="field"
+          type="number"
+          matInput
+          [formControl]="balanceFormControl"
+          placeholder="Balance"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="flex-row">
+      <button
+        type="button"
+        mat-flat-button
+        color="accent"
+        (click)="openTopUpDialog()"
+      >
+        {{ 'Profile.ProfileDetails.TopUp' | translate }}
+      </button>
+    </div>
+  </hb-card>
+</div>

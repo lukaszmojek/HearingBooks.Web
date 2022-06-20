@@ -47,5 +47,24 @@
         </mat-form-field>
       </div>
     </div>
+
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+
+    <div class="flex">
+      <div class="width-40 text-center email-name">
+        {{ 'Profile.Preferences.EmailNotifications.Title' | translate }}
+      </div>
+
+      <div class="width-40 text-center">
+        <mat-slide-toggle
+          [formControl]="emailNotificationsFormControl"
+          (change)="setEmailNotifications($event.checked)"
+          [matTooltip]="'Profile.Preferences.EmailNotifications.Tooltip' | translate"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
   </hb-card>
 </div>

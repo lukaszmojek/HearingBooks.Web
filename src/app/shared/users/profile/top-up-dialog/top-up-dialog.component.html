@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>
+  {{ 'Profile.ProfileDetails.TopUpDialog.Title' | translate }}
+</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="flex-column login-form">
+    <mat-form-field
+      class="flex--row"
+      appearance="outline"
+    >
+      <mat-label>
+        {{ 'Profile.ProfileDetails.TopUpDialog.Amount' | translate }}
+      </mat-label>
+
+      <input
+        type="number"
+        matInput
+        [formControl]="amountFormControl"
+        placeholder="ex. 100"
+      />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button
+    mat-flat-button
+    color="warn"
+    mat-dialog-close
+  >
+    {{ 'Profile.ProfileDetails.TopUpDialog.Actions.Cancel' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="accent"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="topUp()"
+  >
+    {{ 'Profile.ProfileDetails.TopUpDialog.Actions.TopUp' | translate }}
+  </button>
+</mat-dialog-actions>

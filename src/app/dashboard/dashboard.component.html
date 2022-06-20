@@ -54,7 +54,31 @@
         </div>
       </div>
     </div>
+
+    <div class="flex-row dashboard-row">
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.TextSynthesesPriceInUsd' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.textSynthesesPriceInUsd }}
+        </div>
+      </div>
+
+      <div class="flex-column dashboard-tile">
+        <div class="dashboard-tile-title">
+          {{ 'Dashboard.DialogueSynthesesPriceInUsd' | translate }}
+        </div>
+
+        <div class="dashboard-tile-content">
+          {{ synthesesSummary.dialogueSynthesesPriceInUsd }}
+        </div>
+      </div>
+    </div>
   </div>
+
+  
 
   <div class="flex-column">
     <hb-skeleton *ngIf="isActionInProgress$ | async"></hb-skeleton>

@@ -4,9 +4,10 @@ import { Store } from '@ngrx/store'
 import { Observable, of } from 'rxjs'
 import { tap } from 'rxjs/operators'
 import { ApiEndpoints } from '../shared/api-endpoints'
+import { IUIState } from '../ui/ui.reducer'
 import { AuthActions } from './auth.actions'
 import { IAuthState } from './auth.reducer'
-import { IApiResponse, ITokenResponse } from './models'
+import { IApiResponse, ITokenResponse, IUser } from './models'
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,10 @@ export class AuthenticationService {
     localStorage.removeItem(this.localStorageTokenKey)
 
     return of('')
+  }
+
+  public loadUserDetails$(): Observable<any> {
+    return this.http
+      .get<IUser>(ApiEndpoints.users.details)
   }
 }

@@ -5,10 +5,14 @@ body {
   height: 100%;
 }
 
+.mat-expansion-panel {
+  background-color: rgba($color: #2d0e33, $alpha: 0.7) !important;
+}
+
 body {
   margin: 0;
   background-color: #343430;
-  background-image: url('../assets/background-10.png');
+  background-image: url('../assets/background-violet.png');
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
@@ -21,17 +25,29 @@ body {
     color: whitesmoke;
 
     &--success {
-      @include bootstrap.acrylic-set-success();
+      @include bootstrap.acrylic-set-success-notification();
     }
 
     &--warning {
-      @include bootstrap.acrylic-set-warning();
+      @include bootstrap.acrylic-set-warning-notification();
     }
 
     &--error {
-      @include bootstrap.acrylic-set-error();
+      @include bootstrap.acrylic-set-error-notification();
     }
   }
+}
+
+.mat-dialog-container {
+  @include bootstrap.acrylic-set-dialog();
+}
+
+.mat-dialog-title {
+  text-align: center;
+}
+
+.mat-dialog-actions[align='end'] {
+  justify-content: center !important;
 }
 
 .material {
@@ -57,7 +73,7 @@ body {
 }
 
 .border {
-  border: 1px solid rgb(197, 197, 197);
+  border: 1px solid #50504d;
 }
 
 .transparent {

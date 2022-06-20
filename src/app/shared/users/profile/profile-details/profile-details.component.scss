@@ -1,0 +1,19 @@
+@use '../../../../../styles/bootstrap';
+
+:host {
+  .hb-card {
+    padding: 0;
+  }
+
+  .mat-card-content {
+    padding: 0 !important;
+  }
+
+  .field {
+    width: 400px;
+
+    &-first {
+      margin-right: 16px;
+    }
+  }
+}

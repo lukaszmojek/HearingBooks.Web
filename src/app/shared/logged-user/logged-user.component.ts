@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AuthActions } from 'src/app/auth/auth.actions'
-import { selectUserName } from 'src/app/auth/auth.selectors'
+import { selectUserDetails, selectUserFirstName } from 'src/app/auth/auth.selectors'
 import { UIActions } from 'src/app/ui/ui.actions'
 import { IApplicationState } from '../state'
 import StoreConnectedComponent from '../store-connected.component'
@@ -12,7 +12,8 @@ import StoreConnectedComponent from '../store-connected.component'
   styleUrls: ['./logged-user.component.scss'],
 })
 export class LoggedUserComponent extends StoreConnectedComponent<IApplicationState> {
-  public loggedUserName$ = this.safeSelect$(selectUserName)
+  public loggedUserName$ = this.safeSelect$(selectUserFirstName)
+  public userDetails$ = this.safeSelect$(selectUserDetails)
 
   public get shouldDisplayCredits(): boolean {
     return false

@@ -1,6 +1,11 @@
 import { createAction, props } from '@ngrx/store'
 import { ITextSynthesis, ITextSynthesisRequest } from './models'
 
+const textSynthesisUpdated = createAction(
+  '[Text Syntheses] Text Synthesis updated',
+  props<{ textSynthesis: ITextSynthesis }>()
+)
+
 const loadTextSynthesesForUser = createAction(
   '[Text Syntheses] Load TextSyntheses for user'
 )
@@ -28,6 +33,7 @@ const requestTextSynthesisFailed = createAction(
 )
 
 export const TextSynthesesActions = {
+  textSynthesisUpdated,
   loadTextSynthesesForUser,
   loadTextSynthesesForUserSucceded,
   loadTextSynthesesForUserFailed,

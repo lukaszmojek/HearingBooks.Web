@@ -14,6 +14,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSelectModule } from '@angular/material/select'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatDialogModule } from '@angular/material/dialog'
 
 const materialModules = [
   MatButtonModule,
@@ -29,7 +31,9 @@ const materialModules = [
   MatSlideToggleModule,
   MatSelectModule,
   MatExpansionModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatTooltipModule,
+  MatDialogModule
 ]
 
 @NgModule({

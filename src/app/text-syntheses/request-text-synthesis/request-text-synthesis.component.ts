@@ -13,6 +13,7 @@ import { selectIsLanguageSelected, selectLanguages, selectVoicesFromSelectedLang
 import { ITextSynthesisRequest } from '../state/models'
 import { TextSynthesesActions } from '../state/text-syntheses.actions'
 import { selectIsAnyActionInProgress } from 'src/app/shared/state/index.selectors'
+import { SignalRService } from 'src/app/shared/signalr/signalr.service'
 
 @Component({
   selector: 'hb-request-text-synthesis',
@@ -78,7 +79,7 @@ export class RequestTextSynthesisComponent
     return this.textSynthesisFormGroup.get(name) as FormControl
   }
 
-  constructor(private formBuilder: FormBuilder, store$: Store<IApplicationState>, acrylic: AcrylicService) {
+  constructor(private formBuilder: FormBuilder, private signalR: SignalRService, store$: Store<IApplicationState>, acrylic: AcrylicService) {
     super(store$, acrylic)
     this.store$.dispatch(LanguagesActions.loadLangaugesWithVoices())
 

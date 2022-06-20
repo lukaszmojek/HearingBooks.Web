@@ -3,4 +3,6 @@ export interface ISynthesesSummary {
   textSynthesesCount: number
   synthesesCharactersCount: number
   synthesesDurationInSeconds: number
+  textSynthesesPriceInUsd: number
+  dialogueSynthesesPriceInUsd: number
 }

@@ -50,12 +50,48 @@ export const selectUserId = createSelector(
     isLoggedIn ? decodedToken.id : null
 )
 
-export const selectUserName = createSelector(
+export const selectUserFirstName = createSelector(
   selectIsLoggedIn,
   selectDecodedToken,
   (isLoggedIn: boolean, decodedToken: DecodedToken) =>
-    isLoggedIn ? decodedToken.name : null
+    isLoggedIn ? decodedToken.firstName : null
 )
+
+export const selectUserLastName = createSelector(
+  selectIsLoggedIn,
+  selectDecodedToken,
+  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
+    isLoggedIn ? decodedToken.lastName : null
+)
+
+export const selectUserEmail = createSelector(
+  selectIsLoggedIn,
+  selectDecodedToken,
+  (isLoggedIn: boolean, decodedToken: DecodedToken) =>
+    isLoggedIn ? decodedToken.email : null
+)
+
+export const selectUserDetails = createSelector(
+  selectAuthFeature,
+  (state: IAuthState) => state.user
+)
+
+// export const selectUserDetails = createSelector(
+//   selectUserId,
+//   selectUserFirstName,
+//   selectUserLastName,
+//   selectUserEmail,
+//   (id, firstName, lastName, email) => ({
+//     id, firstName, lastName, email
+//   } as IUserDetails)
+// )
+
+// export interface IUserDetails {
+//   id: string
+//   firstName: string
+//   lastName: string
+//   email: string
+// }
 
 function isUserType(decodedToken: DecodedToken, userType: UserType): boolean {
   if (!decodedToken) {

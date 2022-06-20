@@ -6,6 +6,7 @@ import { CardType } from './card-type'
   selector: 'hb-card',
   template: `
     <mat-card
+      class="hb-card"
       [ngClass]="{
         acrylic: isAcryclic,
         transparent: isTransparent,
