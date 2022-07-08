@@ -36,7 +36,7 @@ export class RequestTextSynthesisComponent
   elevation = true
   border = false
 
-  textToSynthesizeMaxCharacterCount = 500
+  textToSynthesizeMaxCharacterCount = 5000
   textToSynthesizeRows = 20
 
   textSynthesisFormGroup: FormGroup

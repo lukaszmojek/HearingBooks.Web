@@ -16,7 +16,7 @@ export class SnackbarNotificationsService extends StoreConnectedComponent<IPrefe
   private verticalPosition: MatSnackBarVerticalPosition = 'bottom'
   private action: string = 'OK'
   private isAcrylicEnabled: boolean
-  private duration = 5000
+  private duration = 15000
 
   constructor(private snackbar: MatSnackBar, store$: Store<IPreferencesState>) {
     super(store$)
