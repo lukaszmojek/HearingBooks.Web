@@ -1,7 +1,7 @@
 {
   "Dashboard": {
-    "DialogueSynthesesPriceInUsd": "Cena Syntez Dialogowych w USD",
-    "TextSynthesesPriceInUsd": "Cena Syntez Tekstowych w USD",
+    "DialogueSynthesesPriceInUsd": "Koszt Syntez Dialogowych w USD",
+    "TextSynthesesPriceInUsd": "Koszt Syntez Tekstowych w USD",
     "Title": "Pulpit",
     "RequestedDialogueSyntheses": "Stworzone Syntezy Dialogowe",
     "RequestedTextSyntheses": "Stworzone Syntezy Tekstowe",
@@ -63,9 +63,9 @@
         "Language": "Język",
         "SynthetizedText": "Tekst dialogu",
         "FirstSpeakerVoice": "Głos pierwszego rozmówcy",
-        "SecondSpeakerVoice": "Głos drugiego rozmówcy"
+        "SecondSpeakerVoice": "Głos drugiego rozmówcy",
+        "Price": "Koszt"
       },
-      "Price": "Cena",
       "Redirect": "Stwórz syntezę dialogową",
       "Title": "Syntezy Dialogowe"
     },
@@ -124,12 +124,12 @@
         "Download": "Pobierz"
       },
       "Header": {
-        "Title": "Tytuł",
-        "Language": "Jęzuk",
+        "Language": "Język",
+        "Price": "Koszt",
         "SynthetizedText": "Zsyntetyzowany tekst",
+        "Title": "Tytuł",
         "Voice": "Głos"
       },
-      "Price": "Cena",
       "Redirect": "Swtórz Syntezę Tekstową",
       "Title": "Syntezy tekstowe"
     }
@@ -172,7 +172,7 @@
   },
   "TextSyntheses": {
     "CharacterCount": "Ilość znaków",
-    "Price": "Cena",
+    "Price": "Koszt",
     "Title": "Syntezy Tekstowe"
   },
   "Toolbar": {

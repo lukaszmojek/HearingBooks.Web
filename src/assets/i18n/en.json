@@ -59,13 +59,13 @@
         "Download": "Download"
       },
       "Header": {
-        "Title": "Title",
-        "Language": "Language",
-        "SynthetizedText": "Dialogue text",
         "FirstSpeakerVoice": "First speaker voice",
-        "SecondSpeakerVoice": "Second speaker voice"
+        "Language": "Language",
+        "Price": "Price",
+        "SecondSpeakerVoice": "Second speaker voice",
+        "SynthetizedText": "Dialogue text",
+        "Title": "Title"
       },
-      "Price": "Price",
       "Redirect": "Request Dialogue Synthesis",
       "Title": "Dialogue Syntheses"
     },
@@ -124,12 +124,12 @@
         "Download": "Download"
       },
       "Header": {
-        "Title": "Title",
         "Language": "Language",
+        "Price": "Price",
         "SynthetizedText": "Synthetized text",
+        "Title": "Title",
         "Voice": "Voice"
       },
-      "Price": "Price",
       "Redirect": "Request Text Synthesis",
       "Title": "Text Syntheses"
     }
