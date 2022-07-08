@@ -25,7 +25,6 @@ import { LoggedUserPipe } from './logged-user/logged-user.pipe';
 import { TopUpDialogComponent } from './users/profile/top-up-dialog/top-up-dialog.component'
 
 const components = [
-  MainAppComponent,
   SideMenuComponent,
   LoggedUserComponent,
   ToolbarComponent,

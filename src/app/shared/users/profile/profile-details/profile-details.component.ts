@@ -7,6 +7,7 @@ import { selectInnerCardType, selectLanguage } from 'src/app/preferences/prefere
 import { CardType } from 'src/app/shared/card/card-type'
 import StoreConnectedComponent from 'src/app/shared/store-connected.component'
 import { TopUpDialogComponent } from '../top-up-dialog/top-up-dialog.component'
+import { AuthActions } from '../../../../auth/auth.actions'
 
 @Component({
   selector: 'hb-profile-details',
@@ -45,6 +46,10 @@ export class ProfileDetailsComponent extends StoreConnectedComponent<IPreference
   }
 
   public openTopUpDialog(): void {
-    this.dialog.open(TopUpDialogComponent, { width: '400px', height: '250px' })
+    const dialog = this.dialog.open(TopUpDialogComponent, { width: '400px', height: '250px' })
+
+    dialog.afterClosed().subscribe(closed => {
+      this.store$.dispatch(AuthActions.loadUserDetails())
+    })
   }
 }

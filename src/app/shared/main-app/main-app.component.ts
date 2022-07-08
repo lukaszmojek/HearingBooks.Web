@@ -9,7 +9,6 @@ import { PreferencesService } from 'src/app/preferences/preferences.service'
 import { selectIsSideMenuOpened } from 'src/app/ui/ui.selectors'
 import AcrylicAwareComponent from '../acrylic/acrylic-aware.component'
 import { AcrylicService } from '../acrylic/acrylic.service'
-import { SignalRService } from '../signalr/signalr.service'
 import { IApplicationState } from '../state'
 import { ToolbarService } from '../toolbar/toolbar.service'
 

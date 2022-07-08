@@ -17,7 +17,6 @@ export class TopUpDialogComponent {
   public topUp(): void {
     const amount = this.amountFormControl.value
     this.topUpService.topUp$(amount).subscribe(response => {
-      console.log(response)
       this.shouldClose.emit(true)
     })
   }

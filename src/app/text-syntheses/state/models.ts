@@ -6,7 +6,7 @@ export interface ITextSynthesis {
   synthesisText: string
   blobName: string
   // characterCount: number
-  // price: string
+  priceInUsd: number
   // requestedOn: Date
   // synthesisLength: string
   // synthesisFileUrl: string

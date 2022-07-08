@@ -12,13 +12,14 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { EffectsModule } from '@ngrx/effects'
+import { MainAppComponent } from './shared/main-app/main-app.component'
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainAppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,4 +44,4 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
