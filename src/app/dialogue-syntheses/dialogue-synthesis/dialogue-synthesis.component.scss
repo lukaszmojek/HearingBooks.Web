@@ -1,9 +1,10 @@
 @use '../../../styles/bootstrap.scss';
 
-$titleWidth: 150px;
-$synthesisTextWidth: 200px;
+$titleWidth: 120px;
+$synthesisTextWidth: 160px;
 $languageWidth: 60px;
-$voiceWidth: 90px;
+$voiceWidth: 110px;
+$priceWidth: 60px;
 
 :host {
   .header-title {
@@ -12,7 +13,13 @@ $voiceWidth: 90px;
   }
 
   .header-synthesis-text {
-    @include bootstrap.flex-set(column, $synthesisTextWidth, 2, 3, flex-start);
+    @include bootstrap.flex-set(
+      column,
+      $synthesisTextWidth,
+      2,
+      2.5,
+      flex-start
+    );
     padding-right: bootstrap.$spacing-padding-xl;
   }
 
@@ -22,7 +29,11 @@ $voiceWidth: 90px;
   }
 
   .header-voice {
-    @include bootstrap.flex-set(column, $voiceWidth, 0, 1.5, flex-start);
+    @include bootstrap.flex-set(column, $voiceWidth, 2, 2, flex-start);
+  }
+
+  .header-price {
+    @include bootstrap.flex-set(column, $priceWidth, 0, 0, flex-start);
   }
 
   .synthesis-text {

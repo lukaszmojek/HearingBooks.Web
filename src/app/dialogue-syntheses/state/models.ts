@@ -9,6 +9,7 @@ export interface IDialogueSynthesis {
   language: string
   firstSpeakerVoice: string
   secondSpeakerVoice: string
+  priceInUsd: number
 }
 
 export interface IDialogueSynthesisRequest {

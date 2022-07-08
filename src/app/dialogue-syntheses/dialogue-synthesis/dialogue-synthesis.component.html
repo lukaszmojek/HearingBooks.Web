@@ -20,7 +20,7 @@
       </div>
 
       <div class="text-bold">
-        {{ dialogueSynthesis.dialogueText | shortenText: 60 }}
+        {{ dialogueSynthesis.dialogueText | shortenText: 40 }}
       </div>
     </div>
 
@@ -57,14 +57,25 @@
         {{ dialogueSynthesis.secondSpeakerVoice }}
       </div>
     </div>
+
+    <div class="header-price">
+      <div class="label text-light">
+        {{ 'PayAsYouGo.DialogueSyntheses.Header.Price' | translate }}
+      </div>
+
+      <div class="text-bold">
+        {{ dialogueSynthesis.priceInUsd }}
+      </div>
+    </div>
   </mat-expansion-panel-header>
 
   <mat-divider></mat-divider>
 
   <div class="details">
-    <div class="synthesis-text"
-      [innerHtml]="dialogueSynthesis.dialogueText | dialogueSynthesis">
-    </div>
+    <div
+      class="synthesis-text"
+      [innerHtml]="dialogueSynthesis.dialogueText | dialogueSynthesis"
+    ></div>
 
     <button
       mat-flat-button
