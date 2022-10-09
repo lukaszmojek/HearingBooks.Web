@@ -16,7 +16,9 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <span> Easy Synthesis </span>
+    <span>
+      {{ 'Platform.Title' | translate }}
+    </span>
   </div>
 
   <hb-logged-user *ngIf="isLoggedIn"> </hb-logged-user>

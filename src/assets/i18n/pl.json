@@ -162,6 +162,9 @@
     },
     "Title": "Twój profil"
   },
+  "Platform": {
+    "Title": "Hearing Books"
+  },
   "SideMenu": {
     "Dashboard": "Pulpit",
     "DialogueSyntheses": "Syntezy dialogowe",
